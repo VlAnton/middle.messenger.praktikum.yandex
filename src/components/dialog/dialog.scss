@@ -1,0 +1,10 @@
+@import '../../assets/variables';
+
+.dialog {
+  background-color: $dialog-bg-color;
+  box-shadow: $dialog-box-shadow;
+  padding: 30px;
+  border-radius: 12px;
+  width: fit-content;
+  height: fit-content;
+}

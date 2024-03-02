@@ -1,0 +1,19 @@
+$font-body: Inter,"Segoe UI","Roboto","Helvetica Neue",sans-sans;
+
+$font-weight-regular: 500;
+$font-weight-semibold: 600;
+
+$font-large: #{$font-weight-regular} 40px/40px #{$font-body};
+$font-big: #{$font-weight-regular} 20px/20px #{$font-body};
+$font-title: #{$font-weight-semibold} 16px/16px #{$font-body};
+$font-regular: #{$font-weight-regular} 13px/13px #{$font-body};
+$font-small: #{$font-weight-regular} 12px/12px #{$font-body};
+$font-micro: #{$font-weight-regular} 11px/11px #{$font-body};
+$font-nano: #{$font-weight-regular} 9px/9px #{$font-body};
+
+$bg-color: #fff;
+$bg-color-primary: #3369F3;
+$text-color-primary: #1E1E1E;
+
+$dialog-bg-color: #{$bg-color};
+$dialog-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
