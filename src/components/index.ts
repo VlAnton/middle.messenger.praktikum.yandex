@@ -5,4 +5,4 @@ export { Button } from './button';
 export { Link } from './link';
 export { DialogTitle } from './dialog-title';
 export { ChatList } from './chat-list';
-export { ChatItem } from './chat-item';
+export { ChatListItem } from './chat-list-item';

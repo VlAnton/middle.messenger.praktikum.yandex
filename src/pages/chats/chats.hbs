@@ -1,5 +1,23 @@
-<div class="register-page">
-  <div class="sidebar">
-    {{> ChatItem }}
+<div class="chat-page">
+  <div class="chat-page__chats">
+    {{#> ChatList }}
+      <div class="chat-page__header">
+        <div class="chat-page__profile-link-wrapper">
+          <a class="chat-page__profile-link" href="profile">
+            Профиль
+          </a>
+          <img src="../../assets/icons/chevron right.svg">
+        </div>
+      </div>
+      {{#each (chat-page-list)}}
+        {{> ChatListItem }}
+      {{/each}}
+    {{/ ChatList }}
+  </div>
+  <div class="chat-page__chat-preview">
+    {{isChatSelected}}
+    <p class="chat-page__chat-placeholder">
+      Выберите чат чтобы отправить сообщение
+    </p>
   </div>
 </div>

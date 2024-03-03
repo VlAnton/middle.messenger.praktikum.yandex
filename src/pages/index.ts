@@ -7,5 +7,7 @@ export default {
   'login': [ LoginPage ],
   'register': [ RegisterPage ],
   '404': [ Error404 ],
-  'chats': [ ChatsPage ],
+  'chats': [ ChatsPage, {
+    isChatSelected: true
+  } ],
 };

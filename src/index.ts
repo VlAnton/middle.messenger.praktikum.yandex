@@ -24,9 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-document.addEventListener('click', e => {
-  console.log(e)
-  const page = e.target.getAttribute('page');
+document.addEventListener('click', (e: Event) => {
+  const page = (e.target as HTMLBaseElement).getAttribute('page');
   if (page) {
     window.location.pathname = page
 

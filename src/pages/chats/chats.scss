@@ -1,29 +1,46 @@
-// .register-page {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100%;
+@import '../../assets/variables.scss';
 
-//   &__form {
-//     width: 280px;
-//   }
+.chat-page {
+  height: 100%;
+  display: flex;
 
-//   &__content {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 32px;
-//   }
+  &__chats {
+    width: 25%;
+    min-width: 310px;
+  }
+  
+  &__header {
+    padding: 21px 10px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    align-items: end;
+  }
 
-//   &__input {
-//     margin-top: 16px;
-//   }
+  &__profile-link-wrapper {
+    display: flex;
+    gap: 8px;
 
-//   &__footer {
-//     margin-top: 159px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 14px;
-//   }
-// }
+    img {
+      padding: 2px 0;
+    }
+  }
+
+  &__profile-link {
+    text-decoration: none;
+    color: $text-color-secondary;
+    width: fit-content;
+    font: $font-small;
+  }
+
+  &__chat-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__chat-placeholder {
+    font: $font-small;
+    color: $text-color-secondary;
+  }
+}
