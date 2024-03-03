@@ -5,7 +5,7 @@ import * as Components from './components';
 import pages from './pages';
 
 Object.entries(Components).forEach(([ name, component ]) => {
-  Handlebars.registerPartial(name, component)
+  Handlebars.registerPartial(name, component);
 })
 
 function navigate(page: string) {
@@ -14,4 +14,23 @@ function navigate(page: string) {
   document.body.innerHTML = handlebarsFunct(args);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('login'));
+document.addEventListener('DOMContentLoaded', () => {
+  const url = window.location.pathname.replace('/', '')
+  if (pages[url]) {
+    navigate(url)
+  } else {
+    window.location.pathname = '404'
+    navigate('404')
+  }
+});
+
+document.addEventListener('click', e => {
+  console.log(e)
+  const page = e.target.getAttribute('page');
+  if (page) {
+    window.location.pathname = page
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  }
+});

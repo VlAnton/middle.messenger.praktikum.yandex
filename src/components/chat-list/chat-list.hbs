@@ -1,0 +1,6 @@
+<div class="chat-list{{#if className}} {{ className }}{{/if}}">
+  {{#each (chat-page-list)}}
+    {{> ChatItem }}
+  {{/each}}
+  {{{{chat-page-list}}}}
+</div>
