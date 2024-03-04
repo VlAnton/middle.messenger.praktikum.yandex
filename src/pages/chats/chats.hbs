@@ -15,9 +15,16 @@
     {{/ ChatList }}
   </div>
   <div class="chat-page__chat-preview">
-    {{isChatSelected}}
-    <p class="chat-page__chat-placeholder">
-      Выберите чат чтобы отправить сообщение
-    </p>
+    {{#if isChatSelected }}
+      {{#> ChatBody }}
+        {{#each (chat-page-messages-list)}}
+          {{> ChatMessage }}
+        {{/each}}
+      {{/ ChatBody }}
+    {{else }}
+      <p class="chat-page__chat-placeholder">
+        Выберите чат чтобы отправить сообщение
+      </p>
+    {{/if }}
   </div>
 </div>

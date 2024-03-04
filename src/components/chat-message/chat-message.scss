@@ -1,0 +1,37 @@
+@import '../../assets/variables';
+
+.chat-message {
+  background-color: $gray-normal-color;
+  height: fit-content;
+  width: 402px;
+  padding: 11px;
+  border-radius: 0 12px 12px 12px;
+
+  &__yours {
+    background-color: $bg-color-hover;
+    border-radius: 12px 12px 0 12px;
+    align-self: end;
+    margin-top: 20px;
+  }
+
+  &__text {
+    margin: 0;
+    font: $font-small;
+    line-height: 15px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 4px;
+    float: right;
+  }
+
+  &__time {
+    font: $font-nano;
+    color: $text-color-secondary;
+    width: fit-content;
+  }
+  &__time-yours {
+    color: $bg-color-primary;
+  }
+}

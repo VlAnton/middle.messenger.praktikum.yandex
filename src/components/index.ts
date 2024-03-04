@@ -4,5 +4,7 @@ export { Input } from './input';
 export { Button } from './button';
 export { Link } from './link';
 export { DialogTitle } from './dialog-title';
+export { ChatBody } from './chat-body';
+export { ChatMessage } from './chat-message';
 export { ChatList } from './chat-list';
 export { ChatListItem } from './chat-list-item';
