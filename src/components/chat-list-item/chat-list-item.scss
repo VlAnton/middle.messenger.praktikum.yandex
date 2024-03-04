@@ -3,6 +3,10 @@
 .chat-item {
   cursor: pointer;
 
+  &__selected {
+    background-color: $bg-color-hover;
+  }
+
   &__divider {
     height: 1px;
     background: $bg-color-divider;

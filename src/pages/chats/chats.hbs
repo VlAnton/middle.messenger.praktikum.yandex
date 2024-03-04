@@ -8,6 +8,7 @@
           </a>
           <img src="../../assets/icons/chevron right.svg">
         </div>
+        {{> ChatInput className="chat-input__search" name="search" type="search" placeholder="Поиск" }}
       </div>
       {{#each (chat-page-list)}}
         {{> ChatListItem }}
@@ -17,9 +18,16 @@
   <div class="chat-page__chat-preview">
     {{#if isChatSelected }}
       {{#> ChatBody }}
+        <div class="chat-page__chat-info">
+        </div>
         {{#each (chat-page-messages-list)}}
           {{> ChatMessage }}
         {{/each}}
+        <div class="chat-page__chat-input">
+          <img src="../../assets/icons/sendFIle.svg">
+          {{> ChatInput name="text" type="search" placeholder="Сообщение" }}
+          <img src="../../assets/icons/sendMessage.svg">
+        </div>
       {{/ ChatBody }}
     {{else }}
       <p class="chat-page__chat-placeholder">

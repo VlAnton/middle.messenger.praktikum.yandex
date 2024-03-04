@@ -41,7 +41,26 @@
     align-self: end;
   }
   &__chat-placeholder {
+    height: 50vh;
     font: $font-small;
     color: $text-color-secondary;
   }
+
+  &__chat-info {
+    display: flex;
+    margin-top: -30px;
+  }
+
+  &__chat-input {
+    display: flex;
+    gap: 10px;
+    padding: 11px 0;
+    border-top: 1px solid $bg-color-divider;
+    margin-bottom: -30px;
+
+    img {
+      cursor: pointer;
+    }
+  }
+  
 }

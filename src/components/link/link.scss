@@ -4,4 +4,12 @@
   color: $bg-color-primary;
   font: $font-micro;
   text-decoration: none;
+
+  &__negative {
+    color: $red-normal-color;
+  }
+
+  &__xl {
+    font: $font-regular;
+  }
 }

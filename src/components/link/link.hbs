@@ -1,3 +1,6 @@
-<a class="link" href="{{ href }}" page="{{ href }}">
+<a
+  class="link{{#if negative}} link__negative{{/if}} {{#if xl}}link__xl{{/if}}"
+  href="{{ href }}"
+>
   {{ text }}
 </a>

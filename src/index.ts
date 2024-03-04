@@ -6,13 +6,13 @@ import pages from './pages';
 
 Object.entries(Components).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
-})
+});
 
-function navigate(page: string) {
+function navigate(page: string, newArgs) {
   const [ source, args ] = pages[page];
   const handlebarsFunct = Handlebars.compile(source);
-  document.body.innerHTML = handlebarsFunct(args);
-}
+  document.body.innerHTML = handlebarsFunct(newArgs || args);
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '')
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navigate(url)
   } else {
     window.location.pathname = '404'
-    navigate('404')
   }
 });
 
@@ -32,4 +31,16 @@ document.addEventListener('click', (e: Event) => {
     e.preventDefault();
     e.stopImmediatePropagation();
   }
+  if ((e.target as HTMLBaseElement).className.includes('chat-item')) {
+    navigate('chats', {
+      'isChatSelected': true, selectedChat: 'chat-item-0'
+    })
+  }
 });
+
+// Array.from(document.getElementsByClassName('chat-item')).forEach((element: HTMLBaseElement) => {
+//   element.addEventListener('click', (event: Event) => {
+//     event.preventDefault();
+//     event.stopImmediatePropagation();
+//   })
+// });

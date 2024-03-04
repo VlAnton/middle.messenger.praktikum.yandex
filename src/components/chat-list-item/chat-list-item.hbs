@@ -1,6 +1,6 @@
-<div class="chat-item">
+<div id="chat-item-{{id}}" class="chat-item">
   <div class="chat-item__divider"></div>
-  <div class="chat-item__block">
+  <div class="chat-item__block {{#if selected }} chat-item__selected{{/if}}">
     {{#if avatar}}
     <div>
       <img class="chat-item__avatar" src={{ avatar }}><img>
