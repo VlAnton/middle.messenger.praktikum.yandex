@@ -8,7 +8,7 @@ Object.entries(Components).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
 });
 
-function navigate(page: string, newArgs) {
+function navigate(page: string, newArgs: any = null) {
   const [ source, args ] = pages[page];
   const handlebarsFunct = Handlebars.compile(source);
   document.body.innerHTML = handlebarsFunct(newArgs || args);
@@ -21,26 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     window.location.pathname = '404'
   }
+
+  Array.from(document.getElementsByClassName('chat-item')).forEach((element: HTMLBaseElement) => {
+    element.addEventListener('click', (event: Event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      console.log({
+        isChatSelected: true,
+        selectedChat: element.id
+      })
+      navigate('chats', {
+        isChatSelected: true,
+        selectedChat: element.id
+      })
+    })
+  });
 });
 
 document.addEventListener('click', (e: Event) => {
   const page = (e.target as HTMLBaseElement).getAttribute('page');
   if (page) {
-    window.location.pathname = page
+    window.location.pathname = page;
 
     e.preventDefault();
     e.stopImmediatePropagation();
   }
-  if ((e.target as HTMLBaseElement).className.includes('chat-item')) {
-    navigate('chats', {
-      'isChatSelected': true, selectedChat: 'chat-item-0'
-    })
-  }
 });
-
-// Array.from(document.getElementsByClassName('chat-item')).forEach((element: HTMLBaseElement) => {
-//   element.addEventListener('click', (event: Event) => {
-//     event.preventDefault();
-//     event.stopImmediatePropagation();
-//   })
-// });
