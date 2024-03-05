@@ -8,7 +8,9 @@ export default {
   'login': [ LoginPage ],
   'register': [ RegisterPage ],
   '404': [ Error404 ],
-  'chats': [ ChatsPage ],
+  'chats': [ ChatsPage, {
+    chatName: 'Вадим'
+  } ],
   'profile': [ ProfilePage, {
     email: 'pochta@yandex.ru',
     login: 'ivanivanov',

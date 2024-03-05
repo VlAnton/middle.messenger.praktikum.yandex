@@ -9,30 +9,26 @@ Object.entries(Components).forEach(([ name, component ]) => {
 });
 
 function navigate(page: string, newArgs: any = null) {
-  const [ source, args ] = pages[page];
+  const [ source, args ] = (pages as any)[page];
   const handlebarsFunct = Handlebars.compile(source);
   document.body.innerHTML = handlebarsFunct(newArgs || args);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '')
-  if (pages[url]) {
+  if ((pages as any)[url]) {
     navigate(url)
   } else {
     window.location.pathname = '404'
   }
 
-  Array.from(document.getElementsByClassName('chat-item')).forEach((element: HTMLBaseElement) => {
+  Array.from(document.getElementsByClassName('chat-item')).forEach((element: any) => {
     element.addEventListener('click', (event: Event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      console.log({
-        isChatSelected: true,
-        selectedChat: element.id
-      })
       navigate('chats', {
         isChatSelected: true,
-        selectedChat: element.id
+        chatName: 'Вадим'
       })
     })
   });

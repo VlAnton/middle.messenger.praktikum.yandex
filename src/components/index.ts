@@ -1,3 +1,4 @@
+export { Avatar } from './avatar';
 export { Dialog } from './dialog';
 export { Error } from './error';
 export { Input } from './input';

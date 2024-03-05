@@ -24,14 +24,6 @@
     background-color: $bg-color-hover;
   }
 
-  &__avatar {
-    background: $gray-light-color;
-    height: 47px;
-    width: 47px;
-    min-width: 47px;
-    border-radius: 50%;
-  }
-
   &__name {
     font: $font-regular;
     flex: 1;

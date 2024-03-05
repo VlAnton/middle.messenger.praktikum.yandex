@@ -1,0 +1,15 @@
+@import '../../assets/variables';
+
+.avatar {
+  background: $gray-light-color;
+  height: 47px;
+  width: 47px;
+  min-width: 47px;
+  border-radius: 50%;
+
+  &__small {
+    height: 34px;
+    width: 34px;
+    min-width: 34px;
+  }
+}

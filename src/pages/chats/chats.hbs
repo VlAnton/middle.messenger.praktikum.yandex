@@ -19,14 +19,23 @@
     {{#if isChatSelected }}
       {{#> ChatBody }}
         <div class="chat-page__chat-info">
+          <div class="chat-page__chat-name">
+            {{> Avatar small="true"}}
+            <p>{{ chatName }}</p>
+          </div>
+          <div class="chat-page__more">
+            <img src="../../assets/icons/dots.svg">
+          </div>
         </div>
-        {{#each (chat-page-messages-list)}}
-          {{> ChatMessage }}
-        {{/each}}
-        <div class="chat-page__chat-input">
-          <img src="../../assets/icons/sendFIle.svg">
-          {{> ChatInput name="text" type="search" placeholder="Сообщение" }}
-          <img src="../../assets/icons/sendMessage.svg">
+        <div class="chat-page__chat-body">
+          {{#each (chat-page-messages-list)}}
+            {{> ChatMessage }}
+          {{/each}}
+          <div class="chat-page__chat-input">
+            <img src="../../assets/icons/sendFIle.svg">
+            {{> ChatInput name="text" type="search" placeholder="Сообщение" }}
+            <img src="../../assets/icons/sendMessage.svg">
+          </div>
         </div>
       {{/ ChatBody }}
     {{else }}

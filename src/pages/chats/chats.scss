@@ -34,6 +34,7 @@
   }
 
   &__chat-preview {
+    height: 100%;
     flex: 1;
     display: flex;
     align-items: center;
@@ -41,7 +42,6 @@
     align-self: end;
   }
   &__chat-placeholder {
-    height: 50vh;
     font: $font-small;
     color: $text-color-secondary;
   }
@@ -49,6 +49,39 @@
   &__chat-info {
     display: flex;
     margin-top: -30px;
+    padding: 10px 0;
+    border-bottom: 1px solid $bg-color-divider;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__more {
+    width: 25px;
+    height: 25px;
+    padding: 5px 11px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bg-color-hover;
+    }
+  }
+
+  &__chat-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      font: $font-regular;
+      margin: 0;
+    }
+  }
+
+  &__chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   &__chat-input {
@@ -57,6 +90,7 @@
     padding: 11px 0;
     border-top: 1px solid $bg-color-divider;
     margin-bottom: -30px;
+    margin-top: 20px;
 
     img {
       cursor: pointer;
