@@ -3,6 +3,9 @@ import Handlebars from 'handlebars';
 import './index.scss';
 import * as Components from './components';
 import pages from './pages';
+import * as IconSetter from './helpers/set-icons'
+
+
 
 Object.entries(Components).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
@@ -18,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '')
   if ((pages as any)[url]) {
     navigate(url)
+  } else if (url === '') {
+    window.location.pathname = 'login'
   } else {
     window.location.pathname = '404'
   }
@@ -28,10 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       event.stopImmediatePropagation();
       navigate('chats', {
         isChatSelected: true,
-        chatName: 'Вадим'
+        chatName: 'Вадим',
       })
+      IconSetter.setIcons(IconSetter.icons)
     })
   });
+
+  IconSetter.setIcons(IconSetter.icons)
 });
 
 document.addEventListener('click', (e: Event) => {
