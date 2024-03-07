@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if ((pages as any)[url]) {
     navigate(url);
   } else if (url === '') {
-    window.location.pathname = 'login';
+    // window.location.pathname = 'login';
   } else {
-    window.location.pathname = '404';
+    // window.location.pathname = '404';
   }
 
   Array.from(document.getElementsByClassName('chat-item')).forEach(
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', (e: Event) => {
   const page = (e.target as HTMLBaseElement).getAttribute('page');
   if (page) {
-    window.location.pathname = page;
+    // window.location.pathname = page;
 
     e.preventDefault();
     e.stopImmediatePropagation();
