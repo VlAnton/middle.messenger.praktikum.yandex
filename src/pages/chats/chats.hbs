@@ -21,7 +21,7 @@
         <div class="chat-page__chat-info">
           <div class="chat-page__chat-name">
             {{> Avatar small="true"}}
-            <p>{{ chatName }}</p>
+            <p>{{ display_name }}</p>
           </div>
           <div class="chat-page__more">
             <img class="icon-dots" src="../../assets/icons/dots.svg">
@@ -33,7 +33,7 @@
           {{/each}}
           <div class="chat-page__chat-input">
             <img class="icon-send-file" src="../../assets/icons/sendFIle.svg">
-            {{> ChatInput name="text" type="search" placeholder="Сообщение" }}
+            {{> ChatInput name="message" type="text" placeholder="Сообщение" }}
             <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
           </div>
         </div>

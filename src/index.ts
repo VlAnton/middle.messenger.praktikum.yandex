@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       event.stopImmediatePropagation();
       navigate('chats', {
         isChatSelected: true,
-        chatName: 'Вадим',
+        display_name: 'Вадим',
       })
       IconSetter.setIcons(IconSetter.icons)
     })
