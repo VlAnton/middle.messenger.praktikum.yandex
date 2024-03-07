@@ -5,6 +5,7 @@ import { Error500 } from './500'
 import { ChatsPage } from './chats'
 import { ProfilePage } from './profile'
 import { EditCredentials } from './edit-credentials'
+import { EditPassword } from './edit-password'
 
 export default {
   'login': [ LoginPage ],
@@ -22,12 +23,6 @@ export default {
     display_name: 'Иван',
     phone: '+7 (909) 967 30 30'
   } ],
-  'profile/edit': [ EditCredentials, {
-    email: 'pochta@yandex.ru',
-    login: 'ivanivanov',
-    name: 'Иван',
-    lastName: 'Иванов',
-    display_name: 'Иван',
-    phone: '+7 (909) 967 30 30'
-  } ]
+  'profile/edit': [ EditCredentials ],
+  'profile/edit-password': [ EditPassword ],
 };
