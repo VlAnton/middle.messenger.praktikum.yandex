@@ -1,9 +1,9 @@
-import Handlebars from 'handlebars';
+import Handlebars from "handlebars";
 
-import './index.scss';
-import * as Components from './components';
-import pages from './pages';
-import * as IconSetter from './helpers/set-icons';
+import "./index.scss";
+import * as Components from "./components";
+import pages from "./pages";
+import * as IconSetter from "./helpers/set-icons";
 
 Object.entries(Components).forEach(([name, component]) => {
   Handlebars.registerPartial(name, component);
@@ -15,24 +15,24 @@ function navigate(page: string, newArgs: any = null) {
   document.body.innerHTML = handlebarsFunct(newArgs || args);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const url = window.location.pathname.replace('/', '');
+document.addEventListener("DOMContentLoaded", () => {
+  const url = window.location.pathname.replace("/", "");
   if ((pages as any)[url]) {
     navigate(url);
-  } else if (url === '') {
-    // window.location.pathname = 'login';
+  } else if (url === "") {
+    window.location.pathname = "login";
   } else {
-    // window.location.pathname = '404';
+    window.location.pathname = "404";
   }
 
-  Array.from(document.getElementsByClassName('chat-item')).forEach(
+  Array.from(document.getElementsByClassName("chat-item")).forEach(
     (element: any) => {
-      element.addEventListener('click', (event: Event) => {
+      element.addEventListener("click", (event: Event) => {
         event.preventDefault();
         event.stopImmediatePropagation();
-        navigate('chats', {
+        navigate("chats", {
           isChatSelected: true,
-          display_name: 'Вадим',
+          display_name: "Вадим",
         });
         IconSetter.setIcons(IconSetter.icons);
       });
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
   IconSetter.setIcons(IconSetter.icons);
 });
 
-document.addEventListener('click', (e: Event) => {
-  const page = (e.target as HTMLBaseElement).getAttribute('page');
+document.addEventListener("click", (e: Event) => {
+  const page = (e.target as HTMLBaseElement).getAttribute("page");
   if (page) {
-    // window.location.pathname = page;
+    window.location.pathname = page;
 
     e.preventDefault();
     e.stopImmediatePropagation();
