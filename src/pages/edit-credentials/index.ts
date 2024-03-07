@@ -1,2 +1,2 @@
-import './edit-credentials.scss';
-export { default as EditCredentials } from './edit-credentials.hbs?raw';
+import "./edit-credentials.scss";
+export { default as EditCredentials } from "./edit-credentials.hbs?raw";
