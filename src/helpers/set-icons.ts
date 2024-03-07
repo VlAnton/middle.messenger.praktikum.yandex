@@ -1,9 +1,9 @@
-import ChevronRight from "../assets/icons/chevron right.svg";
-import Dots from "../assets/icons/dots.svg";
-import ProfileImg from "../assets/icons/profileImg.svg";
-import Read from "../assets/icons/read.svg";
-import SendFile from "../assets/icons/sendFIle.svg";
-import SendMessage from "../assets/icons/sendMessage.svg";
+import ChevronRight from '../assets/icons/chevron right.svg';
+import Dots from '../assets/icons/dots.svg';
+import ProfileImg from '../assets/icons/profileImg.svg';
+import Read from '../assets/icons/read.svg';
+import SendFile from '../assets/icons/sendFIle.svg';
+import SendMessage from '../assets/icons/sendMessage.svg';
 
 type Icon = {
   src: string;
@@ -11,12 +11,12 @@ type Icon = {
 };
 
 export const icons: Array<Icon> = [
-  { src: ChevronRight, class: "icon-chevron-right" },
-  { src: Dots, class: "icon-dots" },
-  { src: ProfileImg, class: "icon-profile-img" },
-  { src: Read, class: "icon-read" },
-  { src: SendFile, class: "icon-send-file" },
-  { src: SendMessage, class: "icon-send-message" },
+  { src: ChevronRight, class: 'icon-chevron-right' },
+  { src: Dots, class: 'icon-dots' },
+  { src: ProfileImg, class: 'icon-profile-img' },
+  { src: Read, class: 'icon-read' },
+  { src: SendFile, class: 'icon-send-file' },
+  { src: SendMessage, class: 'icon-send-message' },
 ];
 
 export function setIcons(icons: Array<Icon>) {
