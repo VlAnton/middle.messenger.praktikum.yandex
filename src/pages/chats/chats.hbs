@@ -15,10 +15,11 @@
       {{/each}}
     {{/ ChatList }}
   </div>
+
   <div class="chat-page__chat-preview">
     {{#if isChatSelected }}
       {{#> ChatBody }}
-        <div class="chat-page__chat-info">
+        <div class="chat-page__chat-header">
           <div class="chat-page__chat-name">
             {{> Avatar small="true"}}
             <p>{{ display_name }}</p>
@@ -27,6 +28,7 @@
             <img class="icon-dots" src="../../assets/icons/dots.svg">
           </div>
         </div>
+
         <div class="chat-page__chat-body">
           {{#each (chat-page-messages-list)}}
             {{> ChatMessage }}

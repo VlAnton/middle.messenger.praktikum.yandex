@@ -29,6 +29,6 @@ export default {
       phone: '+7 (909) 967 30 30',
     },
   ],
-  'profile/edit': [EditCredentials],
-  'profile/edit-password': [EditPassword],
+  'edit': [EditCredentials],
+  'edit-password': [EditPassword],
 };

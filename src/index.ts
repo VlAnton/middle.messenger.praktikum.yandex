@@ -9,10 +9,13 @@ Object.entries(Components).forEach(([name, component]) => {
   Handlebars.registerPartial(name, component);
 });
 
-function navigate(page: string, newArgs: any = null) {
+function navigate(page: string, customArgs: any = null) {
   const [source, args] = (pages as any)[page];
   const handlebarsFunct = Handlebars.compile(source);
-  document.body.innerHTML = handlebarsFunct(newArgs || args);
+  const main = document.getElementById('app')
+  if (main) {
+    main.innerHTML = handlebarsFunct(customArgs || args);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
