@@ -1,6 +1,7 @@
 import { LoginPage } from './login'
 import { RegisterPage } from './register'
 import { Error404 } from './404'
+import { Error500 } from './500'
 import { ChatsPage } from './chats'
 import { ProfilePage } from './profile'
 
@@ -8,6 +9,7 @@ export default {
   'login': [ LoginPage ],
   'register': [ RegisterPage ],
   '404': [ Error404 ],
+  '500': [ Error500 ],
   'chats': [ ChatsPage, {
     chatName: 'Вадим'
   } ],
