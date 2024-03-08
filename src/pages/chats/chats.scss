@@ -1,0 +1,99 @@
+@import '../../assets/variables.scss';
+
+.chat-page {
+  height: 100%;
+  display: flex;
+
+  &__chats {
+    width: 25%;
+    min-width: 310px;
+  }
+
+  &__header {
+    padding: 21px 10px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    align-items: end;
+  }
+
+  &__profile-link-wrapper {
+    display: flex;
+    gap: 8px;
+
+    img {
+      padding: 2px 0;
+    }
+  }
+
+  &__profile-link {
+    text-decoration: none;
+    color: $text-color-secondary;
+    width: fit-content;
+    font: $font-small;
+  }
+
+  &__chat-preview {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: end;
+  }
+  &__chat-placeholder {
+    font: $font-small;
+    color: $text-color-secondary;
+  }
+
+  &__chat-header {
+    display: flex;
+    margin-top: -30px;
+    padding: 10px 0;
+    border-bottom: 1px solid $bg-color-divider;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__more {
+    width: 25px;
+    height: 25px;
+    padding: 5px 11px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bg-color-hover;
+    }
+  }
+
+  &__chat-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      font: $font-regular;
+      margin: 0;
+    }
+  }
+
+  &__chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__chat-input {
+    display: flex;
+    gap: 10px;
+    padding: 11px 0;
+    border-top: 1px solid $bg-color-divider;
+    margin-bottom: -30px;
+    margin-top: 20px;
+
+    img {
+      cursor: pointer;
+    }
+  }
+}

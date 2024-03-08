@@ -1,0 +1,12 @@
+@import '../../assets/variables';
+
+.button {
+  border: 0;
+  border-radius: 8px;
+  height: 37px;
+  padding: 12px;
+  font: $font-regular;
+  color: #fff;
+  background-color: $bg-color-primary;
+  width: 100%;
+}

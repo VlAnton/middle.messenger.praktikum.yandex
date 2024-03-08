@@ -1,0 +1,16 @@
+@import './assets/variables';
+
+body {
+  font-family: $font-body;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  main {
+    height: 100%;
+  }
+}
+
+body * {
+  box-sizing: border-box;
+}

@@ -1,0 +1,25 @@
+@import '../../assets/variables';
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  &__title,
+  &__subtitle {
+    margin: 0;
+  }
+
+  &__title {
+    font: $font-large;
+  }
+
+  &__subtitle {
+    font: $font-big;
+  }
+
+  &__footer {
+    margin-top: 49px;
+  }
+}
