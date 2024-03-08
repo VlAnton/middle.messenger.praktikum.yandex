@@ -12,7 +12,7 @@ Object.entries(Components).forEach(([name, component]) => {
 function navigate(page: string, customArgs: any = null) {
   const [source, args] = (pages as any)[page];
   const handlebarsFunct = Handlebars.compile(source);
-  const main = document.getElementById('app')
+  const main = document.getElementById('app');
   if (main) {
     main.innerHTML = handlebarsFunct(customArgs || args);
   }

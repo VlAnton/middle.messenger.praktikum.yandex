@@ -1,7 +1,9 @@
 ## Описание
+
 Мессенджер с возможностью отправлять и получать сообщения, создавать и участвовать в групповых чатах.
 
 ## Установка и запуск
+
 - `npm install` — установка зависимостей
 - `npm run dev` — запуск проекта в dev режиме
 - `npm run start` — сборка стабильной версии
@@ -9,12 +11,15 @@
 После запуска доступно на http://localhost:3000/
 
 ## Проект на действии
+
 Проект в действии можно посмотреть на [Netlify](https://anton-vlasov-messenger.netlify.app/)
 
 ## Ссылка на макет
+
 [Figma](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=0%3A1&mode=design&t=MWbIY5IXXwjKcRzM-1)
 
 ## Макет по страницам
+
 - [Авторизация](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-674&mode=design&t=MWbIY5IXXwjKcRzM-11)
 - [Регистрация](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-732&mode=design&t=MWbIY5IXXwjKcRzM-11)
 - [Чат](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-2&mode=design&t=MWbIY5IXXwjKcRzM-11)
@@ -25,4 +30,5 @@
 - [Ошибка 500](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-690&mode=design&t=MWbIY5IXXwjKcRzM-11)
 
 ## Разработчик
+
 [Антон Власов](https://github.com/VlAnton)

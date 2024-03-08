@@ -6,7 +6,7 @@
           <a class="chat-page__profile-link" href="profile">
             Профиль
           </a>
-          <img class="icon-chevron-right" src="../../assets/icons/chevron right.svg">
+          <img class="icon-chevron-right" src="../../assets/icons/chevron right.svg" alt="chevron-right">
         </div>
         {{> ChatInput className="chat-input__search" name="search" type="search" placeholder="Поиск" }}
       </div>
@@ -25,7 +25,7 @@
             <p>{{ display_name }}</p>
           </div>
           <div class="chat-page__more">
-            <img class="icon-dots" src="../../assets/icons/dots.svg">
+            <img class="icon-dots" src="../../assets/icons/dots.svg" alt="dots">
           </div>
         </div>
 
@@ -34,9 +34,9 @@
             {{> ChatMessage }}
           {{/each}}
           <div class="chat-page__chat-input">
-            <img class="icon-send-file" src="../../assets/icons/sendFIle.svg">
+            <img class="icon-send-file" src="../../assets/icons/sendFIle.svg" alt="send-file">
             {{> ChatInput name="message" type="text" placeholder="Сообщение" }}
-            <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
+            <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
           </div>
         </div>
       {{/ ChatBody }}
