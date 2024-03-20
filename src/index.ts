@@ -1,46 +1,32 @@
+//@ts-nocheck
 import Handlebars from 'handlebars';
 
 import './index.scss';
 import * as Components from './components';
-import pages from './pages';
-import * as IconSetter from './helpers/set-icons';
-
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
-});
+import * as Pages from './pages';
+import * as IconSetter from './tools/set-icons';
+import Block from './tools/block';
+import ChatsPage from './pages/chats';
+import { pages } from './pages'
 
 function navigate(page: string, customArgs: any = null) {
-  const [source, args] = (pages as any)[page];
-  const handlebarsFunct = Handlebars.compile(source);
-  const main = document.getElementById('app');
-  if (main) {
-    main.innerHTML = handlebarsFunct(customArgs || args);
+  const [pageObj, args] = (pages as any)[page];
+  const container = document.getElementById('app')!;
+  if (container) {
+    container.append(pageObj.getContent()!);
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '');
   if ((pages as any)[url]) {
+    console.log(url)
     navigate(url);
   } else if (url === '') {
     window.location.pathname = 'login';
   } else {
     window.location.pathname = '404';
   }
-
-  Array.from(document.getElementsByClassName('chat-item')).forEach(
-    (element: any) => {
-      element.addEventListener('click', (event: Event) => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        navigate('chats', {
-          isChatSelected: true,
-          display_name: 'Вадим',
-        });
-        IconSetter.setIcons(IconSetter.icons);
-      });
-    },
-  );
 
   IconSetter.setIcons(IconSetter.icons);
 });

@@ -20,7 +20,7 @@ export const icons: Array<Icon> = [
 ];
 
 export function setIcons(icons: Array<Icon>) {
-  icons.forEach((icon: Icon) => {
+  icons.forEach((icon) => {
     const imgs: HTMLCollection | null = document.getElementsByClassName(
       icon.class,
     );

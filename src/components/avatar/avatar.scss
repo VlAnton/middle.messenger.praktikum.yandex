@@ -6,6 +6,8 @@
   width: 47px;
   min-width: 47px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
 
   &__small {
     height: 34px;

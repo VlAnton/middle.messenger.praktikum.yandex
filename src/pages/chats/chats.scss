@@ -7,6 +7,8 @@
   &__chats {
     width: 25%;
     min-width: 310px;
+    border-right: 1px solid $bg-color-divider;
+    background-color: $bg-color-secondary;
   }
 
   &__header {

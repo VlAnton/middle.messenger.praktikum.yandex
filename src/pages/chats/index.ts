@@ -1,47 +1,72 @@
-import Handlebars from 'handlebars';
 import './chats.scss';
-export { default as ChatsPage } from './chats.hbs?raw';
+import ChatItem from '../../components/chat-list-item';
+import Block from '../../tools/block';
+import ChatInput from '../../components/chat-input';
 
-Handlebars.registerHelper('chat-page-list', () => {
-  return [
-    {
-      id: 0,
-      display_name: 'Опоссум',
-      message: 'Изображение',
-      unread: '2',
-      date: '10:49',
-    },
-    {
-      id: 1,
-      display_name: 'Енот',
-      message:
-        'Go на свалкуa sldkfjlkasjdflk jaslkdjflkjs ajdlkfjlaskj fklasfjd lkfjlask djlkjs fldkj asjkdf kjasndkj fnkjsdn kjfan kjdnaksj fnkjasdn knfskajdn kjsan kdjnf skdjnf kjsndkfn ksjdn kfjnksj ndkn kfnsdkj nfkjns dkjnk jnfksjn kdjn kjnsdkjn fkjsnd kjnfk sdjnkj nfdksjn kdjsnsdjknfk djsnfkjn fsdkjn kfjnsdk jnkjsn kfjndskj nkjsdn kfn fsdknkds jnkjdsn kjfsd!',
-      date: '10:49',
-    },
-    {
-      id: 2,
-      display_name: 'Барсук',
-      message: 'А у кого ключи от сарая?',
-      unread: '4',
-      date: '10:49',
-    },
-  ];
-});
+const data = [
+  {
+    id: 5,
+    avatar: { size: 'medium', src: '' },
+    display_name: 'John Doe',
+    date: '10:59',
+    message: 'Чекаво? Вася!',
+    unread: '9',
+    isSelected: false
+  },
+  {
+    id: 7,
+    avatar: { size: 'medium', src: './assets/icons/dots.svg' },
+    display_name: 'Samanta Smith',
+    date: '10:59',
+    message: 'Алло, на!',
+    unread: '7',
+    isSelected: false
+  },
+];
 
-Handlebars.registerHelper('chat-page-messages-list', () => {
-  return [
-    {
-      isYours: false,
-      message:
-        'Go на свалкуa sldkfjlkasjdflk jaslkdjflkjs ajdlkfjlaskj fklasfjd lkfjlask djlkjs fldkj asjkdf kjasndkj fnkjsdn kjfan kjdnaksj fnkjasdn knfskajdn kjsan kdjnf skdjnf kjsndkfn ksjdn kfjnksj ndkn kfnsdkj nfkjns dkjnk jnfksjn kdjn kjnsdkjn fkjsnd kjnfk sdjnkj nfdksjn kdjsnsdjknfk djsnfkjn fsdkjn kfjnsdk jnkjsn kfjndskj nkjsdn kfn fsdknkds jnkjdsn kjfsd!',
-      date: '10:49',
-    },
-    { isYours: false, message: 'Привет', date: '10:49' },
-    {
-      isYours: true,
-      message: 'Олололололололололололо',
-      isRead: true,
-      date: '10:49',
-    },
-  ];
-});
+export default class ChatsPage extends Block {
+  constructor(props: Record<string, unknown>) {
+    super({
+      ...props,
+      lists: data.map(
+        e => new ChatItem({
+          ...e,
+          click: () => {
+            console.log('click')
+          }
+        })
+      ),
+      searchInput: new ChatInput({
+        className: "chat-input__search",
+        name: "search",
+        type: "search",
+        placeholder: "Поиск"
+      })
+    });
+  }
+
+  override render() {
+    return `
+      <div class="chat-page">
+        <div class="chat-page__chats">
+          <div class="chat-page__header">
+            <div class="chat-page__profile-link-wrapper">
+              <a class="chat-page__profile-link" href="profile">
+                Профиль
+              </a>
+              <img class="icon-chevron-right" src="../../assets/icons/chevron right.svg" alt="chevron-right">
+            </div>
+            {{{searchInput}}}
+          </div>
+          {{{ lists }}}
+        </div>
+
+        <div class="chat-page__chat-preview">
+          <p class="chat-page__chat-placeholder">
+            Выберите чат чтобы отправить сообщение
+          </p>
+        </div>
+      </div>
+    `;
+  }
+}
