@@ -10,7 +10,7 @@ import ChatsPage from './pages/chats';
 import { pages } from './pages'
 
 function navigate(page: string, customArgs: any = null) {
-  const [pageObj, args] = (pages as any)[page];
+  const [pageObj, args] = pages[page];
   const container = document.getElementById('app')!;
   if (container) {
     container.append(pageObj.getContent()!);
@@ -19,8 +19,7 @@ function navigate(page: string, customArgs: any = null) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '');
-  if ((pages as any)[url]) {
-    console.log(url)
+  if (pages[url]) {
     navigate(url);
   } else if (url === '') {
     window.location.pathname = 'login';

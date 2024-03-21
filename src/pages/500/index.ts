@@ -1,12 +1,12 @@
 import './500.scss';
-import Error from '../../components/error';
+import ErrorBlock from '../../components/error';
 import Block from '../../tools/block';
 
 export default class Page500 extends Block {
   constructor({ ...props }) {
     super({
       ...props,
-      error: new Error({
+      error: new ErrorBlock({
         title: "500",
         subtitle: "Мы уже фиксим",
       })

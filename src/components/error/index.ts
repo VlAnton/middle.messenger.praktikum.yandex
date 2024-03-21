@@ -2,7 +2,7 @@ import './error.scss';
 import Block from '../../tools/block'
 import Link from '../link'
 
-export default class Error extends Block {
+export default class ErrorBlock extends Block {
   constructor({ ...props }) {
     super({
       ...props,

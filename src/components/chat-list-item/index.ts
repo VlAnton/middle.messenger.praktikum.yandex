@@ -7,7 +7,7 @@ export default class ChatItem extends Block {
     const { avatar } = props
     super({
       ...props,
-      avatar: new Avatar(avatar)
+      avatar: new Avatar(avatar),
     });
   }
 

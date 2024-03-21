@@ -2,10 +2,12 @@ import ChatsPage from './chats';
 import Block from '../tools/block';
 import Page404 from './404';
 import Page500 from './500';
+import LoginPage from './login';
+import RegisterPage from './register';
 
 export const pages: Record<string, [Block, Record<string, unknown>?]> = {
-  // login: [LoginPage],
-  // register: [RegisterPage],
+  login: [new LoginPage({})],
+  register: [new RegisterPage({})],
   '404': [new Page404({})],
   '500': [new Page500({})],
   chats: [new ChatsPage({})],

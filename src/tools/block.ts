@@ -75,7 +75,7 @@ export default class Block {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (Array.isArray(value)) {
+      } else if (key === 'lists') {
         lists[key] = value;
       } else {
         props[key] = value;
@@ -107,16 +107,17 @@ export default class Block {
 
   _render() {
     const propsAndStubs = { ...this.props };
-    const _tmpId = Math.floor(100000 + Math.random() * 900000);
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
     Object.entries(this.lists).forEach(([key, child]) => {
-      child.forEach(item => {
-        if (item instanceof Block) {
-          propsAndStubs[key] = `<div data-id="__l_${child._id}"></div>`;
-        }
+      Object.entries(child).forEach(([k, items]) => {
+        items.forEach((item, index) => {
+          if (item instanceof Block) {
+            propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
+          }
+        })
       })
     });
 
@@ -125,21 +126,27 @@ export default class Block {
 
     Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
-      stub.replaceWith(child.getContent());
+      if (stub) {
+        stub.replaceWith(child.getContent());
+      }
     });
 
     Object.entries(this.lists).forEach(([key, child]) => {
       const listCont = this._createDocumentElement('template');
-      child.forEach((item) => {
-        if (item instanceof Block) {
-          listCont.content.append(item.getContent());
-        } else {
-          listCont.content.append(`${item}`);
-        }
+      Object.values(child).forEach((items) => {
+        items.forEach((item, index) => {
+          if (item instanceof Block) {
+            listCont.content.append(item.getContent());
+          } else {
+            listCont.content.append(`${item}`);
+          }
+          const stub = fragment.content.querySelector(`[data-id="__l_${item._id}"]`);
+          if (stub) {
+            stub.replaceWith(listCont.content);
+          }
+          fragment.content.innerHTML = listCont.content;
+        })
       });
-      // fragment.content.innerHTML = listCont.content;
-      const stub = fragment.content.querySelector(`[data-id="__l_${child._id}"]`);
-      stub.replaceWith(listCont.content);
     });
 
     const newElement = fragment.content.firstElementChild;
