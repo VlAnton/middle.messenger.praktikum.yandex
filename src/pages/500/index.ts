@@ -7,9 +7,9 @@ export default class Page500 extends Block {
     super({
       ...props,
       error: new ErrorBlock({
-        title: "500",
-        subtitle: "Мы уже фиксим",
-      })
+        title: '500',
+        subtitle: 'Мы уже фиксим',
+      }),
     });
   }
 
@@ -18,6 +18,6 @@ export default class Page500 extends Block {
       <div class="error-404">
         {{{ error }}}
       </div>
-    `
+    `;
   }
 }

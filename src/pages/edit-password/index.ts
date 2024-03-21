@@ -7,29 +7,29 @@ export default class EditPassword extends Block {
     super({
       ...props,
       submitButton: new Button({
-        text: "Сохранить",
-        page: "profile"
+        text: 'Сохранить',
+        page: 'profile',
       }),
       lists: {
         fields: [
           new Input({
-            title: "Старый пароль",
-            value: "1231231",
-            name: "oldPassword",
-            type: 'password'
+            title: 'Старый пароль',
+            value: '1231231',
+            name: 'oldPassword',
+            type: 'password',
           }),
           new Input({
-            title: "Новый пароль",
-            name: "newPassword",
-            type: 'password'
+            title: 'Новый пароль',
+            name: 'newPassword',
+            type: 'password',
           }),
           new Input({
-            title: "Повторите новый пароль",
-            name: "newPasswordAgain",
-            type: 'password'
+            title: 'Повторите новый пароль',
+            name: 'newPasswordAgain',
+            type: 'password',
           }),
-        ]
-      }
+        ],
+      },
     });
   }
 
@@ -54,6 +54,6 @@ export default class EditPassword extends Block {
           </div>
         </form>
       </div>
-    `
+    `;
   }
 }

@@ -1,5 +1,5 @@
 import './avatar.scss';
-import Block from '../../tools/block'
+import Block from '../../tools/block';
 
 export class Avatar extends Block {
   constructor({ ...props }) {
@@ -15,6 +15,6 @@ export class Avatar extends Block {
           <img class="avatar__img" src={{ src }} alt="avatar"><img>
         {{/if}}
       </div>
-    `
+    `;
   }
 }

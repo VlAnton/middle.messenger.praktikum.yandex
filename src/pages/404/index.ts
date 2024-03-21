@@ -7,9 +7,9 @@ export default class Page404 extends Block {
     super({
       ...props,
       error: new ErrorBlock({
-        title: "404",
-        subtitle: "Не туда попали",
-      })
+        title: '404',
+        subtitle: 'Не туда попали',
+      }),
     });
   }
 
@@ -18,6 +18,6 @@ export default class Page404 extends Block {
       <div class="error-404">
         {{{ error }}}
       </div>
-    `
+    `;
   }
 }

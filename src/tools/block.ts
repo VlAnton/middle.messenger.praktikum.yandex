@@ -15,7 +15,8 @@ export default class Block {
 
   constructor(propsWithChildren = {}) {
     const eventBus = new EventBus();
-    const { props, children, lists } = this._getChildrenPropsAndProps(propsWithChildren);
+    const { props, children, lists } =
+      this._getChildrenPropsAndProps(propsWithChildren);
     this.props = this._makePropsProxy({ ...props });
     this.children = children;
     this.lists = lists;
@@ -117,8 +118,8 @@ export default class Block {
           if (item instanceof Block) {
             propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
           }
-        })
-      })
+        });
+      });
     });
 
     const fragment = this._createDocumentElement('template');
@@ -140,12 +141,14 @@ export default class Block {
           } else {
             listCont.content.append(`${item}`);
           }
-          const stub = fragment.content.querySelector(`[data-id="__l_${item._id}"]`);
+          const stub = fragment.content.querySelector(
+            `[data-id="__l_${item._id}"]`,
+          );
           if (stub) {
             stub.replaceWith(listCont.content);
           }
           fragment.content.innerHTML = listCont.content;
-        })
+        });
       });
     });
 

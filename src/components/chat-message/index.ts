@@ -1,5 +1,5 @@
 import './chat-message.scss';
-import Block from '../../tools/block'
+import Block from '../../tools/block';
 
 export class ChatMessage extends Block {
   constructor({ ...props }) {

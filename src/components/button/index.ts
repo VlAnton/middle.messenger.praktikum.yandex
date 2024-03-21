@@ -6,9 +6,9 @@ export class Button extends Block {
     super({
       ...props,
       events: {
-        click: () => console.log('event')
-      }
-    })
+        click: () => console.log('event'),
+      },
+    });
   }
 
   render() {
@@ -20,6 +20,6 @@ export class Button extends Block {
       >
         {{ text }}
       </button>
-    `
+    `;
   }
 }

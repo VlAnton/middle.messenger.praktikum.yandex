@@ -1,5 +1,5 @@
 import './link.scss';
-import Block from '../../tools/block'
+import Block from '../../tools/block';
 
 export class Link extends Block {
   constructor({ ...props }) {
@@ -16,6 +16,6 @@ export class Link extends Block {
       >
         {{ text }}
       </a>
-    `
+    `;
   }
 }

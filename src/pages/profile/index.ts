@@ -7,20 +7,20 @@ export default class ProfilePage extends Block {
     super({
       ...props,
       changeCredentials: new Link({
-        text: "Изменить данные",
+        text: 'Изменить данные',
         href: 'edit-credentials',
-        xl: true
+        xl: true,
       }),
       changePassword: new Link({
-        text: "Изменить пароль",
+        text: 'Изменить пароль',
         href: 'edit-password',
-        xl: true
+        xl: true,
       }),
       exit: new Link({
-        text: "Выйти",
+        text: 'Выйти',
         href: 'login',
         xl: true,
-        negative: true
+        negative: true,
       }),
     });
   }
@@ -84,6 +84,6 @@ export default class ProfilePage extends Block {
           </div>
         </div>
       </div>
-    `
+    `;
   }
 }

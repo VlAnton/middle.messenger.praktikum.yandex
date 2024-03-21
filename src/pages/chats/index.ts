@@ -10,7 +10,7 @@ const chatsData = [
     date: '10:59',
     message: 'Чекаво? Вася!',
     unread: '9',
-    isSelected: false
+    isSelected: false,
   },
   {
     id: 7,
@@ -19,7 +19,7 @@ const chatsData = [
     date: '10:59',
     message: 'Алло, на!',
     unread: '7',
-    isSelected: false
+    isSelected: false,
   },
 ];
 
@@ -37,31 +37,27 @@ const messagesData = [
     isRead: true,
     date: '10:49',
   },
-]
+];
 
 export default class ChatsPage extends Block {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,
       lists: {
-        chatItems: chatsData.map(
-          e => new ChatItem(e)
-        ),
-        messages: messagesData.map(
-          e => new ChatMessage(e)
-        )
+        chatItems: chatsData.map((e) => new ChatItem(e)),
+        messages: messagesData.map((e) => new ChatMessage(e)),
       },
       chatInput: new ChatInput({
-        name: "message",
-        type: "text",
-        placeholder: "Сообщение"
+        name: 'message',
+        type: 'text',
+        placeholder: 'Сообщение',
       }),
       searchInput: new ChatInput({
-        className: "chat-input__search",
-        name: "search",
-        type: "search",
-        placeholder: "Поиск"
-      })
+        className: 'chat-input__search',
+        name: 'search',
+        type: 'search',
+        placeholder: 'Поиск',
+      }),
     });
   }
 

@@ -1,15 +1,15 @@
 import './error.scss';
-import Block from '../../tools/block'
-import { Link } from '../link'
+import Block from '../../tools/block';
+import { Link } from '../link';
 
 export class ErrorBlock extends Block {
   constructor({ ...props }) {
     super({
       ...props,
       link: new Link({
-        text: "Назад к чатам",
-        href: "chats",
-      })
+        text: 'Назад к чатам',
+        href: 'chats',
+      }),
     });
   }
 
@@ -26,6 +26,6 @@ export class ErrorBlock extends Block {
           {{{ link }}}
         </div>
       </div>
-    `
+    `;
   }
 }

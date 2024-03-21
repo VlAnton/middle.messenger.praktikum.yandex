@@ -7,7 +7,7 @@ import * as Pages from './pages';
 import * as IconSetter from './tools/set-icons';
 import Block from './tools/block';
 import ChatsPage from './pages/chats';
-import { pages } from './pages'
+import { pages } from './pages';
 
 function navigate(page: string, customArgs: any = null) {
   const [pageObj, args] = pages[page];

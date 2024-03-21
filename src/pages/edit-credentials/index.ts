@@ -7,45 +7,45 @@ export default class EditCredentials extends Block {
     super({
       ...props,
       submitButton: new Button({
-        text: "Сохранить",
-        page: "profile"
+        text: 'Сохранить',
+        page: 'profile',
       }),
       lists: {
         fields: [
           new Input({
-            title: "Почта",
-            name: "email",
-            value: "pochta@yandex.ru",
-            type: 'email'
+            title: 'Почта',
+            name: 'email',
+            value: 'pochta@yandex.ru',
+            type: 'email',
           }),
           new Input({
-            title: "Логин",
-            value: "ivanivanov",
-            name: "login"
+            title: 'Логин',
+            value: 'ivanivanov',
+            name: 'login',
           }),
           new Input({
-            title: "Имя",
-            value: "Иван",
-            name: "first_name",
+            title: 'Имя',
+            value: 'Иван',
+            name: 'first_name',
           }),
           new Input({
-            title: "Фамилия",
-            value: "Иванов",
-            name: "second_name",
+            title: 'Фамилия',
+            value: 'Иванов',
+            name: 'second_name',
           }),
           new Input({
-            title: "Имя в чате",
-            value: "Иван",
-            name: "second_name",
+            title: 'Имя в чате',
+            value: 'Иван',
+            name: 'second_name',
           }),
           new Input({
-            title: "Телефон",
-            value: "+7 (909) 967 30 30",
-            name: "phone",
-            type: 'tel'
+            title: 'Телефон',
+            value: '+7 (909) 967 30 30',
+            name: 'phone',
+            type: 'tel',
           }),
-        ]
-      }
+        ],
+      },
     });
   }
 
@@ -70,6 +70,6 @@ export default class EditCredentials extends Block {
           </div>
         </form>
       </div>
-    `
+    `;
   }
 }

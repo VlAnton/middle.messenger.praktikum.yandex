@@ -3,10 +3,10 @@ import Block from '../../tools/block';
 
 export class Dialog extends Block {
   constructor(props) {
-    const { fields, buttons } = props
+    const { fields, buttons } = props;
     super({
       ...props,
-      lists: { fields, buttons }
+      lists: { fields, buttons },
     });
   }
 

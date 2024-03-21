@@ -3,7 +3,6 @@ import './register.scss';
 import Block from '../../tools/block';
 import { Input, Button, Dialog, Link } from '../../components';
 
-
 export default class RegisterPage extends Block {
   constructor(props: Record<string, unknown>) {
     super({
@@ -12,49 +11,49 @@ export default class RegisterPage extends Block {
         title: 'Регистрация',
         fields: [
           new Input({
-            title: "Почта",
-            name: "email",
-            type: 'email'
+            title: 'Почта',
+            name: 'email',
+            type: 'email',
           }),
           new Input({
-            title: "Логин",
-            name: "login"
+            title: 'Логин',
+            name: 'login',
           }),
           new Input({
-            title: "Имя",
-            name: "first_name",
+            title: 'Имя',
+            name: 'first_name',
           }),
           new Input({
-            title: "Фамилия",
-            name: "second_name",
+            title: 'Фамилия',
+            name: 'second_name',
           }),
           new Input({
-            title: "Телефон",
-            name: "phone",
-            type: 'tel'
+            title: 'Телефон',
+            name: 'phone',
+            type: 'tel',
           }),
           new Input({
-            title: "Пароль",
-            name: "password",
-            type: 'password'
+            title: 'Пароль',
+            name: 'password',
+            type: 'password',
           }),
           new Input({
-            title: "Пароль (ещё раз)",
-            name: "passwordRepeat",
-            type: 'password'
+            title: 'Пароль (ещё раз)',
+            name: 'passwordRepeat',
+            type: 'password',
           }),
         ],
         buttons: [
           new Button({
-            text: "Зарегистрироваться",
-            page: "chats"
+            text: 'Зарегистрироваться',
+            page: 'chats',
           }),
           new Link({
-            text: "Войти",
-            href: "login"
-          })
-        ]
-      })
+            text: 'Войти',
+            href: 'login',
+          }),
+        ],
+      }),
     });
   }
 

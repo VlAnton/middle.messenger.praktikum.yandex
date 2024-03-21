@@ -3,7 +3,6 @@ import './login.scss';
 import Block from '../../tools/block';
 import { Input, Button, Dialog, Link } from '../../components';
 
-
 export default class LoginPage extends Block {
   constructor(props: Record<string, unknown>) {
     super({
@@ -12,26 +11,26 @@ export default class LoginPage extends Block {
         title: 'Вход',
         fields: [
           new Input({
-            title: "Логин",
-            name: "login"
+            title: 'Логин',
+            name: 'login',
           }),
           new Input({
-            title: "Пароль",
-            name: "password",
-            type: 'password'
+            title: 'Пароль',
+            name: 'password',
+            type: 'password',
           }),
         ],
         buttons: [
           new Button({
-            text: "Авторизоваться",
-            page: "chats"
+            text: 'Авторизоваться',
+            page: 'chats',
           }),
           new Link({
-            text: "Нет аккаунта?",
-            href: "register"
-          })
-        ]
-      })
+            text: 'Нет аккаунта?',
+            href: 'register',
+          }),
+        ],
+      }),
     });
   }
 
