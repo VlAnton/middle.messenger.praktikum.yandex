@@ -1,7 +1,7 @@
 import './link.scss';
 import Block from '../../tools/block'
 
-export default class Link extends Block {
+export class Link extends Block {
   constructor({ ...props }) {
     super({
       ...props,

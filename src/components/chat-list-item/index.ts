@@ -1,8 +1,8 @@
 import './chat-list-item.scss';
 import Block from '../../tools/block'
-import Avatar from '../avatar';
+import { Avatar } from '../avatar';
 
-export default class ChatItem extends Block {
+export class ChatItem extends Block {
   constructor({ ...props }) {
     const { avatar } = props
     super({

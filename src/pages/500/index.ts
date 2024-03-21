@@ -1,5 +1,5 @@
 import './500.scss';
-import ErrorBlock from '../../components/error';
+import { ErrorBlock } from '../../components/error';
 import Block from '../../tools/block';
 
 export default class Page500 extends Block {

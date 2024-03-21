@@ -1,7 +1,7 @@
 import './button.scss';
 import Block from '../../tools/block';
 
-export default class Button extends Block {
+export class Button extends Block {
   constructor(props) {
     super({
       ...props,

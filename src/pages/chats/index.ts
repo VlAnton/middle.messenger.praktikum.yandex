@@ -1,8 +1,6 @@
 import './chats.scss';
-import ChatItem from '../../components/chat-list-item';
+import { ChatItem, ChatInput, ChatMessage } from '../../components';
 import Block from '../../tools/block';
-import ChatInput from '../../components/chat-input';
-import ChatMessage from '../../components/chat-message';
 
 const chatsData = [
   {

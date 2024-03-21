@@ -1,5 +1,5 @@
 import './404.scss';
-import ErrorBlock from '../../components/error';
+import { ErrorBlock } from '../../components';
 import Block from '../../tools/block';
 
 export default class Page404 extends Block {

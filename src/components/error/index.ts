@@ -1,8 +1,8 @@
 import './error.scss';
 import Block from '../../tools/block'
-import Link from '../link'
+import { Link } from '../link'
 
-export default class ErrorBlock extends Block {
+export class ErrorBlock extends Block {
   constructor({ ...props }) {
     super({
       ...props,

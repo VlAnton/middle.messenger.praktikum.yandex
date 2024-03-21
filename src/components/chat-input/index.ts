@@ -1,7 +1,7 @@
 import './chat-input.scss';
 import Block from '../../tools/block';
 
-export default class ChatInput extends Block {
+export class ChatInput extends Block {
   constructor(props) {
     super({
       ...props,

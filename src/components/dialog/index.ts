@@ -1,7 +1,7 @@
 import './dialog.scss';
 import Block from '../../tools/block';
 
-export default class Dialog extends Block {
+export class Dialog extends Block {
   constructor(props) {
     const { fields, buttons } = props
     super({
