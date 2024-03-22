@@ -134,9 +134,9 @@ export default class Block {
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
     Object.values(this.children).forEach(child => {
-      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`) as HTMLElement;
+      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (stub) {
-        stub.replaceWith(child.getContent());
+        stub.replaceWith((child.getContent() as string | Node));
       }
     });
 
@@ -145,7 +145,7 @@ export default class Block {
       Object.values(child).forEach((items) => {
         items.forEach(item => {
           if (item instanceof Block) {
-            listCont.content.append(item.getContent());
+            listCont.content.append((item.getContent() as string | Node));
           } else {
             listCont.content.append(`${item}`);
           }
@@ -160,7 +160,7 @@ export default class Block {
       });
     });
 
-    const newElement = fragment.content.firstElementChild;
+    const newElement = fragment.content.firstElementChild as string | Node;
     if (this._element) {
       this._element.replaceWith(newElement);
     }
@@ -174,15 +174,15 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target: Props, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target: Props, prop: string, value: unknown) {
         const oldTarget = { ...target };
         target[prop] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);

@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { Avatar } from '../avatar';
 
 export class ChatItem extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     const { avatar } = props;
     super({
       ...props,
