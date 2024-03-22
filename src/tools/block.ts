@@ -1,6 +1,7 @@
-//@ts-nocheck
 import EventBus from './event-bus';
 import Handlebars from 'handlebars';
+
+type Lists = Record<string, Record<string, Block[]>>
 
 export default class Block {
   static EVENTS = {
@@ -9,9 +10,12 @@ export default class Block {
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
   };
-
-  _element = null;
-  _id = Math.floor(100000 + Math.random() * 900000);
+  private props: Props;
+  private children: Record<string, Block>;
+  private lists: Lists;
+  private eventBus: Function;
+  private _element: HTMLElement | null = null;
+  private _id = Math.floor(100000 + Math.random() * 900000);
 
   constructor(propsWithChildren = {}) {
     const eventBus = new EventBus();
@@ -28,11 +32,13 @@ export default class Block {
   _addEvents() {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
-      this._element.addEventListener(eventName, events[eventName]);
+      if (this._element) {
+        this._element.addEventListener(eventName, events[eventName]);
+      }
     });
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -44,19 +50,19 @@ export default class Block {
   }
 
   _componentDidMount() {
-    this.componentDidMount();
+    this.componentDidMount({});
     Object.values(this.children).forEach((child) => {
       child.dispatchComponentDidMount();
     });
   }
 
-  componentDidMount(oldProps) {}
+  componentDidMount(oldProps: Props | undefined) {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
+  _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -64,14 +70,14 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(oldProps: Props, newProps: Props) {
     return true;
   }
 
-  _getChildrenPropsAndProps(propsAndChildren) {
-    const children = {};
-    const props = {};
-    const lists = {};
+  _getChildrenPropsAndProps(propsAndChildren: Props) {
+    const children: Record<string, Block> = {};
+    const props: Props = {};
+    const lists: Lists = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -90,11 +96,13 @@ export default class Block {
     const { attr = {} } = this.props;
 
     Object.entries(attr).forEach(([key, value]) => {
-      this._element.setAttribute(key, value);
+      if (this._element) {
+        this._element.setAttribute(key, value as string);
+      }
     });
   }
 
-  setProps = (nextProps) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -114,7 +122,7 @@ export default class Block {
 
     Object.entries(this.lists).forEach(([key, child]) => {
       Object.entries(child).forEach(([k, items]) => {
-        items.forEach((item, index) => {
+        items.forEach(item => {
           if (item instanceof Block) {
             propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
           }
@@ -122,20 +130,20 @@ export default class Block {
       });
     });
 
-    const fragment = this._createDocumentElement('template');
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-    Object.values(this.children).forEach((child) => {
-      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+    Object.values(this.children).forEach(child => {
+      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`) as HTMLElement;
       if (stub) {
         stub.replaceWith(child.getContent());
       }
     });
 
-    Object.entries(this.lists).forEach(([key, child]) => {
-      const listCont = this._createDocumentElement('template');
+    Object.values(this.lists).forEach(child => {
+      const listCont = this._createDocumentElement('template') as HTMLTemplateElement;
       Object.values(child).forEach((items) => {
-        items.forEach((item, index) => {
+        items.forEach(item => {
           if (item instanceof Block) {
             listCont.content.append(item.getContent());
           } else {
@@ -156,7 +164,7 @@ export default class Block {
     if (this._element) {
       this._element.replaceWith(newElement);
     }
-    this._element = newElement;
+    this._element = newElement as HTMLElement;
     this._addEvents();
   }
 
@@ -186,15 +194,7 @@ export default class Block {
     });
   }
 
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
-  }
-
-  show() {
-    this.getContent().style.display = 'block';
-  }
-
-  hide() {
-    this.getContent().style.display = 'none';
   }
 }

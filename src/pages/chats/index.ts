@@ -40,7 +40,7 @@ const messagesData = [
 ];
 
 export default class ChatsPage extends Block {
-  constructor(props: Record<string, unknown>) {
+  constructor(props: Props) {
     super({
       ...props,
       lists: {

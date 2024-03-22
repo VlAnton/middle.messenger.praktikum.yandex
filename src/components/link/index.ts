@@ -2,7 +2,7 @@ import './link.scss';
 import Block from '../../tools/block';
 
 export class Link extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     super({
       ...props,
     });

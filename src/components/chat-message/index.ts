@@ -2,7 +2,7 @@ import './chat-message.scss';
 import Block from '../../tools/block';
 
 export class ChatMessage extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     super({
       ...props,
     });

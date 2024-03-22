@@ -2,7 +2,7 @@ import './button.scss';
 import Block from '../../tools/block';
 
 export class Button extends Block {
-  constructor(props) {
+  constructor(props: Props) {
     super({
       ...props,
       events: {

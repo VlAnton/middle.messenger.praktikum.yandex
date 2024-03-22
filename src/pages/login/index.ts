@@ -4,7 +4,7 @@ import Block from '../../tools/block';
 import { Input, Button, Dialog, Link } from '../../components';
 
 export default class LoginPage extends Block {
-  constructor(props: Record<string, unknown>) {
+  constructor(props: Props) {
     super({
       ...props,
       dialog: new Dialog({

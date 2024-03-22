@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { Link } from '../../components';
 
 export default class ProfilePage extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     super({
       ...props,
       changeCredentials: new Link({

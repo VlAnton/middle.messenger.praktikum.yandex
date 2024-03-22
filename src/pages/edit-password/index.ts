@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { Input, Button } from '../../components';
 
 export default class EditPassword extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     super({
       ...props,
       submitButton: new Button({

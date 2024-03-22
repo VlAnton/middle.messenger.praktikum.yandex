@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { Link } from '../link';
 
 export class ErrorBlock extends Block {
-  constructor({ ...props }) {
+  constructor(props: Props) {
     super({
       ...props,
       link: new Link({

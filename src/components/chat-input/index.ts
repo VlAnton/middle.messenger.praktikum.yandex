@@ -2,12 +2,14 @@ import './chat-input.scss';
 import Block from '../../tools/block';
 
 export class ChatInput extends Block {
-  constructor(props) {
+  constructor(props: Props) {
     super({
       ...props,
       events: {
-        change: (e) => {
-          props.onChange(e.target.value);
+        change: (e: Event) => {
+          if (e) {
+            props.onChange((e.target as HTMLInputElement).value);
+          }
         },
       },
       attr: {
