@@ -13,8 +13,14 @@ export default class LoginPage extends Block {
           new Input({
             title: 'Логин',
             name: 'login',
-            onBlur: (value: string) => {
-              console.log(value)
+            onBlur: (self: Block, value: string) => {
+              console.log(value.length)
+              if (value.length < 3 || value.length > 20) {
+                self.setProps({
+                  error: 'Длина неправильная',
+                  value
+                })
+              }
             },
           }),
           new Input({
@@ -22,7 +28,6 @@ export default class LoginPage extends Block {
             name: 'password',
             type: 'password',
             onBlur: (value: string) => {
-              console.log(value)
             },
           }),
         ],
