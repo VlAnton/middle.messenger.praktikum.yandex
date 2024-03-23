@@ -1,12 +1,36 @@
 import './dialog.scss';
 import Block from '../../tools/block';
+import { Button, Link } from '../../components';
 
 export class Dialog extends Block {
   constructor(props: Props) {
-    const { fields, buttons } = props;
+    const { fields, buttonProps, linkProps } = props;
     super({
       ...props,
-      lists: { fields, buttons },
+      lists: { fields },
+      button: new Button({
+        ...buttonProps,
+        onClick() {
+          const formHasErrors = props.fields
+            .some((el: Block) => el.props.error && el.props.error.length > 0)
+          let formHasEmptyFields = false
+          props.fields.forEach((el: Block) => {
+            if (!el.element) {
+              return
+            }
+            if (!el.props.value) {
+              formHasEmptyFields = true
+              el.setProps({ error: 'Поле не может быть пустым' })
+            }
+          })
+          if (!formHasErrors && !formHasEmptyFields) {
+            window.location.pathname = 'chats'
+          }
+        }
+      }),
+      link: new Link({
+        ...linkProps
+      })
     });
   }
 
@@ -21,7 +45,8 @@ export class Dialog extends Block {
             {{{ fields }}}
           </div>
           <div class="dialog__footer">
-            {{{ buttons }}}
+            {{{ button }}}
+            {{{ link }}}
           </div>
         </form>
       </div>

@@ -9,7 +9,7 @@ export class Button extends Block {
         click: (e: Event) => {
           e.preventDefault()
           e.stopImmediatePropagation()
-          console.log('event')
+          props.onClick()
         },
       },
     });

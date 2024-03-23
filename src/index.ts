@@ -8,14 +8,7 @@ import * as IconSetter from './tools/set-icons';
 import Block from './tools/block';
 import ChatsPage from './pages/chats';
 import { pages } from './pages';
-
-function navigate(page: string, customArgs: any = null) {
-  const [pageObj, args] = pages[page];
-  const container = document.getElementById('app')!;
-  if (container) {
-    container.append(pageObj.getContent()!);
-  }
-}
+import { navigate } from './tools/helpers';
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '');

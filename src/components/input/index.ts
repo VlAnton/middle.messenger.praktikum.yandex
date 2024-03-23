@@ -6,18 +6,20 @@ export class Input extends Block {
   constructor(props: Props) {
     super({
       ...props,
-      inputField: new InputField({ ...props,
-      onBlur: (value: string) => {
-        if (!props.onBlurProps) {
-          return
+      inputField: new InputField({
+        ...props,
+        onBlur: (value: string) => {
+          if (!props.onBlurProps) {
+            return
+          }
+          const { func, error } = props.onBlurProps
+          if (func(value)) {
+            this.setProps({ error, value })
+          } else {
+            this.setProps({ error: '', value })
+          }
         }
-        const { func, error } = props.onBlurProps
-        if (func(value)) {
-          this.setProps({ error })
-        } else {
-          this.setProps({ error: '' })
-        }
-      }}),
+      }),
     });
   }
 

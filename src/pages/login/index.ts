@@ -1,7 +1,7 @@
 import './login.scss';
 
 import Block from '../../tools/block';
-import { Input, Button, Dialog, Link } from '../../components';
+import { Input, Dialog } from '../../components';
 
 export default class LoginPage extends Block {
   constructor(props: Props) {
@@ -36,17 +36,15 @@ export default class LoginPage extends Block {
             }
           }),
         ],
-        buttons: [
-          new Button({
-            text: 'Авторизоваться',
-            type: 'submit',
-            page: 'chats',
-          }),
-          new Link({
-            text: 'Нет аккаунта?',
-            href: 'register',
-          }),
-        ],
+        buttonProps: {
+          text: 'Авторизоваться',
+          type: 'submit',
+          page: 'chats',
+        },
+        linkProps: {
+          text: 'Нет аккаунта?',
+          href: 'register',
+        },
       }),
     });
   }

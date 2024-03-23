@@ -10,7 +10,7 @@ export default class Block {
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
   };
-  private props: Props;
+  public props: Props;
   private children: Record<string, Block>;
   private lists: Lists;
   private eventBus: Function;
