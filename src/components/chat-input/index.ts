@@ -20,15 +20,13 @@ export class ChatInput extends Block {
 
   render() {
     return `
-      <div class="chat-input">
-        <input
-          class="chat-input__element {{#if className}} {{className}} {{/if}}"
-          type="{{ type }}"
-          name="{{ name }}"
-          value="{{ value }}"
-          placeholder="{{ placeholder }}"
-        >
-      </div>
+      <input
+        class="chat-input chat-input__element {{#if className}} {{className}} {{/if}}"
+        type="{{ type }}"
+        name="{{ name }}"
+        value="{{ value }}"
+        placeholder="{{ placeholder }}"
+      >
     `;
   }
 

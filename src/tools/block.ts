@@ -29,6 +29,10 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
+  _getChildren() {
+
+  }
+
   _addEvents() {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
@@ -155,7 +159,6 @@ export default class Block {
           if (stub) {
             stub.replaceWith(listCont.content);
           }
-          fragment.content.innerHTML = listCont.content;
         });
       });
     });

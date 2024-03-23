@@ -13,16 +13,23 @@ export default class LoginPage extends Block {
           new Input({
             title: 'Логин',
             name: 'login',
+            onBlur: (value: string) => {
+              console.log(value)
+            },
           }),
           new Input({
             title: 'Пароль',
             name: 'password',
             type: 'password',
+            onBlur: (value: string) => {
+              console.log(value)
+            },
           }),
         ],
         buttons: [
           new Button({
             text: 'Авторизоваться',
+            type: 'submit',
             page: 'chats',
           }),
           new Link({

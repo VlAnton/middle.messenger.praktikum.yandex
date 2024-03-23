@@ -57,6 +57,9 @@ export default class ChatsPage extends Block {
         name: 'search',
         type: 'search',
         placeholder: 'Поиск',
+        // onChange: (value) => {
+        //   console.log(value)
+        // }
       }),
     });
   }
@@ -72,7 +75,7 @@ export default class ChatsPage extends Block {
               </a>
               <img class="icon-chevron-right" src="../../assets/icons/chevron right.svg" alt="chevron-right">
             </div>
-            {{{searchInput}}}
+            {{{ searchInput }}}
           </div>
           {{{ chatItems }}}
         </div>

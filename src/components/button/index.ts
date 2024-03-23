@@ -6,7 +6,11 @@ export class Button extends Block {
     super({
       ...props,
       events: {
-        click: () => console.log('event'),
+        click: (e: Event) => {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+          console.log('event')
+        },
       },
     });
   }
@@ -15,7 +19,7 @@ export class Button extends Block {
     return `
       <button
         class="button{{#if className}} {{className}}{{/if}}"
-        type="submit"
+        type="{{ type }}"
         page="{{ page }}"
       >
         {{ text }}
