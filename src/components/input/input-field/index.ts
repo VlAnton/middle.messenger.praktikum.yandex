@@ -7,7 +7,7 @@ export class InputField extends Block {
       ...props,
       events: {
         blur: (e: Event) =>
-          props.onBlur(this, (e.target as HTMLInputElement).value)
+          props.onBlur((e.target as HTMLInputElement).value),
       },
     });
   }
@@ -21,9 +21,6 @@ export class InputField extends Block {
         name="{{ name }}"
         value="{{ value }}"
       >
-      {{#if error}}
-        <p class="input-field__error">{{ error }}</p>
-      {{/if}}
     `;
   }
 }
