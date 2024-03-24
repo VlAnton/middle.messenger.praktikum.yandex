@@ -7,12 +7,12 @@ enum METHODS {
 
 type Options = {
   method: METHODS;
-  headers?: Record<string, any>;
+  headers?: Record<string, string>;
   timeout?: number;
-  data?: any;
+  data?: unknown;
 };
 
-function queryStringify(data: Record<string, any>) {
+function queryStringify(data: Record<string, unknown>) {
   if (typeof data !== 'object') {
     throw new Error('Data must be object');
   }
@@ -22,7 +22,7 @@ function queryStringify(data: Record<string, any>) {
     .join('&');
 }
 
-class HTTPTransport {
+export default class HTTPTransport {
   get = (url: string, options: Options = { method: METHODS.GET }) => {
     return this.request(
       url,
@@ -65,7 +65,7 @@ class HTTPTransport {
     return new Promise(function (resolve, reject) {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
-      const newUrl = isGet ? `${url}?${queryStringify(data)}` : url;
+      const newUrl = isGet ? `${url}?${queryStringify((data as Record<string, unknown>))}` : url;
 
       xhr.open(method, newUrl);
 
@@ -86,7 +86,7 @@ class HTTPTransport {
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send((data as Document | XMLHttpRequestBodyInit | null));
       }
     });
   };

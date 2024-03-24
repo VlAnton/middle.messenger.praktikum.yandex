@@ -14,7 +14,7 @@ const chatsData = [
   },
   {
     id: 7,
-    avatar: { size: 'medium', src: './assets/icons/dots.svg' },
+    avatar: { size: 'medium', src: '' },
     display_name: 'Samanta Smith',
     date: '10:59',
     message: 'Алло, на!',
@@ -100,11 +100,11 @@ export default class ChatsPage extends Block {
               <div class="chat-page__chat-body">
                 {{{ messages }}}
               </div>
-              <div class="chat-page__chat-input">
+              <form class="chat-page__chat-input">
                 <img class="icon-send-file" src="../../assets/icons/sendFIle.svg" alt="send-file">
                 {{{ chatInput }}}
                 <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
-              </div>
+              </form>
             </div>
           {{else}}
             <p class="chat-page__chat-placeholder">

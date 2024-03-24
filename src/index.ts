@@ -1,12 +1,5 @@
-//@ts-nocheck
-import Handlebars from 'handlebars';
-
 import './index.scss';
-import * as Components from './components';
-import * as Pages from './pages';
 import * as IconSetter from './tools/set-icons';
-import Block from './tools/block';
-import ChatsPage from './pages/chats';
 import { pages } from './pages';
 import { navigate } from './tools/helpers';
 

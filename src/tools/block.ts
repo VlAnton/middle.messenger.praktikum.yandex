@@ -13,7 +13,7 @@ export default class Block {
   public props: Props;
   private children: Record<string, Block>;
   private lists: Lists;
-  private eventBus: Function;
+  private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
   private _id = Math.floor(100000 + Math.random() * 900000);
 
@@ -52,13 +52,10 @@ export default class Block {
   }
 
   _componentDidMount() {
-    this.componentDidMount({});
     Object.values(this.children).forEach((child) => {
       child.dispatchComponentDidMount();
     });
   }
-
-  componentDidMount(oldProps: Props | undefined) {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -73,7 +70,7 @@ export default class Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    return true;
+    return JSON.stringify(oldProps) !== JSON.stringify(newProps);
   }
 
   _getChildrenPropsAndProps(propsAndChildren: Props) {
@@ -122,7 +119,7 @@ export default class Block {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    Object.entries(this.lists).forEach(([key, child]) => {
+    Object.values(this.lists).forEach((child) => {
       Object.entries(child).forEach(([k, items]) => {
         items.forEach((item) => {
           if (item instanceof Block) {
