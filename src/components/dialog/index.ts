@@ -24,7 +24,12 @@ export class Dialog extends Block {
             }
           })
           if (!formHasErrors && !formHasEmptyFields) {
-            window.location.pathname = 'chats'
+            // window.location.pathname = 'chats'
+            const res: Record<string, string> = {}
+            fields.forEach((el: Block) => {
+              res[el.props.name] = el.props.value
+            })
+            console.log(res)
           }
         }
       }),

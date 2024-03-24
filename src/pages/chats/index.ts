@@ -1,5 +1,5 @@
 import './chats.scss';
-import { ChatItem, ChatInput, ChatMessage } from '../../components';
+import { ChatItem, ChatInput, ChatMessage, Avatar } from '../../components';
 import Block from '../../tools/block';
 
 const chatsData = [
@@ -43,23 +43,28 @@ export default class ChatsPage extends Block {
   constructor(props: Props) {
     super({
       ...props,
+      isChatSelected: true,
+      display_name: 'Вадим',
       lists: {
         chatItems: chatsData.map((e) => new ChatItem(e)),
         messages: messagesData.map((e) => new ChatMessage(e)),
       },
+      avatar: new Avatar({}),
       chatInput: new ChatInput({
         name: 'message',
         type: 'text',
         placeholder: 'Сообщение',
+        onBlur(value: string) {
+          if (!value || value.length < 1) {
+            console.error('Сообщение не должно быть пустым')
+          }
+        }
       }),
       searchInput: new ChatInput({
         className: 'chat-input__search',
         name: 'search',
         type: 'search',
         placeholder: 'Поиск',
-        // onChange: (value) => {
-        //   console.log(value)
-        // }
       }),
     });
   }
@@ -85,6 +90,7 @@ export default class ChatsPage extends Block {
             <div class="chat-page__chat-body">
               <div class="chat-page__chat-header">
                 <div class="chat-page__chat-name">
+                  {{{ avatar }}}
                   <p>{{ display_name }}</p>
                 </div>
                 <div class="chat-page__more">

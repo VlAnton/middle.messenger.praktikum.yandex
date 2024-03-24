@@ -8,12 +8,17 @@ export class ChatItem extends Block {
     super({
       ...props,
       avatar: new Avatar(avatar),
+      events: {
+        // click(e: Event) {
+        //   props.onClick()
+        // }
+      }
     });
   }
 
   render() {
     return `
-      <div class="chat-item">
+      <div id="{{id}}" class="chat-item">
         <div class="chat-item__divider"></div>
         <div class="chat-item__block {{#if isSelected }} chat-item__selected{{/if}}">
           {{{ avatar }}}

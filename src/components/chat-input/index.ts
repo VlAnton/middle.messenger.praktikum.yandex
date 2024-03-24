@@ -6,14 +6,10 @@ export class ChatInput extends Block {
     super({
       ...props,
       events: {
-        change: (e: Event) => {
-          if (e) {
-            props.onChange((e.target as HTMLInputElement).value);
-          }
-        },
-      },
-      attr: {
-        class: 'fake',
+        blur: (e: Event) =>
+          props.onBlur && props.onBlur((e.target as HTMLInputElement).value),
+        change: (e: Event) =>
+          this.setProps({ value: (e.target as HTMLInputElement).value })
       },
     });
   }
@@ -28,9 +24,5 @@ export class ChatInput extends Block {
         placeholder="{{ placeholder }}"
       >
     `;
-  }
-
-  validate() {
-    console.log('blur');
   }
 }
