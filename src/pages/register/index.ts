@@ -38,7 +38,7 @@ export default class RegisterPage extends Block {
             name: 'first_name',
             validationProps: {
               func(value: string) {
-                const regexp = new RegExp('^[А-Я][а-я-]+$')
+                const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$')
                 return !regexp.test(value)
               },
               error: 'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис'
@@ -49,7 +49,7 @@ export default class RegisterPage extends Block {
             name: 'second_name',
             validationProps: {
               func(value: string) {
-                const regexp = new RegExp('^[А-Я][а-я-]+$')
+                const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$')
                 return !regexp.test(value)
               },
               error: 'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис'

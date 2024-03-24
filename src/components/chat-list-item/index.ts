@@ -8,11 +8,6 @@ export class ChatItem extends Block {
     super({
       ...props,
       avatar: new Avatar(avatar),
-      events: {
-        // click(e: Event) {
-        //   props.onClick()
-        // }
-      }
     });
   }
 
