@@ -8,9 +8,13 @@ export class Dialog extends Block {
     super({
       ...props,
       lists: { fields },
-      button: new Button({
-        ...buttonProps,
-        onClick() {
+      button: new Button(buttonProps),
+      link: new Link(linkProps),
+
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
           const formHasErrors = props.fields.some(
             (el: Block) => el.props.error && el.props.error.length > 0,
           );
@@ -32,30 +36,25 @@ export class Dialog extends Block {
             });
             console.log(res);
           }
-        },
-      }),
-      link: new Link({
-        ...linkProps,
-      }),
+        }
+      }
     });
   }
 
   render() {
     return `
-      <div class="dialog">
+      <form class="dialog dialog__form">
         <h1 class="dialog__title">
           {{ title }}
         </h1>
-        <form class="dialog__form">
-          <div class="dialog__content">
-            {{{ fields }}}
-          </div>
-          <div class="dialog__footer">
-            {{{ button }}}
-            {{{ link }}}
-          </div>
-        </form>
-      </div>
+        <div class="dialog__content">
+          {{{ fields }}}
+        </div>
+        <div class="dialog__footer">
+          {{{ button }}}
+          {{{ link }}}
+        </div>
+      </form>
     `;
   }
 }

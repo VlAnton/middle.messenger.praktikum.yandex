@@ -3,18 +3,7 @@ import Block from '../../tools/block';
 
 export class Button extends Block {
   constructor(props: Props) {
-    super({
-      ...props,
-      events: {
-        click: (e: Event) => {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          if (props.onClick) {
-            props.onClick();
-          }
-        },
-      },
-    });
+    super(props);
   }
 
   render() {
@@ -22,7 +11,6 @@ export class Button extends Block {
       <button
         class="button{{#if className}} {{className}}{{/if}}"
         type="{{ type }}"
-        page="{{ page }}"
       >
         {{ text }}
       </button>

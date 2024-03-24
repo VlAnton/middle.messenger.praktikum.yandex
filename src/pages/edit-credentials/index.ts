@@ -80,10 +80,10 @@ export default class EditCredentials extends Block {
     ];
     super({
       ...props,
-      submitButton: new Button({
-        text: 'Сохранить',
-        page: 'profile',
-        onClick() {
+      events: {
+        submit(e: Event) {
+          e.preventDefault()
+          e.stopImmediatePropagation()
           const formHasErrors = fields.some(
             (el: Block) => el.props.error && el.props.error.length > 0,
           );
@@ -105,6 +105,10 @@ export default class EditCredentials extends Block {
             console.log(res);
           }
         },
+      },
+      submitButton: new Button({
+        text: 'Сохранить',
+        type: 'submit'
       }),
       lists: {
         fields,
@@ -114,25 +118,23 @@ export default class EditCredentials extends Block {
 
   render() {
     return `
-      <div class="edit-page">
+      <form class="edit-page edit-page__form">
         <a class="edit-page__back-block" href="profile">
           <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
         </a>
-      
-        <form class="edit-page__form">
-          <div class="profile-page__header">
-            <div class="profile-page__image">
-              <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
-            </div>
+
+        <div class="profile-page__header">
+          <div class="profile-page__image">
+            <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
           </div>
-          <div class="edit-page__fields">
-            {{{ fields }}}
-          </div>
-          <div class="edit-page__footer">
-            {{{ submitButton }}}
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="edit-page__fields">
+          {{{ fields }}}
+        </div>
+        <div class="edit-page__footer">
+          {{{ submitButton }}}
+        </div>
+      </form>
     `;
   }
 }
