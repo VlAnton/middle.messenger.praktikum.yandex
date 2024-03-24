@@ -13,7 +13,7 @@ export default class LoginPage extends Block {
           new Input({
             title: 'Логин',
             name: 'login',
-            onBlurProps: {
+            validationProps: {
               func(value: string) {
                 const regexp = new RegExp('^[a-zA-Z0-9_-]{3,20}$')
                 return !regexp.test(value) || !Number.isNaN(Number(value))
@@ -25,7 +25,7 @@ export default class LoginPage extends Block {
             title: 'Пароль',
             name: 'password',
             type: 'password',
-            onBlurProps: {
+            validationProps: {
               func(value: string) {
                 const regexp = new RegExp('^[a-zA-Z0-9]{8,40}$')
                 const hasNumbers = value.search(/[0-9]/) !== -1

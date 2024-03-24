@@ -1,8 +1,8 @@
 import { pages } from "../pages";
 
 export function navigate(page: string) {
-  const container = document.getElementById('app')!;
+  const container = document.getElementById('app');
   if (container) {
-    container.append(pages[page].getContent()!);
+    container.append(pages[page].getContent() as string | Node);
   }
 }

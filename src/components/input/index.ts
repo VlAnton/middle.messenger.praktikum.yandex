@@ -9,10 +9,10 @@ export class Input extends Block {
       inputField: new InputField({
         ...props,
         onBlur: (value: string) => {
-          if (!props.onBlurProps) {
+          if (!props.validationProps) {
             return
           }
-          const { func, error } = props.onBlurProps
+          const { func, error } = props.validationProps
           if (func(value)) {
             this.setProps({ error, value })
           } else {
