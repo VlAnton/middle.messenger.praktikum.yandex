@@ -1,7 +1,7 @@
 import './register.scss';
 
 import Block from '../../tools/block';
-import { Input, Button, Dialog, Link } from '../../components';
+import { Input, Dialog } from '../../components';
 
 export default class RegisterPage extends Block {
   constructor(props: Props) {
