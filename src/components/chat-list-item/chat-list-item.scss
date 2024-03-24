@@ -20,6 +20,7 @@
     gap: 10px;
     height: 67px;
   }
+
   &__block:hover {
     background-color: $bg-color-hover;
   }
@@ -63,7 +64,6 @@
     justify-content: center;
     padding: 4px;
     border-radius: 12px;
-
     background-color: $bg-color-primary;
     color: $text-color-tertiary;
     font: $font-micro;

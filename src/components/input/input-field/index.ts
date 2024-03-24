@@ -17,7 +17,7 @@ export class InputField extends Block {
     return `
       <input
         id="input-field__element__{{ title }}"
-        class="input-field__element {{#if className}} {{ className }} {{/if}}"
+        class="input-field-element {{#if className}} {{ className }} {{/if}}"
         type="{{ type }}"
         name="{{ name }}"
         value="{{ value }}"
