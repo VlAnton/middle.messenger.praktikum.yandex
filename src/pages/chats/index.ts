@@ -56,9 +56,9 @@ export default class ChatsPage extends Block {
         placeholder: 'Сообщение',
         onBlur(value: string) {
           if (!value || value.length < 1) {
-            console.error('Сообщение не должно быть пустым')
+            console.error('Сообщение не должно быть пустым');
           }
-        }
+        },
       }),
       searchInput: new ChatInput({
         className: 'chat-input__search',

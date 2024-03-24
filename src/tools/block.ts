@@ -1,7 +1,7 @@
 import EventBus from './event-bus';
 import Handlebars from 'handlebars';
 
-type Lists = Record<string, Record<string, Block[]>>
+type Lists = Record<string, Record<string, Block[]>>;
 
 export default class Block {
   static EVENTS = {
@@ -29,9 +29,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildren() {
-
-  }
+  _getChildren() {}
 
   _addEvents() {
     const { events = {} } = this.props;
@@ -126,7 +124,7 @@ export default class Block {
 
     Object.entries(this.lists).forEach(([key, child]) => {
       Object.entries(child).forEach(([k, items]) => {
-        items.forEach(item => {
+        items.forEach((item) => {
           if (item instanceof Block) {
             propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
           }
@@ -134,22 +132,26 @@ export default class Block {
       });
     });
 
-    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
+    const fragment = this._createDocumentElement(
+      'template',
+    ) as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (stub) {
-        stub.replaceWith((child.getContent() as string | Node));
+        stub.replaceWith(child.getContent() as string | Node);
       }
     });
 
-    Object.values(this.lists).forEach(child => {
-      const listCont = this._createDocumentElement('template') as HTMLTemplateElement;
+    Object.values(this.lists).forEach((child) => {
+      const listCont = this._createDocumentElement(
+        'template',
+      ) as HTMLTemplateElement;
       Object.values(child).forEach((items) => {
-        items.forEach(item => {
+        items.forEach((item) => {
           if (item instanceof Block) {
-            listCont.content.append((item.getContent() as string | Node));
+            listCont.content.append(item.getContent() as string | Node);
           } else {
             listCont.content.append(`${item}`);
           }

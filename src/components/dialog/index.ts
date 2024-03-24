@@ -11,31 +11,32 @@ export class Dialog extends Block {
       button: new Button({
         ...buttonProps,
         onClick() {
-          const formHasErrors = props.fields
-            .some((el: Block) => el.props.error && el.props.error.length > 0)
-          let formHasEmptyFields = false
+          const formHasErrors = props.fields.some(
+            (el: Block) => el.props.error && el.props.error.length > 0,
+          );
+          let formHasEmptyFields = false;
           props.fields.forEach((el: Block) => {
             if (!el.element) {
-              return
+              return;
             }
             if (!el.props.value) {
-              formHasEmptyFields = true
-              el.setProps({ error: 'Поле не может быть пустым' })
+              formHasEmptyFields = true;
+              el.setProps({ error: 'Поле не может быть пустым' });
             }
-          })
+          });
           if (!formHasErrors && !formHasEmptyFields) {
             // window.location.pathname = 'chats'
-            const res: Record<string, string> = {}
+            const res: Record<string, string> = {};
             fields.forEach((el: Block) => {
-              res[el.props.name] = el.props.value
-            })
-            console.log(res)
+              res[el.props.name] = el.props.value;
+            });
+            console.log(res);
           }
-        }
+        },
       }),
       link: new Link({
-        ...linkProps
-      })
+        ...linkProps,
+      }),
     });
   }
 

@@ -1,4 +1,4 @@
-import { pages } from "../pages";
+import { pages } from '../pages';
 
 export function navigate(page: string) {
   const container = document.getElementById('app');

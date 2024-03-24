@@ -7,10 +7,10 @@ export class Button extends Block {
       ...props,
       events: {
         click: (e: Event) => {
-          e.preventDefault()
-          e.stopImmediatePropagation()
+          e.preventDefault();
+          e.stopImmediatePropagation();
           if (props.onClick) {
-            props.onClick()
+            props.onClick();
           }
         },
       },

@@ -12,11 +12,12 @@ export default class EditCredentials extends Block {
         type: 'email',
         validationProps: {
           func(value: string) {
-            const regexp = new RegExp('^(\\w|-)+@[a-zA-Z]+\\.[a-zA-Z]+$')
-            return !regexp.test(value)
+            const regexp = new RegExp('^(\\w|-)+@[a-zA-Z]+\\.[a-zA-Z]+$');
+            return !regexp.test(value);
           },
-          error: 'Латиница, может включать цифры и спецсимволы вроде дефиса и подчёркивания, обязательно должна быть @ и точка после неё, но перед точкой обязательно должны быть буква'
-        }
+          error:
+            'Латиница, может включать цифры и спецсимволы вроде дефиса и подчёркивания, обязательно должна быть @ и точка после неё, но перед точкой обязательно должны быть буква',
+        },
       }),
       new Input({
         title: 'Логин',
@@ -24,11 +25,12 @@ export default class EditCredentials extends Block {
         name: 'login',
         validationProps: {
           func(value: string) {
-            const regexp = new RegExp('^[a-zA-Z0-9_-]{3,20}$')
-            return !regexp.test(value) || !Number.isNaN(Number(value))
+            const regexp = new RegExp('^[a-zA-Z0-9_-]{3,20}$');
+            return !regexp.test(value) || !Number.isNaN(Number(value));
           },
-          error: 'Длина должна быть от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)'
-        }
+          error:
+            'Длина должна быть от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
+        },
       }),
       new Input({
         title: 'Имя',
@@ -36,11 +38,12 @@ export default class EditCredentials extends Block {
         name: 'first_name',
         validationProps: {
           func(value: string) {
-            const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$')
-            return !regexp.test(value)
+            const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$');
+            return !regexp.test(value);
           },
-          error: 'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис'
-        }
+          error:
+            'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис',
+        },
       }),
       new Input({
         title: 'Фамилия',
@@ -48,11 +51,12 @@ export default class EditCredentials extends Block {
         name: 'second_name',
         validationProps: {
           func(value: string) {
-            const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$')
-            return !regexp.test(value)
+            const regexp = new RegExp('^[А-ЯA-Z][а-яa-z-]+$');
+            return !regexp.test(value);
           },
-          error: 'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис'
-        }
+          error:
+            'Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, разрешается дефис',
+        },
       }),
       new Input({
         title: 'Имя в чате',
@@ -66,42 +70,44 @@ export default class EditCredentials extends Block {
         type: 'tel',
         validationProps: {
           func(value: string) {
-            const regexp = new RegExp('^\\+{0,1}\\d{10,15}$')
-            return !regexp.test(value)
+            const regexp = new RegExp('^\\+{0,1}\\d{10,15}$');
+            return !regexp.test(value);
           },
-          error: 'от 10 до 15 символов, состоит из цифр, может начинается с плюса'
-        }
+          error:
+            'от 10 до 15 символов, состоит из цифр, может начинается с плюса',
+        },
       }),
-    ]
+    ];
     super({
       ...props,
       submitButton: new Button({
         text: 'Сохранить',
         page: 'profile',
         onClick() {
-          const formHasErrors = fields
-            .some((el: Block) => el.props.error && el.props.error.length > 0)
-          let formHasEmptyFields = false
+          const formHasErrors = fields.some(
+            (el: Block) => el.props.error && el.props.error.length > 0,
+          );
+          let formHasEmptyFields = false;
           fields.forEach((el: Block) => {
             if (!el.element) {
-              return
+              return;
             }
             if (!el.props.value) {
-              formHasEmptyFields = true
-              el.setProps({ error: 'Поле не может быть пустым' })
+              formHasEmptyFields = true;
+              el.setProps({ error: 'Поле не может быть пустым' });
             }
-          })
+          });
           if (!formHasErrors && !formHasEmptyFields) {
-            const res: Record<string, string> = {}
+            const res: Record<string, string> = {};
             fields.forEach((el: Block) => {
-              res[el.props.name] = el.props.value
-            })
-            console.log(res)
+              res[el.props.name] = el.props.value;
+            });
+            console.log(res);
           }
-        }
+        },
       }),
       lists: {
-        fields
+        fields,
       },
     });
   }

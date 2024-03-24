@@ -5,4 +5,4 @@ declare module '*.hbs?raw' {
   export default content;
 }
 
-type Props = Record<string, T>
+type Props = Record<string, T>;

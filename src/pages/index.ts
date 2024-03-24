@@ -8,7 +8,7 @@ import ProfilePage from './profile';
 import EditCredentials from './edit-credentials';
 import EditPassword from './edit-password';
 
-export type Pages = Record<string, Block>
+export type Pages = Record<string, Block>;
 
 export const pages: Pages = {
   login: new LoginPage({}),

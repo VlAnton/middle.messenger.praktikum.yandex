@@ -6,10 +6,9 @@ export class InputField extends Block {
     super({
       ...props,
       events: {
-        blur: (e: Event) =>
-          props.onBlur((e.target as HTMLInputElement).value),
+        blur: (e: Event) => props.onBlur((e.target as HTMLInputElement).value),
         change: (e: Event) =>
-          this.setProps({ value: (e.target as HTMLInputElement).value })
+          this.setProps({ value: (e.target as HTMLInputElement).value }),
       },
     });
   }
