@@ -7,9 +7,9 @@ export class ChatInput extends Block {
       ...props,
       events: {
         blur: (e: Event) => {
-          this.setProps({ value: (e.target as HTMLInputElement).value })
-          props.onBlur && props.onBlur((e.target as HTMLInputElement).value)
-        }
+          this.setProps({ value: (e.target as HTMLInputElement).value });
+          props.onBlur && props.onBlur((e.target as HTMLInputElement).value);
+        },
       },
     });
   }
