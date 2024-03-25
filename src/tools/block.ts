@@ -47,6 +47,13 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  _removeEvents(eventBus: EventBus) {
+    eventBus.off(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  }
+
   init() {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -164,6 +171,8 @@ export default class Block {
 
     const newElement = fragment.content.firstElementChild as string | Node;
     if (this._element) {
+      this._removeEvents(this.eventBus());
+      this._element.innerHTML = '';
       this._element.replaceWith(newElement);
     }
     this._element = newElement as HTMLElement;
