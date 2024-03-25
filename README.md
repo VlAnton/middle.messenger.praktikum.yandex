@@ -37,8 +37,8 @@
 - [Регистрация](https://anton-vlasov-messenger.netlify.app/register)
 - [Чат](https://anton-vlasov-messenger.netlify.app/chats)
 - [Профиль](https://anton-vlasov-messenger.netlify.app/profile)
-- [Изменение данных](https://anton-vlasov-messenger.netlify.app/profile/edit-credentials)
-- [Изменение пароля](https://anton-vlasov-messenger.netlify.app/profile/edit-password)
+- [Изменение данных](https://anton-vlasov-messenger.netlify.app/edit-credentials)
+- [Изменение пароля](https://anton-vlasov-messenger.netlify.app/edit-password)
 - [Ошибка 404](https://anton-vlasov-messenger.netlify.app/404)
 - [Ошибка 500](https://anton-vlasov-messenger.netlify.app/500)
 
