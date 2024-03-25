@@ -40,18 +40,20 @@ export default class Block {
     });
   }
 
+  _removeEvents() {
+    const { events = {} } = this.props;
+    Object.keys(events).forEach((eventName) => {
+      if (this._element) {
+        this._element.removeEventListener(eventName, events[eventName]);
+      }
+    });
+  }
+
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-  }
-
-  _removeEvents(eventBus: EventBus) {
-    eventBus.off(Block.EVENTS.INIT, this.init.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    eventBus.off(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
   init() {
@@ -171,9 +173,9 @@ export default class Block {
 
     const newElement = fragment.content.firstElementChild as string | Node;
     if (this._element) {
-      this._removeEvents(this.eventBus());
       this._element.innerHTML = '';
-      this._element.replaceWith(newElement);
+      this._element.append(newElement);
+      this._removeEvents();
     }
     this._element = newElement as HTMLElement;
     this._addEvents();

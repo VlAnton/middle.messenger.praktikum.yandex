@@ -82,8 +82,8 @@ export default class EditCredentials extends Block {
       ...props,
       events: {
         submit(e: Event) {
-          e.preventDefault()
-          e.stopImmediatePropagation()
+          e.preventDefault();
+          e.stopImmediatePropagation();
           const formHasErrors = fields.some(
             (el: Block) => el.props.error && el.props.error.length > 0,
           );
@@ -108,7 +108,7 @@ export default class EditCredentials extends Block {
       },
       submitButton: new Button({
         text: 'Сохранить',
-        type: 'submit'
+        type: 'submit',
       }),
       lists: {
         fields,

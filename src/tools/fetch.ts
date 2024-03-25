@@ -65,7 +65,9 @@ export default class HTTPTransport {
     return new Promise(function (resolve, reject) {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
-      const newUrl = isGet ? `${url}?${queryStringify((data as Record<string, unknown>))}` : url;
+      const newUrl = isGet
+        ? `${url}?${queryStringify(data as Record<string, unknown>)}`
+        : url;
 
       xhr.open(method, newUrl);
 
@@ -86,7 +88,7 @@ export default class HTTPTransport {
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.send((data as Document | XMLHttpRequestBodyInit | null));
+        xhr.send(data as Document | XMLHttpRequestBodyInit | null);
       }
     });
   };
