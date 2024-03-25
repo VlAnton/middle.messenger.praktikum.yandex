@@ -173,8 +173,8 @@ export default class Block {
 
     const newElement = fragment.content.firstElementChild as string | Node;
     if (this._element) {
-      this._element.replaceWith(newElement);
       this._removeEvents();
+      this._element.replaceWith(newElement);
     }
     this._element = newElement as HTMLElement;
     this._addEvents();
