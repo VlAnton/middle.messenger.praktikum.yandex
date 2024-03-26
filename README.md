@@ -7,6 +7,8 @@
 - `npm install` — установка зависимостей
 - `npm run dev` — запуск проекта в dev режиме
 - `npm run start` — сборка стабильной версии
+- `npm run lint` — прогон через eslint
+- `npm run stylelint` — прогон через stylelint
 
 После запуска доступно на http://localhost:3000/
 
@@ -28,6 +30,17 @@
 - [Изменение пароля](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-579&mode=design&t=MWbIY5IXXwjKcRzM-11)
 - [Ошибка 404](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-686&mode=design&t=MWbIY5IXXwjKcRzM-11)
 - [Ошибка 500](https://www.figma.com/file/VOFxubk1asA0v1pOt06Qwy/messenger?type=design&node-id=1-690&mode=design&t=MWbIY5IXXwjKcRzM-11)
+
+## Ссылки на страницы в проекте
+
+- [Авторизация](https://anton-vlasov-messenger.netlify.app/login)
+- [Регистрация](https://anton-vlasov-messenger.netlify.app/register)
+- [Чат](https://anton-vlasov-messenger.netlify.app/chats)
+- [Профиль](https://anton-vlasov-messenger.netlify.app/profile)
+- [Изменение данных](https://anton-vlasov-messenger.netlify.app/edit-credentials)
+- [Изменение пароля](https://anton-vlasov-messenger.netlify.app/edit-password)
+- [Ошибка 404](https://anton-vlasov-messenger.netlify.app/404)
+- [Ошибка 500](https://anton-vlasov-messenger.netlify.app/500)
 
 ## Разработчик
 

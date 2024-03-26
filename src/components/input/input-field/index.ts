@@ -1,14 +1,14 @@
-import './chat-input.scss';
-import Block from '../../tools/block';
+import './input-field.scss';
+import Block from '../../../tools/block';
 
-export class ChatInput extends Block {
+export class InputField extends Block {
   constructor(props: Props) {
     super({
       ...props,
       events: {
         blur: (e: Event) => {
           this.setProps({ value: (e.target as HTMLInputElement).value });
-          props.onBlur && props.onBlur((e.target as HTMLInputElement).value);
+          props.onBlur((e.target as HTMLInputElement).value);
         },
       },
     });
@@ -17,11 +17,11 @@ export class ChatInput extends Block {
   render() {
     return `
       <input
-        class="chat-input chat-input__element {{#if className}} {{className}} {{/if}}"
+        id="input-field__element__{{ title }}"
+        class="input-field-element {{#if className}} {{ className }} {{/if}}"
         type="{{ type }}"
         name="{{ name }}"
         value="{{ value }}"
-        placeholder="{{ placeholder }}"
       >
     `;
   }

@@ -1,4 +1,4 @@
-@import '../../assets/variables.scss';
+@import '../../assets/variables';
 
 .chat-page {
   height: 100%;
@@ -7,10 +7,25 @@
   &__chats {
     width: 25%;
     min-width: 310px;
+    border-right: 1px solid $bg-color-divider;
+    background-color: $bg-color-secondary;
+  }
+
+  &__chat-body {
+    background-color: $bg-color;
+    height: 100%;
+    width: 100%;
+    align-self: end;
+    overflow: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px 20px;
   }
 
   &__header {
-    padding: 21px 10px 14px 10px;
+    padding: 21px 10px 14px;
     display: flex;
     flex-direction: column;
     gap: 23px;
@@ -41,6 +56,7 @@
     justify-content: center;
     align-self: end;
   }
+
   &__chat-placeholder {
     font: $font-small;
     color: $text-color-secondary;
@@ -76,12 +92,6 @@
       font: $font-regular;
       margin: 0;
     }
-  }
-
-  &__chat-body {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
   }
 
   &__chat-input {

@@ -5,11 +5,11 @@
   height: fit-content;
   width: 402px;
   padding: 11px;
-  border-radius: 0 12px 12px 12px;
+  border-radius: 0 12px 12px;
 
   &__yours {
     background-color: $bg-color-hover;
-    border-radius: 12px 12px 0 12px;
+    border-radius: 12px 12px 0;
     align-self: end;
     margin-top: 20px;
   }
@@ -31,6 +31,7 @@
     color: $text-color-secondary;
     width: fit-content;
   }
+
   &__time-yours {
     color: $bg-color-primary;
   }

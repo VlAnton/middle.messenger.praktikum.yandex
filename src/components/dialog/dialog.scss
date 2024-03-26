@@ -5,6 +5,36 @@
   box-shadow: $dialog-box-shadow;
   padding: 30px;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
   width: fit-content;
   height: fit-content;
+
+  &__title {
+    color: $text-color-primary;
+    font: $font-big;
+    align-self: center;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+
+  &__form {
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
 }
