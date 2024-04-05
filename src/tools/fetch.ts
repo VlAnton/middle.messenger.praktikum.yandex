@@ -12,7 +12,7 @@ type Options = {
   data?: unknown;
 };
 
-type HTTPMethod = (url: string, options?: Options) => Promise<unknown>
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
 
 function queryStringify(data: Record<string, unknown>) {
   if (typeof data !== 'object') {

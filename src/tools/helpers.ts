@@ -1,8 +1,8 @@
-import { pages } from '../pages';
+import Block from './block';
 
-export function navigate(page: string) {
-  const container = document.getElementById('app');
+export function navigate(block: Block, query?: string) {
+  const container = document.getElementById(query || '#app');
   if (container) {
-    container.append(pages[page].getContent() as string | Node);
+    container.append(block.getContent() as string | Node);
   }
 }
