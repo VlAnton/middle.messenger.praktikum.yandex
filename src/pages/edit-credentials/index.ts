@@ -120,7 +120,7 @@ export default class EditCredentials extends Block {
     return `
       <form class="edit-page edit-page__form">
         <a class="edit-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
+          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
         </a>
 
         <div class="profile-page__header">

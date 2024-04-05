@@ -95,7 +95,7 @@ export default class EditPassword extends Block {
     return `
       <form class="edit-password-page">
         <a class="edit-password-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
+          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
         </a>
         <div class="profile-page__header">
           <div class="profile-page__image">

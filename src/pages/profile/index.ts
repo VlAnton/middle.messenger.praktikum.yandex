@@ -29,7 +29,7 @@ export default class ProfilePage extends Block {
     return `
       <div class="profile-page">
         <a class="profile-page__back-block" href="chats">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
+          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
         </a>
       
         <div class="profile-page__info">

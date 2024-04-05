@@ -12,6 +12,8 @@ type Options = {
   data?: unknown;
 };
 
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>
+
 function queryStringify(data: Record<string, unknown>) {
   if (typeof data !== 'object') {
     throw new Error('Data must be object');
@@ -23,7 +25,7 @@ function queryStringify(data: Record<string, unknown>) {
 }
 
 export default class HTTPTransport {
-  get = (url: string, options: Options = { method: METHODS.GET }) => {
+  get: HTTPMethod = (url, options = { method: METHODS.GET }) => {
     return this.request(
       url,
       { ...options, method: METHODS.GET },
@@ -31,7 +33,7 @@ export default class HTTPTransport {
     );
   };
 
-  post = (url: string, options: Options = { method: METHODS.GET }) => {
+  post: HTTPMethod = (url, options = { method: METHODS.GET }) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
@@ -39,7 +41,7 @@ export default class HTTPTransport {
     );
   };
 
-  put = (url: string, options: Options = { method: METHODS.GET }) => {
+  put: HTTPMethod = (url, options = { method: METHODS.GET }) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
@@ -47,7 +49,7 @@ export default class HTTPTransport {
     );
   };
 
-  delete = (url: string, options: Options = { method: METHODS.GET }) => {
+  delete: HTTPMethod = (url, options = { method: METHODS.GET }) => {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },

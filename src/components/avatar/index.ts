@@ -12,7 +12,7 @@ export class Avatar extends Block {
     return `
       <div class="avatar">
         {{#if src }}
-          <img class="avatar__img" src={{ src }} alt="avatar"><img>
+          <img class="avatar__img" src={{ src }} alt="avatar" alt="avatar"><img>
         {{/if}}
       </div>
     `;
