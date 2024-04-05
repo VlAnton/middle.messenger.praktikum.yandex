@@ -34,7 +34,7 @@ export default class Route {
   render() {
     if (!this._block) {
       this._block = new this._blockClass();
-      navigate(this._block, this._props._rootQuery);
+      navigate(this._block, this._props.rootQuery);
       return;
     }
 

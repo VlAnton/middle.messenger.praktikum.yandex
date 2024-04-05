@@ -8,7 +8,7 @@ import EditCredentials from './edit-credentials';
 import EditPassword from './edit-password';
 import Router from '../router/router';
 
-export const router = new Router('#app');
+export const router = new Router('app');
 router
   .use('/login', LoginPage)
   .use('/register', RegisterPage)

@@ -1,6 +1,6 @@
 import './index.scss';
 import * as IconSetter from './tools/set-icons';
-import { router } from './pages';
+import { router } from './pages'
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname.replace('/', '');
