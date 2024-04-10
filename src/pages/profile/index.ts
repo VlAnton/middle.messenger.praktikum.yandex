@@ -1,8 +1,12 @@
 import './profile.scss';
 import Block from '../../tools/block';
 import { Link } from '../../components';
+import { UserController } from '../../controllers/user-controller';
+import store, { StoreEvents } from '../../store';
+import { AuthController } from '../../controllers/auth-controller';
+import connect from '../../tools/hoc';
 
-export default class ProfilePage extends Block {
+class ProfilePage extends Block {
   constructor(props: Props) {
     super({
       ...props,
@@ -21,7 +25,19 @@ export default class ProfilePage extends Block {
         href: 'login',
         xl: true,
         negative: true,
+        onClick: (e: Event) => {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+
+          AuthController.signOut()
+        }
       }),
+    });
+
+    console.log(store.getState())
+
+    store.on(StoreEvents.Updated, () => {
+      this.setProps({...(store.getState() as Record<string, any>).user})
     });
   }
 
@@ -39,7 +55,7 @@ export default class ProfilePage extends Block {
             </div>
       
             <div class="profile-page__name">
-              {{ display_name }}
+              {{#if display_name }}{{ display_name }} {{else}} {{first_name}} {{ second_name}} {{/if}}
             </div>
           </div>
       
@@ -56,12 +72,12 @@ export default class ProfilePage extends Block {
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
               <p class="profile-page__item__key">Имя</p>
-              <p class="profile-page__item__value">{{ name }}</p>
+              <p class="profile-page__item__value">{{ first_name }}</p>
             </div>
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
               <p class="profile-page__item__key">Фамилия</p>
-              <p class="profile-page__item__value">{{ lastName }}</p>
+              <p class="profile-page__item__value">{{ second_name }}</p>
             </div>
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
@@ -87,3 +103,7 @@ export default class ProfilePage extends Block {
     `;
   }
 }
+
+const mapStateToProps = (state) => ({user: state.user})
+
+export default connect(mapStateToProps)(ProfilePage)

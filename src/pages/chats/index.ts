@@ -1,6 +1,8 @@
 import './chats.scss';
-import { ChatItem, ChatInput, ChatMessage, Avatar } from '../../components';
+import { ChatItem, ChatInput, ChatMessage, Avatar, Link } from '../../components';
 import Block from '../../tools/block';
+import store from '../../store';
+import { router } from '..';
 
 const chatsData = [
   {
@@ -66,6 +68,12 @@ export default class ChatsPage extends Block {
         type: 'search',
         placeholder: 'Поиск',
       }),
+      profileLink: new Link({
+        text: 'Профиль',
+        onClick() {
+          router.go('/profile')
+        }
+      })
     });
   }
 
@@ -75,10 +83,7 @@ export default class ChatsPage extends Block {
         <div class="chat-page__chats">
           <div class="chat-page__header">
             <div class="chat-page__profile-link-wrapper">
-              <a class="chat-page__profile-link" href="profile">
-                Профиль
-              </a>
-              <img class="icon-chevron-right" src="../../assets/icons/chevron right.svg" alt="chevron-right">
+              {{{ profileLink }}}
             </div>
             {{{ searchInput }}}
           </div>

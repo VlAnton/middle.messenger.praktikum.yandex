@@ -2,6 +2,7 @@ import './register.scss';
 
 import Block from '../../tools/block';
 import { Input, Dialog } from '../../components';
+import { SignUpController } from '../../controllers/sign-up-controller';
 
 export default class RegisterPage extends Block {
   constructor(props: Props) {
@@ -117,7 +118,7 @@ export default class RegisterPage extends Block {
 
   override render() {
     return `
-      <div class="login-page">
+      <div class="register-page">
         {{{ dialog }}}
       </div>
     `;

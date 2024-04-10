@@ -1,16 +1,15 @@
 import './index.scss';
 import * as IconSetter from './tools/set-icons';
-import { router } from './pages'
+import { router } from './pages';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const url = window.location.pathname.replace('/', '');
-
-  if (router.getRoute(`/${url}`)) {
-    router.go(url);
+  const url = window.location.pathname;
+  if (!router.getRoute(url)) {
+    router.go('/404');
   } else if (url === '') {
     router.go('/login');
   } else {
-    router.go('/404');
+    router.go(url);
   }
 
   IconSetter.setIcons(IconSetter.icons);

@@ -1,6 +1,11 @@
 import './dialog.scss';
 import Block from '../../tools/block';
 import { Button, Link } from '../../components';
+import { SignUpAPIData } from '../../api/sign-up-api';
+import { router } from '../../pages';
+import { AuthController } from '../../controllers/auth-controller';
+import { AuthApiData } from '../../api/auth-api';
+import store from '../../store';
 
 export class Dialog extends Block {
   constructor(props: Props) {
@@ -29,12 +34,18 @@ export class Dialog extends Block {
             }
           });
           if (!formHasErrors && !formHasEmptyFields) {
-            // window.location.pathname = 'chats'
             const res: Record<string, string> = {};
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            console.log(res);
+            if (router.getCurrentRoute()?.match('/login')) {
+              AuthController.signIn((res as AuthApiData))
+            } else {
+              AuthController.signUp((res as SignUpAPIData))
+            }
+            if (store.getState().user.id) {
+              router.go('/chats')
+            }
           }
         },
       },

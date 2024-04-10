@@ -62,6 +62,10 @@ export default class Router {
     this.history.forward();
   }
 
+  getCurrentRoute() {
+    return this._currentRoute
+  }
+
   getRoute(pathname: string) {
     return this.routes.find((route) => route.match(pathname));
   }

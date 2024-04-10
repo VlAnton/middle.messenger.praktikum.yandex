@@ -5,6 +5,11 @@ export class Link extends Block {
   constructor(props: Props) {
     super({
       ...props,
+      events: {
+        click(e: Event) {
+          props.onClick && props.onClick(e)
+        }
+      }
     });
   }
 
@@ -12,7 +17,6 @@ export class Link extends Block {
     return `
       <a
         class="link{{#if negative}} link__negative{{/if}} {{#if xl}}link__xl{{/if}}"
-        href="{{ href }}"
       >
         {{ text }}
       </a>

@@ -6,7 +6,7 @@ enum METHODS {
 }
 
 type Options = {
-  method: METHODS;
+  method?: METHODS;
   headers?: Record<string, string>;
   timeout?: number;
   data?: unknown;
@@ -68,10 +68,10 @@ export default class HTTPTransport {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
       const newUrl = isGet
-        ? `${url}?${queryStringify(data as Record<string, unknown>)}`
-        : url;
+      ? `${url}?${queryStringify(data as Record<string, unknown> || {})}`
+      : url;
 
-      xhr.open(method, newUrl);
+      xhr.open(method!, newUrl);
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
@@ -86,11 +86,13 @@ export default class HTTPTransport {
 
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
+      xhr.withCredentials = true
 
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.send(data as Document | XMLHttpRequestBodyInit | null);
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.send(JSON.stringify(data));
       }
     });
   };

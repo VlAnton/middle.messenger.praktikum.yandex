@@ -102,7 +102,6 @@ export default class EditCredentials extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            console.log(res);
           }
         },
       },

@@ -2,7 +2,7 @@
 type Listener<T extends unknown[] = any[]> = (...args: T) => void | unknown;
 
 export default class EventBus {
-  private listeners: Record<string, Listener[]>;
+  listeners: Record<string, Listener[]>;
 
   constructor() {
     this.listeners = {};

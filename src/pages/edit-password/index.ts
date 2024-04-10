@@ -77,7 +77,6 @@ export default class EditPassword extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            console.log(res);
           }
         },
       },
