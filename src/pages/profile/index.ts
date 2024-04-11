@@ -1,11 +1,11 @@
 import './profile.scss';
 import Block from '../../tools/block';
 import { Link } from '../../components';
-import { UserController } from '../../controllers/user-controller';
-import store, { StoreEvents } from '../../store';
+import store from '../../store';
 import { AuthController } from '../../controllers/auth-controller';
 import connect from '../../tools/hoc';
 import { router } from '..';
+import { BackButton } from '../../components/back-button';
 
 class ProfilePage extends Block {
   constructor(props: Props) {
@@ -32,6 +32,9 @@ class ProfilePage extends Block {
           router.go('/edit-password')
         }
       }),
+      backButton: new BackButton({
+        link: '/chats'
+      }),
       exit: new Link({
         text: 'Выйти',
         href: 'login',
@@ -45,15 +48,12 @@ class ProfilePage extends Block {
         }
       }),
     });
-    console.log(store.getState())
   }
 
   render() {
     return `
       <div class="profile-page">
-        <a class="profile-page__back-block" href="chats">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
-        </a>
+        {{{ backButton }}}
       
         <div class="profile-page__info">
           <div class="profile-page__header">

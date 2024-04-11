@@ -4,6 +4,7 @@ import { Input, Button } from '../../components';
 import store from '../../store';
 import { UserController } from '../../controllers/user-controller';
 import { UserAPIData } from '../../api/user-api';
+import { BackButton } from '../../components/back-button';
 
 export default class EditCredentials extends Block {
   constructor(props: Props) {
@@ -113,6 +114,9 @@ export default class EditCredentials extends Block {
         text: 'Сохранить',
         type: 'submit',
       }),
+      backButton: new BackButton({
+        link: '/profile'
+      }),
       lists: {
         fields,
       },
@@ -122,9 +126,7 @@ export default class EditCredentials extends Block {
   render() {
     return `
       <form class="edit-page edit-page__form">
-        <a class="edit-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
-        </a>
+        {{{ backButton }}}
 
         <div class="profile-page__header">
           <div class="profile-page__image">

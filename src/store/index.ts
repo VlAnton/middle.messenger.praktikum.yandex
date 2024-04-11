@@ -11,12 +11,17 @@ const initialState = {
 };
 
 class Store extends EventBus {
+  private static __instance: Store
   private state: Record<string, any> = {};
 
   constructor(state: Record<string, any>) {
     super();
+    if (Store.__instance) {
+      return Store.__instance;
+    }
     this.state = state;
     this.listeners[StoreEvents.Updated] = [];
+    Store.__instance = this;    
   }
 
   public getState() {

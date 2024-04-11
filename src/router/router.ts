@@ -43,6 +43,7 @@ export default class Router {
 
     if (this._currentRoute) {
       this._currentRoute.leave();
+      this._currentRoute = null
     }
 
     this._currentRoute = route;

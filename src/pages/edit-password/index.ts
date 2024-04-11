@@ -2,6 +2,7 @@ import './edit-password.scss';
 import Block from '../../tools/block';
 import { Input, Button } from '../../components';
 import { UserController } from '../../controllers/user-controller';
+import { BackButton } from '../../components/back-button';
 
 export default class EditPassword extends Block {
   constructor(props: Props) {
@@ -85,6 +86,9 @@ export default class EditPassword extends Block {
         text: 'Сохранить',
         type: 'submit',
       }),
+      backButton: new BackButton({
+        link: '/profile'
+      }),
       lists: {
         fields,
       },
@@ -94,9 +98,7 @@ export default class EditPassword extends Block {
   render() {
     return `
       <form class="edit-password-page">
-        <a class="edit-password-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
-        </a>
+        {{{ backButton }}}
         <div class="profile-page__header">
           <div class="profile-page__image">
             <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
