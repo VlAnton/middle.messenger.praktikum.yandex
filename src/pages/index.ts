@@ -10,7 +10,7 @@ import Router from '../router/router';
 
 export const router = new Router('app');
 router
-  .use('/login', LoginPage)
+  .use('/', LoginPage)
   .use('/register', RegisterPage)
   .use('/404', Page404)
   .use('/500', Page500)

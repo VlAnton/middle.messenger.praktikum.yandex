@@ -38,7 +38,7 @@ export class Dialog extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            if (router.getCurrentRoute()?.match('/login')) {
+            if (router.getCurrentRoute()?.match('/')) {
               AuthController.signIn((res as AuthApiData))
             } else {
               AuthController.signUp((res as SignUpAPIData))

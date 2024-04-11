@@ -10,6 +10,7 @@ export class Input extends Block {
         ...props,
         onBlur: (value: string) => {
           if (!props.validationProps) {
+            this.setProps({ value });
             return;
           }
           const { func, error } = props.validationProps;

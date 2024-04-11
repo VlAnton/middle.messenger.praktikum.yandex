@@ -1,6 +1,9 @@
 import './edit-credentials.scss';
 import Block from '../../tools/block';
 import { Input, Button } from '../../components';
+import store from '../../store';
+import { UserController } from '../../controllers/user-controller';
+import { UserAPIData } from '../../api/user-api';
 
 export default class EditCredentials extends Block {
   constructor(props: Props) {
@@ -8,7 +11,7 @@ export default class EditCredentials extends Block {
       new Input({
         title: 'Почта',
         name: 'email',
-        value: 'pochta@yandex.ru',
+        value: store.getState().user.email,
         type: 'email',
         validationProps: {
           func(value: string) {
@@ -21,7 +24,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Логин',
-        value: 'ivanivanov',
+        value: store.getState().user.login,
         name: 'login',
         validationProps: {
           func(value: string) {
@@ -34,7 +37,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Имя',
-        value: 'Иван',
+        value: store.getState().user.first_name,
         name: 'first_name',
         validationProps: {
           func(value: string) {
@@ -47,7 +50,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Фамилия',
-        value: 'Иванов',
+        value: store.getState().user.second_name,
         name: 'second_name',
         validationProps: {
           func(value: string) {
@@ -60,12 +63,12 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Имя в чате',
-        value: 'Иван',
+        value: store.getState().user.display_name ? store.getState().user.display_name : '',
         name: 'display_name',
       }),
       new Input({
         title: 'Телефон',
-        value: '+7 (909) 967 30 30',
+        value: store.getState().user.phone,
         name: 'phone',
         type: 'tel',
         validationProps: {
@@ -102,6 +105,7 @@ export default class EditCredentials extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
+            UserController.editCredentials(res as UserAPIData)
           }
         },
       },

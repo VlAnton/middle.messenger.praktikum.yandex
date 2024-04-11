@@ -5,20 +5,32 @@ import { UserController } from '../../controllers/user-controller';
 import store, { StoreEvents } from '../../store';
 import { AuthController } from '../../controllers/auth-controller';
 import connect from '../../tools/hoc';
+import { router } from '..';
 
 class ProfilePage extends Block {
   constructor(props: Props) {
     super({
       ...props,
+      ...store.getState().user,
       changeCredentials: new Link({
         text: 'Изменить данные',
         href: 'edit-credentials',
         xl: true,
+        onClick: (e: Event) => {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+          router.go('/edit-credentials')
+        }
       }),
       changePassword: new Link({
         text: 'Изменить пароль',
         href: 'edit-password',
         xl: true,
+        onClick: (e: Event) => {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+          router.go('/edit-password')
+        }
       }),
       exit: new Link({
         text: 'Выйти',
@@ -33,12 +45,7 @@ class ProfilePage extends Block {
         }
       }),
     });
-
     console.log(store.getState())
-
-    store.on(StoreEvents.Updated, () => {
-      this.setProps({...(store.getState() as Record<string, any>).user})
-    });
   }
 
   render() {
@@ -104,6 +111,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state) => ({user: state.user})
+const mapStateToProps = (state) => ({...state.user})
 
 export default connect(mapStateToProps)(ProfilePage)

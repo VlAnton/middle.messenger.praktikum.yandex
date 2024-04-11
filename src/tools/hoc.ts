@@ -2,7 +2,7 @@ import store, { StoreEvents } from "../store";
 import Block from "./block";
 import { isEqual } from "./helpers";
 
-type Indexed = Record<string, any>;
+type Indexed = Record<string, unknown>;
 
 export default function connect(mapStateToProps: (state: Indexed) => Indexed) {
   return function(Component: typeof Block) {

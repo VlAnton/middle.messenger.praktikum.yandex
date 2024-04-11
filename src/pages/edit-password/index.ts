@@ -1,13 +1,13 @@
 import './edit-password.scss';
 import Block from '../../tools/block';
 import { Input, Button } from '../../components';
+import { UserController } from '../../controllers/user-controller';
 
 export default class EditPassword extends Block {
   constructor(props: Props) {
     const fields = [
       new Input({
         title: 'Старый пароль',
-        value: '1231231',
         name: 'oldPassword',
         type: 'password',
         validationProps: {
@@ -77,6 +77,7 @@ export default class EditPassword extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
+            UserController.editPassword(res)
           }
         },
       },

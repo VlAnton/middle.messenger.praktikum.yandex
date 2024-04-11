@@ -1,13 +1,14 @@
 import './index.scss';
 import * as IconSetter from './tools/set-icons';
 import { router } from './pages';
+import store from './store';
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname;
   if (!router.getRoute(url)) {
     router.go('/404');
-  } else if (url === '') {
-    router.go('/login');
+  // } else if (!store.getState().isAuthenticated) {
+  //   router.go('/');
   } else {
     router.go(url);
   }
