@@ -34,11 +34,9 @@
 
   &__profile-link-wrapper {
     display: flex;
-    gap: 8px;
-
-    img {
-      padding: 2px 0;
-    }
+    // align-items: center;
+    // gap: 40px;
+    width: 100%;
   }
 
   &__profile-link {

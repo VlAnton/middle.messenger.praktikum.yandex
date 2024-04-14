@@ -3,6 +3,7 @@ import './register.scss';
 import Block from '../../tools/block';
 import { Input, Dialog } from '../../components';
 import { SignUpController } from '../../controllers/sign-up-controller';
+import { router } from '..';
 
 export default class RegisterPage extends Block {
   constructor(props: Props) {
@@ -111,6 +112,9 @@ export default class RegisterPage extends Block {
         linkProps: {
           text: 'Войти',
           href: 'login',
+          onClick() {
+            router.go('/')
+          }
         },
       }),
     });

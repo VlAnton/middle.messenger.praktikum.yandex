@@ -18,18 +18,20 @@ export class ChatItem extends Block {
         <div class="chat-item__block {{#if isSelected }} chat-item__selected{{/if}}">
           {{{ avatar }}}
           <div class="chat-item__message-block">
-            <div class="chat-item__name">{{ display_name }}</div>
-            <div class="chat-item__message">
-              <p class="chat-item__message-text">
-                {{ message }}
-              </p>
-            </div>
+            <div class="chat-item__name">{{ title }}</div>
+            {{#if last_message }}
+              <div class="chat-item__message">
+                <p class="chat-item__message-text">
+                  {{ last_message }}
+                </p>
+              </div>
+            {{/if}}
           </div>
           <div class="chat-item__info-block">
             <div class="chat-item__date">{{ date }}</div>
-            {{#if unread}}
+            {{#if unread_count}}
               <div class="chat-item__unread">
-                {{ unread }}
+                {{ unread_count }}
               </div>
             {{/if}}
           </div>

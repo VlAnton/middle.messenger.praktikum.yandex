@@ -1,10 +1,9 @@
 import './dialog.scss';
 import Block from '../../tools/block';
 import { Button, Link } from '../../components';
-import { SignUpAPIData } from '../../api/sign-up-api';
 import { router } from '../../pages';
 import { AuthController } from '../../controllers/auth-controller';
-import { AuthApiData } from '../../api/auth-api';
+import { AuthApiData, SignUpAPIData } from '../../api/auth-api';
 import store from '../../store';
 
 export class Dialog extends Block {

@@ -1,5 +1,6 @@
 import EventBus from './event-bus';
 import Handlebars from 'handlebars';
+import { merge } from './helpers';
 
 type Lists = Record<string, Record<string, Block[]>>;
 
@@ -35,7 +36,7 @@ export default class Block {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
       if (this._element) {
-        this._element.addEventListener(eventName, events[eventName]);
+        this._element.addEventListener(eventName, events[eventName].bind(this));
       }
     });
   }
@@ -44,7 +45,7 @@ export default class Block {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
       if (this._element) {
-        this._element.removeEventListener(eventName, events[eventName]);
+        this._element.removeEventListener(eventName, events[eventName].bind(this));
       }
     });
   }
@@ -112,6 +113,11 @@ export default class Block {
 
   setProps = (nextProps: Props) => {
     if (!nextProps) {
+      return;
+    }
+    if (nextProps.lists) {
+      this.lists = merge(this.lists, nextProps) as Lists
+      this._render();
       return;
     }
 

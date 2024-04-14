@@ -3,7 +3,14 @@ import Block from '../../tools/block';
 
 export class Button extends Block {
   constructor(props: Props) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click() {
+          props.onClick && props.onClick()
+        }
+      }
+    });
   }
 
   render() {

@@ -1,29 +1,32 @@
 import './chats.scss';
-import { ChatItem, ChatInput, ChatMessage, Avatar, Link } from '../../components';
+import { ChatItem, ChatInput, ChatMessage, Avatar, Link, Button } from '../../components';
 import Block from '../../tools/block';
 import store from '../../store';
 import { router } from '..';
+import connect from '../../tools/hoc';
+import { ChatsController } from '../../controllers/chats-controller';
+import { AddChat } from '../../components/add-chat';
 
-const chatsData = [
-  {
-    id: 5,
-    avatar: { size: 'medium', src: '' },
-    display_name: 'John Doe',
-    date: '10:59',
-    message: 'Чекаво? Вася!',
-    unread: '9',
-    isSelected: false,
-  },
-  {
-    id: 7,
-    avatar: { size: 'medium', src: '' },
-    display_name: 'Samanta Smith',
-    date: '10:59',
-    message: 'Алло, на!',
-    unread: '7',
-    isSelected: false,
-  },
-];
+// const chatsData = [
+//   {
+//     id: 5,
+//     avatar: { size: 'medium', src: '' },
+//     display_name: 'John Doe',
+//     date: '10:59',
+//     message: 'Чекаво? Вася!',
+//     unread: '9',
+//     isSelected: false,
+//   },
+//   {
+//     id: 7,
+//     avatar: { size: 'medium', src: '' },
+//     display_name: 'Samanta Smith',
+//     date: '10:59',
+//     message: 'Алло, на!',
+//     unread: '7',
+//     isSelected: false,
+//   },
+// ];
 
 const messagesData = [
   {
@@ -41,14 +44,13 @@ const messagesData = [
   },
 ];
 
-export default class ChatsPage extends Block {
+class ChatsPage extends Block {
   constructor(props: Props) {
     super({
       ...props,
       isChatSelected: true,
-      display_name: 'Вадим',
       lists: {
-        chatItems: chatsData.map((e) => new ChatItem(e)),
+        chatItems: store.getState().chats.map(e => new ChatItem(e)),
         messages: messagesData.map((e) => new ChatMessage(e)),
       },
       avatar: new Avatar({}),
@@ -67,6 +69,15 @@ export default class ChatsPage extends Block {
         name: 'search',
         type: 'search',
         placeholder: 'Поиск',
+        onBlur(value: string) {
+          if (!value) {
+            return;
+          }
+          ChatsController.getChats()
+        }
+      }),
+      createChatButton: new AddChat({
+        text: 'Создать чат',
       }),
       profileLink: new Link({
         text: 'Профиль',
@@ -75,6 +86,8 @@ export default class ChatsPage extends Block {
         }
       })
     });
+
+    ChatsController.getChats()
   }
 
   override render() {
@@ -83,6 +96,7 @@ export default class ChatsPage extends Block {
         <div class="chat-page__chats">
           <div class="chat-page__header">
             <div class="chat-page__profile-link-wrapper">
+              {{{ createChatButton }}}
               {{{ profileLink }}}
             </div>
             {{{ searchInput }}}
@@ -121,3 +135,13 @@ export default class ChatsPage extends Block {
     `;
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    lists: {
+      chatItems: state.chats.map(e => new ChatItem(e))
+    }
+  }
+}
+
+export default connect(mapStateToProps)(ChatsPage)

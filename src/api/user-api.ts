@@ -12,6 +12,9 @@ export type UserPasswordAPIData = {
   oldPassword: string
   newPassword: string
 }
+export type UserSearchAPIData = {
+  login: string
+}
 
 export class UserAPI {
   static getUser() {
@@ -22,5 +25,8 @@ export class UserAPI {
   }
   static editPassword(data: UserPasswordAPIData) {
     return new HTTP().put('https://ya-praktikum.tech/api/v2/user/password', { data });
+  }
+  static search(data: UserSearchAPIData) {
+    return new HTTP().post('https://ya-praktikum.tech/api/v2/user/search', { data });
   }
 }

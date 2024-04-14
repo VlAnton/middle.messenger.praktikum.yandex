@@ -1,4 +1,4 @@
-import { UserAPI, UserAPIData, UserPasswordAPIData } from "../api/user-api";
+import { UserAPI, UserAPIData, UserPasswordAPIData, UserSearchAPIData } from "../api/user-api";
 import { router } from "../pages";
 import store from "../store";
 
@@ -26,6 +26,16 @@ export class UserController {
     } catch (error) {
       store.set('isAuthenticated', false);
       router.go('/');
+    }
+  }
+
+  static async searchUserByLogin(data: UserSearchAPIData) {
+    try {
+      const response = await UserAPI.search(data);
+      store.set('chats', JSON.parse(response.responseText))
+    } catch (error) {
+      // store.set('isAuthenticated', false);
+      // router.go('/');
     }
   }
 } 

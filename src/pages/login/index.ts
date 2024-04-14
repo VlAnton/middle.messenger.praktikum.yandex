@@ -2,6 +2,7 @@ import './login.scss';
 
 import Block from '../../tools/block';
 import { Input, Dialog } from '../../components';
+import { router } from '..';
 
 export default class LoginPage extends Block {
   constructor(props: Props) {
@@ -41,11 +42,12 @@ export default class LoginPage extends Block {
         buttonProps: {
           text: 'Авторизоваться',
           type: 'submit',
-          page: 'chats',
         },
         linkProps: {
           text: 'Нет аккаунта?',
-          href: 'register',
+          onClick() {
+            router.go('/register')
+          }
         },
       }),
     });

@@ -68,3 +68,17 @@ export function isEqual(lhs: PlainObject, rhs: PlainObject) {
 
   return true;
 }
+
+export function merge(lhs: Indexed, rhs: Indexed): Indexed {
+	if (typeof lhs !== 'object') {
+		return {}
+	}
+	Object.keys(rhs).forEach((key: string) => {
+		if (lhs.hasOwnProperty(key)) {
+			merge((lhs[key] as Indexed), (rhs[key] as Indexed))
+		} else {
+			lhs[key] = rhs[key]
+		}
+	})
+	return lhs
+}

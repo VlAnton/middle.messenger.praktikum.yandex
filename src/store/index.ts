@@ -8,13 +8,14 @@ export enum StoreEvents {
 const initialState = {
   isAuthenticated: false,
   user: {},
+  chats: []
 };
 
 class Store extends EventBus {
   private static __instance: Store
-  private state: Record<string, any> = {};
+  private state: Props = {};
 
-  constructor(state: Record<string, any>) {
+  constructor(state: Props) {
     super();
     if (Store.__instance) {
       return Store.__instance;

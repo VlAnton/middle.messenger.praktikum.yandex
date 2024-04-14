@@ -1,6 +1,6 @@
 @import '../../assets/variables';
 
-.button {
+.add-chat {
   border: 0;
   border-radius: 8px;
   height: 37px;
@@ -9,5 +9,13 @@
   color: #fff;
   background-color: $bg-color-primary;
   width: 100%;
-  cursor: pointer;
+
+  &__modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(29, 32, 35, 0.40);
+  }
 }
