@@ -12,7 +12,7 @@ export default class Block {
     FLOW_RENDER: 'flow:render',
   };
   public props: Props;
-  private children: Record<string, Block>;
+  protected children: Record<string, Block>;
   private lists: Lists;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
@@ -112,15 +112,16 @@ export default class Block {
   }
 
   setProps = (nextProps: Props) => {
+    console.log(nextProps)
     if (!nextProps) {
       return;
     }
     if (nextProps.lists) {
-      this.lists = merge(this.lists, nextProps) as Lists
+      this.lists = nextProps as Lists
       this._render();
       return;
     }
-
+    
     Object.assign(this.props, nextProps);
   };
 

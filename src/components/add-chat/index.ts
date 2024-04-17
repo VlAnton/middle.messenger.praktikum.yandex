@@ -1,15 +1,24 @@
 import './add-chat.scss';
 import Block from '../../tools/block';
+import { Dialog } from '../dialog';
+import AddChatDialog from './add-chart-dialog';
 
 export class AddChat extends Block {
   constructor(props: Props) {
     super({
       ...props,
       modalOpened: false,
+      dialog: new AddChatDialog({
+        title: 'Создать чат',
+      }),
       events: {
-        click() {
-          (this as unknown as Block).setProps({ modalOpened: true })
-          props.onClick && props.onClick()
+        click(event: Event) {
+          if ((event.target as HTMLElement).className === 'add-chat__overlay') {
+            (this as unknown as Block).setProps({ modalOpened: false })
+            return;
+          }
+          (this as unknown as Block).setProps({ modalOpened: true });
+          props.onClick && props.onClick();
         }
       }
     });
@@ -19,9 +28,8 @@ export class AddChat extends Block {
     return `
       <button class="add-chat">
         {{#if modalOpened}}
-          <div class="add-chat__modal">
-            
-          </div>
+          <div class="add-chat__overlay"></div>
+          {{{ dialog }}}
         {{/if}}
         {{ text }}
       </button>

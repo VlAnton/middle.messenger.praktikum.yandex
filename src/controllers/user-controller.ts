@@ -32,7 +32,7 @@ export class UserController {
   static async searchUserByLogin(data: UserSearchAPIData) {
     try {
       const response = await UserAPI.search(data);
-      store.set('chats', JSON.parse(response.responseText))
+      store.set('searchedUsers', JSON.parse(response.responseText))
     } catch (error) {
       // store.set('isAuthenticated', false);
       // router.go('/');

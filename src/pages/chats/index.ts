@@ -7,27 +7,6 @@ import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { AddChat } from '../../components/add-chat';
 
-// const chatsData = [
-//   {
-//     id: 5,
-//     avatar: { size: 'medium', src: '' },
-//     display_name: 'John Doe',
-//     date: '10:59',
-//     message: 'Чекаво? Вася!',
-//     unread: '9',
-//     isSelected: false,
-//   },
-//   {
-//     id: 7,
-//     avatar: { size: 'medium', src: '' },
-//     display_name: 'Samanta Smith',
-//     date: '10:59',
-//     message: 'Алло, на!',
-//     unread: '7',
-//     isSelected: false,
-//   },
-// ];
-
 const messagesData = [
   {
     isYours: false,

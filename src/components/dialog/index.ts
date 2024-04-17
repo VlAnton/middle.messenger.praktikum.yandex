@@ -19,11 +19,11 @@ export class Dialog extends Block {
         submit: (e: Event) => {
           e.preventDefault();
           e.stopImmediatePropagation();
-          const formHasErrors = props.fields.some(
+          const formHasErrors = props.fields && props.fields.some(
             (el: Block) => el.props.error && el.props.error.length > 0,
           );
           let formHasEmptyFields = false;
-          props.fields.forEach((el: Block) => {
+          props.fields && props.fields.forEach((el: Block) => {
             if (!el.element) {
               return;
             }

@@ -8,7 +8,10 @@ export enum StoreEvents {
 const initialState = {
   isAuthenticated: false,
   user: {},
-  chats: []
+  chats: [],
+  searchedUsers: [],
+  createdChatInForm: null,
+  selectedUsers: []
 };
 
 class Store extends EventBus {

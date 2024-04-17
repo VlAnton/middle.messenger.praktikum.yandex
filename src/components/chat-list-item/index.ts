@@ -1,6 +1,7 @@
 import './chat-list-item.scss';
 import Block from '../../tools/block';
 import { Avatar } from '../avatar';
+import { ChatDeleteButton } from './chat-delete-button';
 
 export class ChatItem extends Block {
   constructor(props: Props) {
@@ -8,6 +9,18 @@ export class ChatItem extends Block {
     super({
       ...props,
       avatar: new Avatar(avatar),
+      cross: new ChatDeleteButton({
+        id: props.id,
+      }),
+      events: {
+        click() {
+          if (this.props.isSelected) {
+            this.setProps({ isSelected: false })
+          } else {
+            this.setProps({ isSelected: true })
+          }
+        }
+      }
     });
   }
 
@@ -18,7 +31,7 @@ export class ChatItem extends Block {
         <div class="chat-item__block {{#if isSelected }} chat-item__selected{{/if}}">
           {{{ avatar }}}
           <div class="chat-item__message-block">
-            <div class="chat-item__name">{{ title }}</div>
+            <div class="chat-item__name">{{ title }} {{id}}</div>
             {{#if last_message }}
               <div class="chat-item__message">
                 <p class="chat-item__message-text">
@@ -28,8 +41,9 @@ export class ChatItem extends Block {
             {{/if}}
           </div>
           <div class="chat-item__info-block">
-            <div class="chat-item__date">{{ date }}</div>
-            {{#if unread_count}}
+          <div class="chat-item__date">{{ date }}</div>
+          {{{cross}}}
+          {{#if unread_count}}
               <div class="chat-item__unread">
                 {{ unread_count }}
               </div>

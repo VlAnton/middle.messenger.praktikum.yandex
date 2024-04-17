@@ -1,0 +1,26 @@
+@import '../../../assets/variables';
+
+.dialog {
+  background-color: $dialog-bg-color;
+  box-shadow: $dialog-box-shadow;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  &__title {
+    color: $text-color-primary;
+    font: $font-big;
+    align-self: center;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+}
