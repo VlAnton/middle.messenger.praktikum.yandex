@@ -5,5 +5,5 @@ export { Input } from './input';
 export { Button } from './button';
 export { Link } from './link';
 export { ChatMessage } from './chat-message';
-export { ChatItem } from './chat-list-item';
+// export { ChatItem } from './chat-list-item';
 export { ChatInput } from './chat-input';

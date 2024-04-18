@@ -15,7 +15,7 @@ export class UserItem extends Block {
       events: {
         click() {
           const id = (this as unknown as Block).props.id
-          if (!store.getState().selectedUsers.includes(id)) {
+          if (!this.props.isSelected) {
             this.setProps({isSelected: true})
             store.set('selectedUsers', [
               ...store.getState().selectedUsers, id

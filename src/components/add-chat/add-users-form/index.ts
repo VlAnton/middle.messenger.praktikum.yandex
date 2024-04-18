@@ -1,6 +1,6 @@
 import './add-users-dialog.scss';
 import Block from '../../../tools/block';
-import { Button, ChatInput, ChatItem } from '../..';
+import { Button, ChatInput } from '../..';
 import store from '../../../store';
 import { UserController } from '../../../controllers/user-controller';
 import connect from '../../../tools/hoc';
@@ -56,7 +56,6 @@ class AddUsersDialogForm extends Block {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     lists: {
       users: state.searchedUsers.map(e => new UserItem({...e}))

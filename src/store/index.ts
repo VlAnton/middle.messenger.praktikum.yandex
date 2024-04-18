@@ -9,9 +9,11 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   chats: [],
+  messages: [],
   searchedUsers: [],
   createdChatInForm: null,
-  selectedUsers: []
+  selectedUsers: [],
+  selectedChat: null,
 };
 
 class Store extends EventBus {

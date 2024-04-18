@@ -1,5 +1,6 @@
 import './chats.scss';
-import { ChatItem, ChatInput, ChatMessage, Avatar, Link, Button } from '../../components';
+import { ChatInput, ChatMessage, Avatar, Link } from '../../components';
+import ChatItem from '../../components/chat-list-item';
 import Block from '../../tools/block';
 import store from '../../store';
 import { router } from '..';
@@ -7,30 +8,13 @@ import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { AddChat } from '../../components/add-chat';
 
-const messagesData = [
-  {
-    isYours: false,
-    message:
-      'Go на свалкуa sldkfjlkasjdflk jaslkdjflkjs ajdlkfjlaskj fklasfjd lkfjlask djlkjs fldkj asjkdf kjasndkj fnkjsdn kjfan kjdnaksj fnkjasdn knfskajdn kjsan kdjnf skdjnf kjsndkfn ksjdn kfjnksj ndkn kfnsdkj nfkjns dkjnk jnfksjn kdjn kjnsdkjn fkjsnd kjnfk sdjnkj nfdksjn kdjsnsdjknfk djsnfkjn fsdkjn kfjnsdk jnkjsn kfjndskj nkjsdn kfn fsdknkds jnkjdsn kjfsd!',
-    date: '10:49',
-  },
-  { isYours: false, message: 'Привет', date: '10:49' },
-  {
-    isYours: true,
-    message: 'Олололололололололололо',
-    isRead: true,
-    date: '10:49',
-  },
-];
-
 class ChatsPage extends Block {
   constructor(props: Props) {
     super({
       ...props,
-      isChatSelected: true,
       lists: {
         chatItems: store.getState().chats.map(e => new ChatItem(e)),
-        messages: messagesData.map((e) => new ChatMessage(e)),
+        messages: [],
       },
       avatar: new Avatar({}),
       chatInput: new ChatInput({
@@ -67,6 +51,10 @@ class ChatsPage extends Block {
     });
 
     ChatsController.getChats()
+    if (store.getState().selectedChat) {
+      this.setProps({isChatSelected: true})
+      // ChatsController.
+    }
   }
 
   override render() {
@@ -116,10 +104,13 @@ class ChatsPage extends Block {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     lists: {
-      chatItems: state.chats.map(e => new ChatItem(e))
-    }
+      chatItems: state.chats.map(e => new ChatItem(e)),
+      messages: state.messages.map(e => new ChatMessage(e)),
+    },
+    isChatSelected: Boolean(state.selectedChat)
   }
 }
 

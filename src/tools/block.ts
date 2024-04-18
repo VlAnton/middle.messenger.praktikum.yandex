@@ -112,14 +112,12 @@ export default class Block {
   }
 
   setProps = (nextProps: Props) => {
-    console.log(nextProps)
     if (!nextProps) {
       return;
     }
     if (nextProps.lists) {
       this.lists = nextProps as Lists
       this._render();
-      return;
     }
     
     Object.assign(this.props, nextProps);
