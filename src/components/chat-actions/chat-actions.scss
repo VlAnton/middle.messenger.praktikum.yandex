@@ -1,0 +1,29 @@
+@import '../../assets/variables';
+
+.chat-actions {
+  width: 25px;
+  height: 25px;
+  padding: 5px 11px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+  
+  &__menu {
+    position: absolute;
+    background-color: $dialog-bg-color;
+    box-shadow: $dialog-box-shadow;
+    padding: 12px;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    right: 0;
+    top: 29px;
+    width: 335px;
+  }
+}

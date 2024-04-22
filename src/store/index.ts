@@ -13,6 +13,7 @@ const initialState = {
   searchedUsers: [],
   createdChatInForm: null,
   selectedUsers: [],
+  usersToDelete: [],
   selectedChat: null,
 };
 

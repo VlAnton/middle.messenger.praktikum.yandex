@@ -1,7 +1,7 @@
 import './chat-list-item.scss';
 import Block from '../../tools/block';
 import { Avatar } from '../avatar';
-import { ChatDeleteButton } from './chat-delete-button';
+import { ChatDeleteButton } from '../delete-button';
 import store from '../../store';
 import { ChatsController } from '../../controllers/chats-controller';
 
@@ -11,9 +11,6 @@ export default class ChatItem extends Block {
     super({
       ...props,
       avatar: new Avatar(avatar),
-      cross: new ChatDeleteButton({
-        id: props.id,
-      }),
       events: {
         click() {
           const self = this as unknown as Block

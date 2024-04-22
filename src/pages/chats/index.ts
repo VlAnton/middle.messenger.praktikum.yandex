@@ -8,6 +8,7 @@ import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { AddChat } from '../../components/add-chat';
 import { ChatForm } from '../../components/chat-form';
+import { ChatActions } from '../../components/chat-actions';
 
 class ChatsPage extends Block {
   constructor(props: Indexed) {
@@ -33,7 +34,8 @@ class ChatsPage extends Block {
         onClick() {
           router.go('/profile')
         }
-      })
+      }),
+      chatActions: new ChatActions({})
     });
     
     ChatsController.getChats()
@@ -64,9 +66,7 @@ class ChatsPage extends Block {
                   {{{ avatar }}}
                   <p>{{ display_name }}</p>
                 </div>
-                <div class="chat-page__more">
-                  <img class="icon-dots" src="../../assets/icons/dots.svg" alt="dots">
-                </div>
+                {{{ chatActions }}}
               </div>
               <div class="chat-page__chat-messages">
                 {{{ messages }}}

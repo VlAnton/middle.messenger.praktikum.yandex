@@ -37,6 +37,23 @@ export class ChatsController {
     }
   }
 
+  static async getChatUsers () {
+    try {
+      const response = await ChatsApi.getChatUsers()
+      store.set('usersToDelete', JSON.parse(response.responseText))
+    } catch {
+
+    }
+  }
+
+  // static async deleteUsersFromChat(data: AddUsersAPI) {
+  //   try {
+  //     await ChatsApi.addUsers(data)
+  //   } catch {
+
+  //   }
+  // }
+
   static async getChatToken() {
     try {
       const chatId = store.getState().selectedChat;

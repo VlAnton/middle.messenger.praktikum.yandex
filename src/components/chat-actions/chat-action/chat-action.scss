@@ -1,0 +1,44 @@
+@import '../../../assets/variables';
+
+.chat-action {
+  padding: 8px;
+  border-radius: 12px;
+
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+  & > p {
+    margin: 0;
+  }
+
+  &__negative {
+    color: $red-normal-color;
+  }
+
+  &__dialog {
+    position: absolute;
+    background-color: $dialog-bg-color;
+    box-shadow: $dialog-box-shadow;
+    padding: 12px;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    right: 25vw;
+    top: 15vh;
+    z-index: 100;
+
+    margin: auto;
+    width: 335px;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: -50px;
+    right: -20px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(29, 32, 35, 0.40);
+  }
+}

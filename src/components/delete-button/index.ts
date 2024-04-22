@@ -1,13 +1,12 @@
-import { ChatsController } from "../../../controllers/chats-controller";
-import Block from "../../../tools/block";
+import Block from "../../tools/block";
 
-export class ChatDeleteButton extends Block {
+export class DeleteButton extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
       events: {
         click() {
-          ChatsController.deleteChat({ chatId: props.id })
+          props.onClick && props.onClick()
         }
       }
     });
