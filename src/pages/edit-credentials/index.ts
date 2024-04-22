@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { Input, Button, BackButton } from '../../components';
 import store from '../../store';
 import { UserController } from '../../controllers/user-controller';
-import { UserAPIData } from '../../api/user-api';
+import { UserAPIData } from '../../types/api';
 
 export default class EditCredentials extends Block {
   constructor(props: Indexed) {

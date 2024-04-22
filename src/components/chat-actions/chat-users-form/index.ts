@@ -5,6 +5,7 @@ import store from '../../../store';
 import connect from '../../../tools/hoc';
 import { UserItem } from '../../user-item';
 import { ChatsController } from '../../../controllers/chats-controller';
+import { User } from '../../../types/common';
 
 class DeleteUsersDialogForm extends Block {
   constructor(props: Indexed) {
@@ -50,15 +51,6 @@ class DeleteUsersDialogForm extends Block {
     `;
   }
 }
-
-type User = {
-  avatar: string | null;
-  display_name: string | null;
-  first_name: string;
-  id: number;
-  login: string;
-  second_name: string;
-};
 
 const mapStateToProps = (state: Indexed) => {
   return {

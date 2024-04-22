@@ -2,7 +2,7 @@ import './edit-password.scss';
 import Block from '../../tools/block';
 import { Input, Button, BackButton } from '../../components';
 import { UserController } from '../../controllers/user-controller';
-import { UserPasswordAPIData } from '../../api/user-api';
+import { UserPasswordAPIData } from '../../types/api';
 
 export default class EditPassword extends Block {
   constructor(props: Indexed) {

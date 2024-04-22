@@ -1,6 +1,7 @@
-import { AuthApi, AuthApiData, SignUpAPIData } from '../api/auth-api';
+import { AuthApi } from '../api/auth-api';
 import { router } from '../pages';
 import store from '../store';
+import { AuthApiData, SignUpAPIData } from '../types/api';
 import { UserController } from './user-controller';
 
 export class AuthController {

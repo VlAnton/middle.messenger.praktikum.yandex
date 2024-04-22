@@ -1,20 +1,5 @@
 import HTTP from '../tools/fetch';
-
-export type UserAPIData = {
-  first_name: string;
-  second_name: string;
-  login: string;
-  display_name: string;
-  email: string;
-  phone: string;
-};
-export type UserPasswordAPIData = {
-  oldPassword: string;
-  newPassword: string;
-};
-export type UserSearchAPIData = {
-  login: string;
-};
+import { UserAPIData, UserPasswordAPIData, UserSearchAPIData } from '../types/api';
 
 export class UserAPI {
   static getUser() {

@@ -1,10 +1,6 @@
-import {
-  ChatsApi,
-  CreateChatsApi,
-  DeleteChatsApi,
-  UsersAPI,
-} from '../api/chats-api';
+import { ChatsApi } from '../api/chats-api';
 import store from '../store';
+import { CreateChatsApi, DeleteChatsApi, UsersAPI } from '../types/api';
 
 export class ChatsController {
   static websocket?: WebSocket;
@@ -55,14 +51,6 @@ export class ChatsController {
       (store.getState());
     } catch {}
   }
-
-  // static async deleteUsersFromChat(data: AddUsersAPI) {
-  //   try {
-  //     await ChatsApi.addUsers(data)
-  //   } catch {
-
-  //   }
-  // }
 
   static async getChatToken() {
     try {

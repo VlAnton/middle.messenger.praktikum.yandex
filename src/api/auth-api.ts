@@ -1,18 +1,5 @@
 import HTTP from '../tools/fetch';
-
-export type AuthApiData = {
-  login: string;
-  password: string;
-};
-
-export type SignUpAPIData = {
-  first_name: string;
-  second_name: string;
-  login: string;
-  email: string;
-  password: string;
-  phone: string;
-};
+import { AuthApiData, SignUpAPIData } from '../types/api';
 
 export class AuthApi {
   static signIn(data: AuthApiData) {

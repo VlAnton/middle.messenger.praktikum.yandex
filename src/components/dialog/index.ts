@@ -3,8 +3,8 @@ import Block from '../../tools/block';
 import { Button, Link } from '../../components';
 import { router } from '../../pages';
 import { AuthController } from '../../controllers/auth-controller';
-import { AuthApiData, SignUpAPIData } from '../../api/auth-api';
 import store from '../../store';
+import { AuthApiData, SignUpAPIData } from '../../types/api';
 
 export class Dialog extends Block {
   constructor(props: Indexed) {

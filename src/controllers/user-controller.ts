@@ -1,11 +1,7 @@
-import {
-  UserAPI,
-  UserAPIData,
-  UserPasswordAPIData,
-  UserSearchAPIData,
-} from '../api/user-api';
+import { UserAPI } from '../api/user-api';
 import { router } from '../pages';
 import store from '../store';
+import { UserAPIData, UserPasswordAPIData, UserSearchAPIData } from '../types/api';
 
 export class UserController {
   static async getUser() {

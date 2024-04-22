@@ -1,14 +1,6 @@
 import store from '../store';
 import HTTP from '../tools/fetch';
-
-export type CreateChatsApi = Record<string, string>;
-export type DeleteChatsApi = {
-  chatId: number;
-};
-export type UsersAPI = {
-  chatId: number;
-  users: Array<Record<string, number>>;
-};
+import { CreateChatsApi, DeleteChatsApi, UsersAPI } from '../types/api';
 
 export class ChatsApi {
   static getChats() {
