@@ -1,4 +1,4 @@
-import { AddUsersAPI, ChatsApi, CreateChatsApi, DeleteChatsApi } from "../api/chats-api";
+import { ChatsApi, CreateChatsApi, DeleteChatsApi, UsersAPI } from "../api/chats-api";
 import store from "../store";
 
 export class ChatsController {
@@ -29,7 +29,7 @@ export class ChatsController {
     }
   }
 
-  static async addUsersToChat(data: AddUsersAPI) {
+  static async addUsersToChat(data: UsersAPI) {
     try {
       await ChatsApi.addUsers(data)
     } catch {
@@ -40,7 +40,17 @@ export class ChatsController {
   static async getChatUsers () {
     try {
       const response = await ChatsApi.getChatUsers()
-      store.set('usersToDelete', JSON.parse(response.responseText))
+      store.set('usersToDelete', JSON.parse((response as XMLHttpRequest).responseText))
+    } catch {
+
+    }
+  }
+
+  static async deleteChatUsers (data: UsersAPI) {
+    try {
+      await ChatsApi.deleteUsers(data)
+      await ChatsController.getChatUsers()
+      console.log(store.getState())
     } catch {
 
     }

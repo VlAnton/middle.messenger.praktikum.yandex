@@ -22,17 +22,27 @@ class AddUsersDialogForm extends Block {
           }
         }
       }),
-      createButton: new Button({ text: 'Добавить пользователей' }),
+      createButton: new Button({
+        text: 'Добавить пользователей',
+        className: 'button__add'
+      }),
       events: {
-        submit: (e: Event) => {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          const state = store.getState()
-          const users = state.selectedUsers
-          ChatsController.addUsersToChat({
-            chatId: state.createdChatInForm.id,
-            users
-          })
+        click(e: Event) {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+          e.stopPropagation()
+          if (!e.target) {
+            return
+          }
+          if ((e.target as HTMLButtonElement).classList.contains('button__add')) {
+            const state = store.getState()
+            const users = state.selectedUsers
+            ChatsController.addUsersToChat({
+              chatId: state.createdChatInForm?.id || state.selectedChat,
+              users
+            })
+            state.set('selectedUsers', [])
+          }
         },
       },
     });

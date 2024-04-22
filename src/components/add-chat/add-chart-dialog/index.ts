@@ -33,7 +33,7 @@ class AddChatDialog extends Block {
 
   render() {
     return `
-      <form class="add-chat-dialog">
+      <form class="add-chat-dialog {{#if className}} {{className}} {{/if}}">
         <h1 class="add-chat-dialog__title">
           {{ title }}
         </h1>

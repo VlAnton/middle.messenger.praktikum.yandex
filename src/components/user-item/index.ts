@@ -13,7 +13,9 @@ export class UserItem extends Block {
       avatar: new Avatar(avatar),
       selectedChats: [],
       events: {
-        click() {
+        click(e: Event) {
+          e.preventDefault()
+          e.stopImmediatePropagation()
           const self = this as unknown as Block
           const id = self.props.id
           if (!self.props.isSelected) {

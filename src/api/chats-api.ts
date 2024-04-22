@@ -5,9 +5,9 @@ export type CreateChatsApi = Record<string, string>
 export type DeleteChatsApi = {
   chatId: number
 }
-export type AddUsersAPI = {
+export type UsersAPI = {
   chatId: number,
-  users: Record<string, number>
+  users: Array<Record<string, number>>
 }
 
 export class ChatsApi {
@@ -20,12 +20,15 @@ export class ChatsApi {
   static deleteChat(data: DeleteChatsApi) {
     return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats', { data });
   }
-  static addUsers(data: AddUsersAPI) {
+  static addUsers(data: UsersAPI) {
     return new HTTP().put('https://ya-praktikum.tech/api/v2/chats/users', { data });
   }
   static getChatUsers() {
     const id = store.getState().selectedChat
     return new HTTP().get(`https://ya-praktikum.tech/api/v2/chats/${id}/users`);
+  }
+  static deleteUsers(data: UsersAPI) {
+    return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats/users', { data });
   }
   static getChatToken(chatId: string) {
     return new HTTP().post('https://ya-praktikum.tech/api/v2/chats/token/' + chatId);

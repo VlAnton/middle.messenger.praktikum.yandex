@@ -13,17 +13,23 @@ class DeleteUsersDialogForm extends Block {
       lists: {
         users: store.getState().searchedUsers.map((e: User) => new UserItem({...e}))
       },
-      deleteButton: new Button({ text: 'Удалить пользователей' }),
+      deleteButton: new Button({
+        text: 'Удалить пользователей',
+        className: 'button__delete'
+      }),
       events: {
         click(e: Event) {
           e.preventDefault()
           e.stopImmediatePropagation()
-        },
-        submit(e: Event) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          const state = store.getState()
-          const users = state.selectedUsers
+          if (!e.target) {
+            return
+          }
+          if ((e.target as HTMLButtonElement).classList.contains('button__delete')) {
+            const state = store.getState()
+            const users = state.selectedUsers
+            const chatId = state.selectedChat
+            ChatsController.deleteChatUsers({ chatId, users })
+          }
         },
       },
     });

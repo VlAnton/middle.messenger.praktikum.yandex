@@ -2,17 +2,19 @@ import './chat-action.scss';
 import Block from '../../../tools/block';
 import ChatForm from '../chat-users-form';
 import { ChatsController } from '../../../controllers/chats-controller';
+import AddUsersDialogForm from '../../add-chat/add-users-form';
 
 export class ChatAction extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
       isOpened: false,
-      chatForm: new ChatForm({}),
+      deleteChatForm: new ChatForm({}),
+      addChatForm: new AddUsersDialogForm({}),
       events: {
         click(event: Event) {
           event.preventDefault()
-          event.stopImmediatePropagation()
+          event.stopPropagation()
           ChatsController.getChatUsers()
           props.onClick && props.onClick(this)
         }
@@ -26,7 +28,11 @@ export class ChatAction extends Block {
         <p class="{{#if negative}} chat-action__negative {{/if}}">{{ title }}</p>
         {{#if isOpened}}
           <div class="chat-action__dialog">
-            {{{ chatForm }}}
+            {{#if isDeletion}}
+              {{{ deleteChatForm }}}
+            {{else}}
+              {{{ addChatForm }}}
+            {{/if}}
           </div>
           <div class="chat-action__overlay"></div>
         {{/if}}

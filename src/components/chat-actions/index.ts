@@ -1,6 +1,8 @@
 import './chat-actions.scss';
 import Block from '../../tools/block';
 import { ChatAction } from './chat-action';
+import { ChatsController } from '../../controllers/chats-controller';
+import store from '../../store';
 
 export class ChatActions extends Block {
   constructor(props: Indexed) {
@@ -10,7 +12,8 @@ export class ChatActions extends Block {
       lists: {
         actions: [
           new ChatAction({
-            title: 'Редактировать список пользователей',
+            title: 'Удаление пользователей',
+            isDeletion: true,
             onClick(self: Block) {
               if (self.props.isOpened) {
                 self.setProps({ isOpened: false })
@@ -19,7 +22,27 @@ export class ChatActions extends Block {
               }
             }
           }),
-          new ChatAction({ title: 'Удалить чат', negative: true }),
+          new ChatAction({
+            title: 'Добавление пользователей',
+            type: 'add',
+            onClick(self: Block) {
+              if (self.props.isOpened) {
+                self.setProps({ isOpened: false })
+              } else {
+                self.setProps({ isOpened: true })
+              }
+            }
+          }),
+          new ChatAction({
+            title: 'Удалить чат',
+            negative: true,
+            onClick() {
+              ChatsController.deleteChat({
+                chatId: store.getState().selectedChat
+              })
+              store.set('selectedChat', null)
+            }
+          }),
         ]
       },
       events: {

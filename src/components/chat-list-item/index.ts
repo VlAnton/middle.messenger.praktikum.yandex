@@ -1,7 +1,6 @@
 import './chat-list-item.scss';
 import Block from '../../tools/block';
 import { Avatar } from '../avatar';
-import { ChatDeleteButton } from '../delete-button';
 import store from '../../store';
 import { ChatsController } from '../../controllers/chats-controller';
 
