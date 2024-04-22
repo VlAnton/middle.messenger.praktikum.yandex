@@ -1,10 +1,15 @@
-import { UserAPI, UserAPIData, UserPasswordAPIData, UserSearchAPIData } from "../api/user-api";
-import { router } from "../pages";
-import store from "../store";
+import {
+  UserAPI,
+  UserAPIData,
+  UserPasswordAPIData,
+  UserSearchAPIData,
+} from '../api/user-api';
+import { router } from '../pages';
+import store from '../store';
 
 export class UserController {
   static async getUser() {
-    return await UserAPI.getUser()
+    return await UserAPI.getUser();
   }
 
   static async editCredentials(data: UserAPIData) {
@@ -32,10 +37,13 @@ export class UserController {
   static async searchUserByLogin(data: UserSearchAPIData) {
     try {
       const response = await UserAPI.search(data);
-      store.set('searchedUsers', JSON.parse((response as XMLHttpRequest).responseText))
+      store.set(
+        'searchedUsers',
+        JSON.parse((response as XMLHttpRequest).responseText),
+      );
     } catch (error) {
       // store.set('isAuthenticated', false);
       // router.go('/');
     }
   }
-} 
+}

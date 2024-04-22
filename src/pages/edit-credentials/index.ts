@@ -64,7 +64,9 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Имя в чате',
-        value: store.getState().user.display_name ? store.getState().user.display_name : '',
+        value: store.getState().user.display_name
+          ? store.getState().user.display_name
+          : '',
         name: 'display_name',
       }),
       new Input({
@@ -106,7 +108,7 @@ export default class EditCredentials extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            UserController.editCredentials(res as UserAPIData)
+            UserController.editCredentials(res as UserAPIData);
           }
         },
       },
@@ -115,7 +117,7 @@ export default class EditCredentials extends Block {
         type: 'submit',
       }),
       backButton: new BackButton({
-        link: '/settings'
+        link: '/settings',
       }),
       lists: {
         fields,

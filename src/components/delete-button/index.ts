@@ -1,4 +1,4 @@
-import Block from "../../tools/block";
+import Block from '../../tools/block';
 
 export class DeleteButton extends Block {
   constructor(props: Indexed) {
@@ -6,9 +6,9 @@ export class DeleteButton extends Block {
       ...props,
       events: {
         click() {
-          props.onClick && props.onClick()
-        }
-      }
+          props.onClick && props.onClick();
+        },
+      },
     });
   }
 
@@ -17,6 +17,6 @@ export class DeleteButton extends Block {
       <div>
         <img src="../../../assets/icons/Cross.svg" alt="cross">
       </div>
-    `
+    `;
   }
 }

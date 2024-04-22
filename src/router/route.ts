@@ -37,6 +37,6 @@ export default class Route {
       navigate(this._block, this._props.rootQuery);
       return;
     }
-    this._block.show()
+    this._block.show();
   }
 }

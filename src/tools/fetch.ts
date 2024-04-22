@@ -68,8 +68,8 @@ export default class HTTPTransport {
       const xhr = new XMLHttpRequest();
       const isGet = method === METHODS.GET;
       const newUrl = isGet
-      ? `${url}?${queryStringify(data as Record<string, unknown> || {})}`
-      : url;
+        ? `${url}?${queryStringify((data as Record<string, unknown>) || {})}`
+        : url;
 
       xhr.open(method!, newUrl);
 
@@ -86,12 +86,12 @@ export default class HTTPTransport {
 
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
-      xhr.withCredentials = true
+      xhr.withCredentials = true;
 
       if (isGet || !data) {
         xhr.send();
       } else {
-        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));
       }
     });

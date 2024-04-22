@@ -13,12 +13,12 @@ export class ChatAction extends Block {
       addChatForm: new AddUsersDialogForm({}),
       events: {
         click(event: Event) {
-          event.preventDefault()
-          event.stopPropagation()
-          ChatsController.getChatUsers()
-          props.onClick && props.onClick(this)
-        }
-      }
+          event.preventDefault();
+          event.stopPropagation();
+          ChatsController.getChatUsers();
+          props.onClick && props.onClick(this);
+        },
+      },
     });
   }
 

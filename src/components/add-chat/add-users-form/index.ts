@@ -12,42 +12,46 @@ class AddUsersDialogForm extends Block {
     super({
       ...props,
       lists: {
-        users: store.getState().searchedUsers.map((e: User) => new UserItem({...e}))
+        users: store
+          .getState()
+          .searchedUsers.map((e: User) => new UserItem({ ...e })),
       },
-      userInput: new ChatInput({ 
+      userInput: new ChatInput({
         title: 'Название чата',
         onBlur(value: string) {
           if (value) {
-            UserController.searchUserByLogin({ login: value })
+            UserController.searchUserByLogin({ login: value });
           }
-        }
+        },
       }),
       createButton: new Button({
         text: 'Добавить пользователей',
-        className: 'button__add'
+        className: 'button__add',
       }),
       events: {
         click(e: Event) {
-          e.preventDefault()
-          e.stopImmediatePropagation()
-          e.stopPropagation()
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          e.stopPropagation();
           if (!e.target) {
-            return
+            return;
           }
-          if ((e.target as HTMLButtonElement).classList.contains('button__add')) {
-            const state = store.getState()
-            const users = state.selectedUsers
+          if (
+            (e.target as HTMLButtonElement).classList.contains('button__add')
+          ) {
+            const state = store.getState();
+            const users = state.selectedUsers;
             ChatsController.addUsersToChat({
               chatId: state.createdChatInForm?.id || state.selectedChat,
-              users
-            })
-            state.set('selectedUsers', [])
+              users,
+            });
+            state.set('selectedUsers', []);
           }
         },
       },
     });
 
-    UserController.searchUserByLogin({ login: '' })
+    UserController.searchUserByLogin({ login: '' });
   }
 
   render() {
@@ -66,20 +70,20 @@ class AddUsersDialogForm extends Block {
 }
 
 type User = {
-  avatar: string | null
-  display_name: string | null
-  first_name: string
-  id: number
-  login: string
-  second_name: string
-}
+  avatar: string | null;
+  display_name: string | null;
+  first_name: string;
+  id: number;
+  login: string;
+  second_name: string;
+};
 
 const mapStateToProps = (state: Indexed) => {
   return {
     lists: {
-      users: state.searchedUsers.map((e: User) => new UserItem({...e}))
-    }
-  }
-}
+      users: state.searchedUsers.map((e: User) => new UserItem({ ...e })),
+    },
+  };
+};
 
-export default connect(mapStateToProps)(AddUsersDialogForm)
+export default connect(mapStateToProps)(AddUsersDialogForm);

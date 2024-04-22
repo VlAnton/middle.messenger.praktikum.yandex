@@ -1,14 +1,14 @@
 import store from '../store';
 import HTTP from '../tools/fetch';
 
-export type CreateChatsApi = Record<string, string>
+export type CreateChatsApi = Record<string, string>;
 export type DeleteChatsApi = {
-  chatId: number
-}
+  chatId: number;
+};
 export type UsersAPI = {
-  chatId: number,
-  users: Array<Record<string, number>>
-}
+  chatId: number;
+  users: Array<Record<string, number>>;
+};
 
 export class ChatsApi {
   static getChats() {
@@ -18,19 +18,27 @@ export class ChatsApi {
     return new HTTP().post('https://ya-praktikum.tech/api/v2/chats', { data });
   }
   static deleteChat(data: DeleteChatsApi) {
-    return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats', { data });
+    return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats', {
+      data,
+    });
   }
   static addUsers(data: UsersAPI) {
-    return new HTTP().put('https://ya-praktikum.tech/api/v2/chats/users', { data });
+    return new HTTP().put('https://ya-praktikum.tech/api/v2/chats/users', {
+      data,
+    });
   }
   static getChatUsers() {
-    const id = store.getState().selectedChat
+    const id = store.getState().selectedChat;
     return new HTTP().get(`https://ya-praktikum.tech/api/v2/chats/${id}/users`);
   }
   static deleteUsers(data: UsersAPI) {
-    return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats/users', { data });
+    return new HTTP().delete('https://ya-praktikum.tech/api/v2/chats/users', {
+      data,
+    });
   }
   static getChatToken(chatId: string) {
-    return new HTTP().post('https://ya-praktikum.tech/api/v2/chats/token/' + chatId);
+    return new HTTP().post(
+      'https://ya-praktikum.tech/api/v2/chats/token/' + chatId,
+    );
   }
 }

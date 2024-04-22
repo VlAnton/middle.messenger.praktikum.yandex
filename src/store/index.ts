@@ -1,5 +1,5 @@
-import EventBus from "../tools/event-bus";
-import { set } from "../tools/helpers";
+import EventBus from '../tools/event-bus';
+import { set } from '../tools/helpers';
 
 export enum StoreEvents {
   Updated = 'updated',
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 class Store extends EventBus {
-  private static __instance: Store
+  private static __instance: Store;
   private state: Indexed = {};
 
   constructor(state: Indexed) {
@@ -28,7 +28,7 @@ class Store extends EventBus {
     }
     this.state = state;
     this.listeners[StoreEvents.Updated] = [];
-    Store.__instance = this;    
+    Store.__instance = this;
   }
 
   public getState() {

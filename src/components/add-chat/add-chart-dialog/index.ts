@@ -21,10 +21,10 @@ class AddChatDialog extends Block {
           e.stopImmediatePropagation();
           const { value } = this.children.titleInput.props;
           if (value) {
-            ChatsController.createChat({ title: value })
+            ChatsController.createChat({ title: value });
           }
           if (store.getState().createdChatInForm) {
-            this.setProps({ isUsersAvailiable: true })
+            this.setProps({ isUsersAvailiable: true });
           }
         },
       },
@@ -50,7 +50,7 @@ class AddChatDialog extends Block {
 }
 
 const mapStateToProps = (state: Indexed) => {
-  return {isUsersAvailiable: Boolean(state.createdChatInForm)}
-}
+  return { isUsersAvailiable: Boolean(state.createdChatInForm) };
+};
 
-export default connect(mapStateToProps)(AddChatDialog)
+export default connect(mapStateToProps)(AddChatDialog);

@@ -16,22 +16,22 @@ class ProfilePage extends Block {
         text: 'Изменить данные',
         xl: true,
         onClick: (e: Event) => {
-          e.preventDefault()
-          e.stopImmediatePropagation()
-          router.go('/change-profile')
-        }
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          router.go('/change-profile');
+        },
       }),
       changePassword: new Link({
         text: 'Изменить пароль',
         xl: true,
         onClick: (e: Event) => {
-          e.preventDefault()
-          e.stopImmediatePropagation()
-          router.go('/change-password')
-        }
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          router.go('/change-password');
+        },
       }),
       backButton: new BackButton({
-        link: '/messenger'
+        link: '/messenger',
       }),
       exit: new Link({
         text: 'Выйти',
@@ -39,9 +39,9 @@ class ProfilePage extends Block {
         xl: true,
         negative: true,
         onClick: (e: Event) => {
-          e.preventDefault()
-          AuthController.signOut()
-        }
+          e.preventDefault();
+          AuthController.signOut();
+        },
       }),
     });
   }
@@ -107,6 +107,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state: Indexed) => ({...state.user})
+const mapStateToProps = (state: Indexed) => ({ ...state.user });
 
-export default connect(mapStateToProps)(ProfilePage)
+export default connect(mapStateToProps)(ProfilePage);

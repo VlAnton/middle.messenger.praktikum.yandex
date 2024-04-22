@@ -12,27 +12,27 @@ export default class ChatItem extends Block {
       avatar: new Avatar(avatar),
       events: {
         click() {
-          const self = this as unknown as Block
+          const self = this as unknown as Block;
           if (self.props.selectedChat === self.props.id) {
-            self.setProps({ isSelected: false })
-            store.set('selectedChat', null)
+            self.setProps({ isSelected: false });
+            store.set('selectedChat', null);
           } else {
-            self.setProps({ isSelected: true })
-            store.set('selectedChat', self.props.id)
-            ChatsController.getChatToken()
+            self.setProps({ isSelected: true });
+            store.set('selectedChat', self.props.id);
+            ChatsController.getChatToken();
           }
-        }
-      }
+        },
+      },
     });
-    const date = this.props.last_message?.time
+    const date = this.props.last_message?.time;
     if (date) {
-      const newDate = new Date(date)
+      const newDate = new Date(date);
       this.setProps({
-        date: `${newDate.toLocaleDateString('ru-RU')} ${newDate.toLocaleTimeString('ru-RU', { weekday: 'short' })}`
-      })
+        date: `${newDate.toLocaleDateString('ru-RU')} ${newDate.toLocaleTimeString('ru-RU', { weekday: 'short' })}`,
+      });
     }
     if (store.getState().selectedChat === this.props.id) {
-      this.setProps({ isSelected: true })
+      this.setProps({ isSelected: true });
     }
   }
 

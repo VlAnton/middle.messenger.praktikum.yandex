@@ -16,46 +16,46 @@ export class ChatActions extends Block {
             isDeletion: true,
             onClick(self: Block) {
               if (self.props.isOpened) {
-                self.setProps({ isOpened: false })
+                self.setProps({ isOpened: false });
               } else {
-                self.setProps({ isOpened: true })
+                self.setProps({ isOpened: true });
               }
-            }
+            },
           }),
           new ChatAction({
             title: 'Добавление пользователей',
             type: 'add',
             onClick(self: Block) {
               if (self.props.isOpened) {
-                self.setProps({ isOpened: false })
+                self.setProps({ isOpened: false });
               } else {
-                self.setProps({ isOpened: true })
+                self.setProps({ isOpened: true });
               }
-            }
+            },
           }),
           new ChatAction({
             title: 'Удалить чат',
             negative: true,
             onClick() {
               ChatsController.deleteChat({
-                chatId: store.getState().selectedChat
-              })
-              store.set('selectedChat', null)
-            }
+                chatId: store.getState().selectedChat,
+              });
+              store.set('selectedChat', null);
+            },
           }),
-        ]
+        ],
       },
       events: {
         click(event: Event) {
-          event.preventDefault()
-          const self = this as unknown as Block
+          event.preventDefault();
+          const self = this as unknown as Block;
           if (self.props.isOpened) {
-            self.setProps({ isOpened: false })
+            self.setProps({ isOpened: false });
           } else {
-            self.setProps({ isOpened: true })
+            self.setProps({ isOpened: true });
           }
-        }
-      }
+        },
+      },
     });
   }
 

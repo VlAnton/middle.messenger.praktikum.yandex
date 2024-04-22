@@ -11,24 +11,28 @@ class DeleteUsersDialogForm extends Block {
     super({
       ...props,
       lists: {
-        users: store.getState().searchedUsers.map((e: User) => new UserItem({...e}))
+        users: store
+          .getState()
+          .searchedUsers.map((e: User) => new UserItem({ ...e })),
       },
       deleteButton: new Button({
         text: 'Удалить пользователей',
-        className: 'button__delete'
+        className: 'button__delete',
       }),
       events: {
         click(e: Event) {
-          e.preventDefault()
-          e.stopImmediatePropagation()
+          e.preventDefault();
+          e.stopImmediatePropagation();
           if (!e.target) {
-            return
+            return;
           }
-          if ((e.target as HTMLButtonElement).classList.contains('button__delete')) {
-            const state = store.getState()
-            const users = state.selectedUsers
-            const chatId = state.selectedChat
-            ChatsController.deleteChatUsers({ chatId, users })
+          if (
+            (e.target as HTMLButtonElement).classList.contains('button__delete')
+          ) {
+            const state = store.getState();
+            const users = state.selectedUsers;
+            const chatId = state.selectedChat;
+            ChatsController.deleteChatUsers({ chatId, users });
           }
         },
       },
@@ -48,20 +52,20 @@ class DeleteUsersDialogForm extends Block {
 }
 
 type User = {
-  avatar: string | null
-  display_name: string | null
-  first_name: string
-  id: number
-  login: string
-  second_name: string
-}
+  avatar: string | null;
+  display_name: string | null;
+  first_name: string;
+  id: number;
+  login: string;
+  second_name: string;
+};
 
 const mapStateToProps = (state: Indexed) => {
   return {
     lists: {
-      users: state.usersToDelete?.map((e: User) => new UserItem({...e}))
-    }
-  }
-}
+      users: state.usersToDelete?.map((e: User) => new UserItem({ ...e })),
+    },
+  };
+};
 
-export default connect(mapStateToProps)(DeleteUsersDialogForm)
+export default connect(mapStateToProps)(DeleteUsersDialogForm);

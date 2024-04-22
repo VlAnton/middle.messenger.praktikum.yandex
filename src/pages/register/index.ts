@@ -111,8 +111,8 @@ export default class RegisterPage extends Block {
           text: 'Войти',
           href: 'login',
           onClick() {
-            router.go('/')
-          }
+            router.go('/');
+          },
         },
       }),
     });

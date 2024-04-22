@@ -79,7 +79,7 @@ export default class EditPassword extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            UserController.editPassword(res as UserPasswordAPIData)
+            UserController.editPassword(res as UserPasswordAPIData);
           }
         },
       },
@@ -88,7 +88,7 @@ export default class EditPassword extends Block {
         type: 'submit',
       }),
       backButton: new BackButton({
-        link: '/settings'
+        link: '/settings',
       }),
       lists: {
         fields,

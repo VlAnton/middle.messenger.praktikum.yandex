@@ -8,11 +8,11 @@ export class BackButton extends Block {
       ...props,
       events: {
         click(event: Event) {
-          event.preventDefault()
-          event.stopPropagation()
-          router.go(props.link)
-        }
-      }
+          event.preventDefault();
+          event.stopPropagation();
+          router.go(props.link);
+        },
+      },
     });
   }
 

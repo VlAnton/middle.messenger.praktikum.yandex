@@ -7,9 +7,9 @@ export class Link extends Block {
       ...props,
       events: {
         click(e: Event) {
-          props.onClick && props.onClick(e)
-        }
-      }
+          props.onClick && props.onClick(e);
+        },
+      },
     });
   }
 

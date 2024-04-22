@@ -1,59 +1,59 @@
-import { ChatsApi, CreateChatsApi, DeleteChatsApi, UsersAPI } from "../api/chats-api";
-import store from "../store";
+import {
+  ChatsApi,
+  CreateChatsApi,
+  DeleteChatsApi,
+  UsersAPI,
+} from '../api/chats-api';
+import store from '../store';
 
 export class ChatsController {
   static websocket?: WebSocket;
 
   static async getChats() {
     try {
-      const response = await ChatsApi.getChats()
-      store.set('chats', JSON.parse((response as XMLHttpRequest).responseText))
-    } catch {
-
-    }
+      const response = await ChatsApi.getChats();
+      store.set('chats', JSON.parse((response as XMLHttpRequest).responseText));
+    } catch {}
   }
   static async createChat(data: CreateChatsApi) {
     try {
-      const response = await ChatsApi.createChat(data)
-      store.set('createdChatInForm', JSON.parse((response as XMLHttpRequest).responseText))
-      await this.getChats()
-    } catch {
-
-    }
+      const response = await ChatsApi.createChat(data);
+      store.set(
+        'createdChatInForm',
+        JSON.parse((response as XMLHttpRequest).responseText),
+      );
+      await this.getChats();
+    } catch {}
   }
   static async deleteChat(data: DeleteChatsApi) {
     try {
-      await ChatsApi.deleteChat(data)
-      await this.getChats()
-    } catch {
-    }
+      await ChatsApi.deleteChat(data);
+      await this.getChats();
+    } catch {}
   }
 
   static async addUsersToChat(data: UsersAPI) {
     try {
-      await ChatsApi.addUsers(data)
-    } catch {
-
-    }
+      await ChatsApi.addUsers(data);
+    } catch {}
   }
 
-  static async getChatUsers () {
+  static async getChatUsers() {
     try {
-      const response = await ChatsApi.getChatUsers()
-      store.set('usersToDelete', JSON.parse((response as XMLHttpRequest).responseText))
-    } catch {
-
-    }
+      const response = await ChatsApi.getChatUsers();
+      store.set(
+        'usersToDelete',
+        JSON.parse((response as XMLHttpRequest).responseText),
+      );
+    } catch {}
   }
 
-  static async deleteChatUsers (data: UsersAPI) {
+  static async deleteChatUsers(data: UsersAPI) {
     try {
-      await ChatsApi.deleteUsers(data)
-      await ChatsController.getChatUsers()
-      console.log(store.getState())
-    } catch {
-
-    }
+      await ChatsApi.deleteUsers(data);
+      await ChatsController.getChatUsers();
+      console.log(store.getState());
+    } catch {}
   }
 
   // static async deleteUsersFromChat(data: AddUsersAPI) {
@@ -72,7 +72,10 @@ export class ChatsController {
       }
 
       const response = await ChatsApi.getChatToken(chatId);
-      store.set('token', JSON.parse((response as XMLHttpRequest).responseText).token);
+      store.set(
+        'token',
+        JSON.parse((response as XMLHttpRequest).responseText).token,
+      );
 
       ChatsController.websocket = ChatsController.connectToChat();
     } catch (error) {
@@ -83,13 +86,15 @@ export class ChatsController {
 
   static connectToChat() {
     try {
-      const chatId = store.getState().selectedChat
-      const userId = store.getState().user.id
-      const token = store.getState().token
-      if (!chatId || !userId || !token ) {
+      const chatId = store.getState().selectedChat;
+      const userId = store.getState().user.id;
+      const token = store.getState().token;
+      if (!chatId || !userId || !token) {
         return;
       }
-      ChatsController.websocket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`);
+      ChatsController.websocket = new WebSocket(
+        `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`,
+      );
       ChatsController.websocket.addEventListener('open', () => {
         console.log('Соединение установлено');
 
@@ -134,11 +139,10 @@ export class ChatsController {
             }
           }
         });
-
       });
       return ChatsController.websocket;
     } catch (error) {
       console.log(error);
     }
   }
-} 
+}

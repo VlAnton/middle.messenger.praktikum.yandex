@@ -19,19 +19,22 @@ export class ChatForm extends Block {
       }),
       events: {
         submit(e: Event) {
-          e.preventDefault()
-          const value = (this as unknown as ChatForm).children.chatInput.props.value
+          e.preventDefault();
+          const value = (this as unknown as ChatForm).children.chatInput.props
+            .value;
           if (value) {
             ChatsController.websocket?.send(
-                JSON.stringify({
-                  type: 'message',
-                  content: value,
-                }),
+              JSON.stringify({
+                type: 'message',
+                content: value,
+              }),
             );
           }
-          (this as unknown as ChatForm).children.chatInput.setProps({ value: '' })
-        }
-      }
+          (this as unknown as ChatForm).children.chatInput.setProps({
+            value: '',
+          });
+        },
+      },
     });
   }
 

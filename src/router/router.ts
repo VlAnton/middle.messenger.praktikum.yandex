@@ -43,7 +43,7 @@ export default class Router {
 
     if (this._currentRoute) {
       this._currentRoute.leave();
-      this._currentRoute = null
+      this._currentRoute = null;
     }
 
     this._currentRoute = route;
@@ -64,7 +64,7 @@ export default class Router {
   }
 
   getCurrentRoute() {
-    return this._currentRoute
+    return this._currentRoute;
   }
 
   getRoute(pathname: string) {

@@ -13,13 +13,13 @@ export class AddChat extends Block {
       events: {
         click(event: Event) {
           if ((event.target as HTMLElement).className === 'add-chat__overlay') {
-            (this as unknown as Block).setProps({ modalOpened: false })
+            (this as unknown as Block).setProps({ modalOpened: false });
             return;
           }
           (this as unknown as Block).setProps({ modalOpened: true });
           props.onClick && props.onClick();
-        }
-      }
+        },
+      },
     });
   }
 

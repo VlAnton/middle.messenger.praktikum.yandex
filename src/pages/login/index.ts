@@ -46,8 +46,8 @@ export default class LoginPage extends Block {
         linkProps: {
           text: 'Нет аккаунта?',
           onClick() {
-            router.go('/sign-up')
-          }
+            router.go('/sign-up');
+          },
         },
       }),
     });

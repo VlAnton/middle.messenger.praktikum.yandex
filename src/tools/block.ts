@@ -44,7 +44,10 @@ export default class Block {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
       if (this._element) {
-        this._element.removeEventListener(eventName, events[eventName].bind(this));
+        this._element.removeEventListener(
+          eventName,
+          events[eventName].bind(this),
+        );
       }
     });
   }
@@ -115,10 +118,10 @@ export default class Block {
       return;
     }
     if (nextProps.lists) {
-      this.lists = { lists: nextProps.lists } as Lists
+      this.lists = { lists: nextProps.lists } as Lists;
       this._render();
     }
-    
+
     Object.assign(this.props, nextProps);
   };
 
@@ -134,11 +137,12 @@ export default class Block {
 
     Object.values(this.lists).forEach((child) => {
       Object.entries(child).forEach(([k, items]) => {
-        items && items.forEach((item) => {
-          if (item instanceof Block) {
-            propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
-          }
-        });
+        items &&
+          items.forEach((item) => {
+            if (item instanceof Block) {
+              propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
+            }
+          });
       });
     });
 

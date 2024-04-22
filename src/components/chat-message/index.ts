@@ -7,7 +7,7 @@ export class ChatMessage extends Block {
     super({
       ...props,
     });
-    this.setProps({ isYours: this.props.user_id === store.getState().user.id })
+    this.setProps({ isYours: this.props.user_id === store.getState().user.id });
   }
 
   render() {

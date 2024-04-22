@@ -9,31 +9,31 @@ export class UserItem extends Block {
     super({
       ...props,
       isSelected: false,
-      display_name: props.display_name || `${props.first_name} ${props.second_name}`,
+      display_name:
+        props.display_name || `${props.first_name} ${props.second_name}`,
       avatar: new Avatar(avatar),
       selectedChats: [],
       events: {
         click(e: Event) {
-          e.preventDefault()
-          e.stopImmediatePropagation()
-          const self = this as unknown as Block
-          const id = self.props.id
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          const self = this as unknown as Block;
+          const id = self.props.id;
           if (!self.props.isSelected) {
-            self.setProps({isSelected: true})
-            store.set('selectedUsers', [
-              ...store.getState().selectedUsers, id
-            ])
+            self.setProps({ isSelected: true });
+            store.set('selectedUsers', [...store.getState().selectedUsers, id]);
           } else {
-            self.setProps({isSelected: false})
-            store.set('selectedUsers', 
-              store.getState().selectedUsers.filter((e: number) => e !== id)
-            )
+            self.setProps({ isSelected: false });
+            store.set(
+              'selectedUsers',
+              store.getState().selectedUsers.filter((e: number) => e !== id),
+            );
           }
-        }
-      }
+        },
+      },
     });
     if (store.getState().selectedUsers.includes(this.props.id)) {
-      this.setProps({ isSelected: true })
+      this.setProps({ isSelected: true });
     }
   }
 

@@ -32,15 +32,15 @@ class ChatsPage extends Block {
       profileLink: new Link({
         text: 'Профиль',
         onClick() {
-          router.go('/settings')
-        }
+          router.go('/settings');
+        },
       }),
-      chatActions: new ChatActions({})
+      chatActions: new ChatActions({}),
     });
-    
-    ChatsController.getChats()
+
+    ChatsController.getChats();
     if (store.getState().selectedChat) {
-      this.setProps({isChatSelected: true})
+      this.setProps({ isChatSelected: true });
     }
   }
 
@@ -85,24 +85,24 @@ class ChatsPage extends Block {
 }
 
 type User = {
-  avatar: string | null
-  display_name: string | null
-  first_name: string
-  id: number
-  login: string
-  second_name: string
-}
+  avatar: string | null;
+  display_name: string | null;
+  first_name: string;
+  id: number;
+  login: string;
+  second_name: string;
+};
 type Chat = {
-  avatar: string | null
-  created_by: number
-  id: number
-  last_message: Indexed
-  title: string
-  unread_count: number
-}
+  avatar: string | null;
+  created_by: number;
+  id: number;
+  last_message: Indexed;
+  title: string;
+  unread_count: number;
+};
 
 const mapStateToProps = (state: Indexed) => {
-  const chat = state.chats.find((e: Chat) => e.id === state.selectedChat)
+  const chat = state.chats.find((e: Chat) => e.id === state.selectedChat);
   return {
     lists: {
       chatItems: state.chats.map((e: Chat) => new ChatItem(e)),
@@ -110,7 +110,7 @@ const mapStateToProps = (state: Indexed) => {
     },
     display_name: chat ? chat.title : '',
     isChatSelected: Boolean(state.selectedChat),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(ChatsPage)
+export default connect(mapStateToProps)(ChatsPage);
