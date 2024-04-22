@@ -22,7 +22,7 @@ export const icons: Array<Icon> = [
 export function setIcons(icons: Array<Icon>) {
   icons.forEach((icon) => {
     const imgs: HTMLCollection | null = document.getElementsByClassName(
-      icon.class,
+      icon.class
     );
     if (imgs) {
       Array.from(imgs).forEach((img: Element) => {

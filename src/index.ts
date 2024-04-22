@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.pathname;
   if (!router.getRoute(url)) {
     router.go('/404');
+  } else if (url === '/sign-up') {
+    router.go(url);
   } else if (!store.getState().isAuthenticated) {
     router.go('/');
   } else {
     router.go(url);
   }
-
   IconSetter.setIcons(IconSetter.icons);
 });
 

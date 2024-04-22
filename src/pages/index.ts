@@ -6,7 +6,7 @@ import RegisterPage from './register';
 import ProfilePage from './profile';
 import EditCredentials from './edit-credentials';
 import EditPassword from './edit-password';
-import Router from '../router/router';
+import Router from '../tools/router';
 
 export const router = new Router('app');
 router

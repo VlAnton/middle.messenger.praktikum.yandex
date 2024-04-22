@@ -1,4 +1,4 @@
-import Block from '../tools/block';
+import Block from './block';
 import Route from './route';
 
 export default class Router {
