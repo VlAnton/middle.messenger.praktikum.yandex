@@ -16,8 +16,7 @@ export class AuthController {
       store.set('isAuthenticated', true);
       router.go('/messenger');
     } catch {
-      store.set('isAuthenticated', false);
-      store.set('user', {});
+      store.unsetState()
     }
   }
 
@@ -26,19 +25,18 @@ export class AuthController {
       await AuthApi.signUp(data);
       store.set('isAuthenticated', true);
     } catch {
-      store.set('isAuthenticated', false);
-      store.set('user', {});
+      store.unsetState()
     }
   }
 
   static async signOut() {
     try {
       await AuthApi.sighOut();
-      store.set('isAuthenticated', false);
+      store.unsetState()
       router.go('/');
+      location.reload()
     } catch {
-      store.set('isAuthenticated', false);
-      store.set('user', {});
+      store.unsetState()
     }
   }
 }

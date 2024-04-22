@@ -39,6 +39,10 @@ class Store extends EventBus {
     set(this.state, path, value);
     this.emit(StoreEvents.Updated);
   }
+
+  public unsetState() {
+    this.state = initialState
+  }
 }
 
 export default new Store(initialState);

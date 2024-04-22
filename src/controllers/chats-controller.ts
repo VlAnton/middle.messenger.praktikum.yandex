@@ -9,7 +9,9 @@ export class ChatsController {
     try {
       const response = await ChatsApi.getChats();
       store.set('chats', JSON.parse((response as XMLHttpRequest).responseText));
-    } catch {}
+    } catch {
+      store.unsetState()
+    }
   }
   static async createChat(data: CreateChatsApi) {
     try {
@@ -19,19 +21,25 @@ export class ChatsController {
         JSON.parse((response as XMLHttpRequest).responseText),
       );
       await this.getChats();
-    } catch {}
+    } catch {
+      store.unsetState()
+    }
   }
   static async deleteChat(data: DeleteChatsApi) {
     try {
       await ChatsApi.deleteChat(data);
       await this.getChats();
-    } catch {}
+    } catch {
+      store.unsetState()
+    }
   }
 
   static async addUsersToChat(data: UsersAPI) {
     try {
       await ChatsApi.addUsers(data);
-    } catch {}
+    } catch {
+      store.unsetState()
+    }
   }
 
   static async getChatUsers() {
@@ -65,10 +73,9 @@ export class ChatsController {
         JSON.parse((response as XMLHttpRequest).responseText).token,
       );
 
-      ChatsController.websocket = ChatsController.connectToChat();
+      ChatsController.connectToChat();
     } catch (error) {
-      store.set('isAuth', false);
-      store.set('user', {});
+      store.unsetState()
     }
   }
 

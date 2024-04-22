@@ -15,8 +15,7 @@ export class UserController {
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       router.go('/settings');
     } catch (error) {
-      store.set('isAuthenticated', false);
-      router.go('/');
+      store.unsetState()
     }
   }
 
@@ -25,8 +24,7 @@ export class UserController {
       await UserAPI.editPassword(data);
       router.go('/settings');
     } catch (error) {
-      store.set('isAuthenticated', false);
-      router.go('/');
+      store.unsetState()
     }
   }
 
@@ -38,8 +36,7 @@ export class UserController {
         JSON.parse((response as XMLHttpRequest).responseText),
       );
     } catch (error) {
-      // store.set('isAuthenticated', false);
-      // router.go('/');
+      store.unsetState()
     }
   }
 }
