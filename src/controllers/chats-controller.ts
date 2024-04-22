@@ -52,7 +52,7 @@ export class ChatsController {
     try {
       await ChatsApi.deleteUsers(data);
       await ChatsController.getChatUsers();
-      console.log(store.getState());
+      (store.getState());
     } catch {}
   }
 

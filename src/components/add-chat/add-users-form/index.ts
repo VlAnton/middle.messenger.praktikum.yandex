@@ -45,7 +45,7 @@ class AddUsersDialogForm extends Block {
               chatId: state.createdChatInForm?.id || state.selectedChat,
               users,
             });
-            state.set('selectedUsers', []);
+            store.set('selectedUsers', []);
           }
         },
       },
