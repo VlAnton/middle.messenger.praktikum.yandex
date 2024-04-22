@@ -1,11 +1,13 @@
 import './chat-message.scss';
 import Block from '../../tools/block';
 import store from '../../store';
+import iconUrl from '../../assets/icons/read.svg?url'
 
 export class ChatMessage extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
+      url: iconUrl
     });
     this.setProps({ isYours: this.props.user_id === store.getState().user.id });
   }
@@ -17,7 +19,7 @@ export class ChatMessage extends Block {
         <div class="chat-message__info">
           {{#if isYours }}
             {{#if is_read }}
-              <img class="icon-read" src="../../assets/icons/read.svg" alt="read">
+              <img class="icon-read" src="{{url}}" alt="read">
             {{/if}}
           {{/if}}
           <div class="chat-message__time {{#if isYours}} chat-message__time-yours {{/if}}">

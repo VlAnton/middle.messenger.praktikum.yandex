@@ -3,6 +3,7 @@ import Block from '../../tools/block';
 import { Input, Button, BackButton } from '../../components';
 import { UserController } from '../../controllers/user-controller';
 import { UserPasswordAPIData } from '../../types/api';
+import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 export default class EditPassword extends Block {
   constructor(props: Indexed) {
@@ -55,6 +56,7 @@ export default class EditPassword extends Block {
     ];
     super({
       ...props,
+      url: iconUrl,
       events: {
         submit(e: Event) {
           e.preventDefault();
@@ -101,7 +103,7 @@ export default class EditPassword extends Block {
         {{{ backButton }}}
         <div class="profile-page__header">
           <div class="profile-page__image">
-            <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
+            <img class="icon-profile-img" src="{{url}}" alt="profile-img">
           </div>
         </div>
         <div class="edit-password-page__fields">

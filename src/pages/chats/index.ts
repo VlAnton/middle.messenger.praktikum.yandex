@@ -16,6 +16,7 @@ import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { Chat, User } from '../../types/common';
 
+
 class ChatsPage extends Block {
   constructor(props: Indexed) {
     super({

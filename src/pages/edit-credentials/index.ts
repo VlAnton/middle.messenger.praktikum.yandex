@@ -4,6 +4,7 @@ import { Input, Button, BackButton } from '../../components';
 import store from '../../store';
 import { UserController } from '../../controllers/user-controller';
 import { UserAPIData } from '../../types/api';
+import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 export default class EditCredentials extends Block {
   constructor(props: Indexed) {
@@ -85,6 +86,7 @@ export default class EditCredentials extends Block {
     ];
     super({
       ...props,
+      url: iconUrl,
       events: {
         submit(e: Event) {
           e.preventDefault();
@@ -131,7 +133,7 @@ export default class EditCredentials extends Block {
 
         <div class="profile-page__header">
           <div class="profile-page__image">
-            <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
+            <img class="icon-profile-img" src="{{ url }}" alt="profile-img">
           </div>
         </div>
         <div class="edit-page__fields">

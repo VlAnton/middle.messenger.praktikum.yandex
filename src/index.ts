@@ -1,5 +1,4 @@
 import './index.scss';
-import * as IconSetter from './tools/set-icons';
 import { router } from './pages';
 import store from './store';
 
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     router.go(url);
   }
-  IconSetter.setIcons(IconSetter.icons);
 });
 
 document.addEventListener('click', (e: Event) => {

@@ -1,11 +1,13 @@
 import './back-button.scss';
 import Block from '../../tools/block';
 import { router } from '../../pages';
+import iconUrl from '../../assets/icons/sendMessage.svg?url'
 
 export class BackButton extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
+      url: iconUrl,
       events: {
         click(event: Event) {
           event.preventDefault();
@@ -19,7 +21,7 @@ export class BackButton extends Block {
   render() {
     return `
       <div class="back-block">
-        <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
+        <img class="icon-send-message" src="{{url}}" alt="send-message">
       </div>
     `;
   }

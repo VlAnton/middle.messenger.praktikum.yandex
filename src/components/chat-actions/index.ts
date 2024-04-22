@@ -3,12 +3,14 @@ import Block from '../../tools/block';
 import { ChatAction } from './chat-action';
 import { ChatsController } from '../../controllers/chats-controller';
 import store from '../../store';
+import iconUrl from '../../assets/icons/dots.svg?url'
 
 export class ChatActions extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
       isOpened: false,
+      url: iconUrl,
       lists: {
         actions: [
           new ChatAction({
@@ -62,7 +64,7 @@ export class ChatActions extends Block {
   render() {
     return `
       <div class="chat-actions">
-        <img class="icon-dots" src="../../assets/icons/dots.svg" alt="dots">
+        <img class="icon-dots" src="{{url}}" alt="dots">
         {{#if isOpened}}
           <div class="chat-actions__menu">
             {{{ actions }}}
