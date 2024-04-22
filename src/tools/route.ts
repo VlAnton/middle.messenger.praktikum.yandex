@@ -1,5 +1,4 @@
 import Block from '../tools/block';
-import { navigate } from '../tools/helpers';
 
 export default class Route {
   private _pathname: string;
@@ -16,7 +15,6 @@ export default class Route {
 
   navigate(pathname: string) {
     if (this.match(pathname)) {
-      this._pathname = pathname;
       this.render();
     }
   }
@@ -31,12 +29,21 @@ export default class Route {
     return pathname === this._pathname;
   }
 
+  _render () {
+    const root = document.querySelector('#app');
+    if (root) {
+      root.innerHTML = '';
+      root.appendChild((this._block?.getContent() as Node));
+    }
+  }
+
   render() {
     if (!this._block) {
-      this._block = new this._blockClass();
-      navigate(this._block, this._props.rootQuery);
+      this._block = new this._blockClass({ ...this._props });
+      this._render()
       return;
     }
+    this._render()
     this._block.show();
   }
 }
