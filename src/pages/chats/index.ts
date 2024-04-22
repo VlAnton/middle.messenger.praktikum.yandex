@@ -32,7 +32,7 @@ class ChatsPage extends Block {
       profileLink: new Link({
         text: 'Профиль',
         onClick() {
-          router.go('/profile')
+          router.go('/settings')
         }
       }),
       chatActions: new ChatActions({})

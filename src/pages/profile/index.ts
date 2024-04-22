@@ -14,26 +14,24 @@ class ProfilePage extends Block {
       ...store.getState().user,
       changeCredentials: new Link({
         text: 'Изменить данные',
-        href: 'edit-credentials',
         xl: true,
         onClick: (e: Event) => {
           e.preventDefault()
           e.stopImmediatePropagation()
-          router.go('/edit-credentials')
+          router.go('/change-profile')
         }
       }),
       changePassword: new Link({
         text: 'Изменить пароль',
-        href: 'edit-password',
         xl: true,
         onClick: (e: Event) => {
           e.preventDefault()
           e.stopImmediatePropagation()
-          router.go('/edit-password')
+          router.go('/change-password')
         }
       }),
       backButton: new BackButton({
-        link: '/chats'
+        link: '/messenger'
       }),
       exit: new Link({
         text: 'Выйти',

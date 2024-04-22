@@ -11,11 +11,11 @@ import Router from '../router/router';
 export const router = new Router('app');
 router
   .use('/', LoginPage)
-  .use('/register', RegisterPage)
+  .use('/sign-up', RegisterPage)
   .use('/404', Page404)
   .use('/500', Page500)
-  .use('/chats', ChatsPage)
-  .use('/profile', ProfilePage)
-  .use('/edit-credentials', EditCredentials)
-  .use('/edit-password', EditPassword)
+  .use('/messenger', ChatsPage)
+  .use('/settings', ProfilePage)
+  .use('/change-profile', EditCredentials)
+  .use('/change-password', EditPassword)
   .start();

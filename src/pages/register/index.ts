@@ -106,7 +106,6 @@ export default class RegisterPage extends Block {
         ],
         buttonProps: {
           text: 'Зарегистрироваться',
-          page: 'chats',
         },
         linkProps: {
           text: 'Войти',

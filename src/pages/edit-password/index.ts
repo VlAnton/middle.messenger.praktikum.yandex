@@ -88,7 +88,7 @@ export default class EditPassword extends Block {
         type: 'submit',
       }),
       backButton: new BackButton({
-        link: '/profile'
+        link: '/settings'
       }),
       lists: {
         fields,

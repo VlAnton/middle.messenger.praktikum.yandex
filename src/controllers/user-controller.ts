@@ -12,7 +12,7 @@ export class UserController {
       await UserAPI.editCredentials(data);
       const response = await this.getUser();
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
-      router.go('/profile');
+      router.go('/settings');
     } catch (error) {
       store.set('isAuthenticated', false);
       router.go('/');
@@ -22,7 +22,7 @@ export class UserController {
   static async editPassword(data: UserPasswordAPIData) {
     try {
       await UserAPI.editPassword(data);
-      router.go('/profile');
+      router.go('/settings');
     } catch (error) {
       store.set('isAuthenticated', false);
       router.go('/');

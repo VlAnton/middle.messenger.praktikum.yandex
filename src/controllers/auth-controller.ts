@@ -13,7 +13,7 @@ export class AuthController {
       }
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       store.set('isAuthenticated', true);
-      router.go('/chats');
+      router.go('/messenger');
     } catch {
       store.set('isAuthenticated', false);
       store.set('user', {});

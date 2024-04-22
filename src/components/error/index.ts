@@ -8,7 +8,7 @@ export class ErrorBlock extends Block {
       ...props,
       link: new Link({
         text: 'Назад к чатам',
-        href: 'chats',
+        href: 'messenger',
       }),
     });
   }

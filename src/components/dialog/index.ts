@@ -43,7 +43,7 @@ export class Dialog extends Block {
               AuthController.signUp((res as SignUpAPIData))
             }
             if (store.getState().user.id) {
-              router.go('/chats')
+              router.go('/messenger')
             }
           }
         },
