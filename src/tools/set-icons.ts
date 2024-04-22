@@ -1,4 +1,3 @@
-import ChevronRight from '../assets/icons/chevron right.svg';
 import Dots from '../assets/icons/dots.svg';
 import ProfileImg from '../assets/icons/profileImg.svg';
 import Read from '../assets/icons/read.svg';
@@ -11,7 +10,6 @@ type Icon = {
 };
 
 export const icons: Array<Icon> = [
-  { src: ChevronRight, class: 'icon-chevron-right' },
   { src: Dots, class: 'icon-dots' },
   { src: ProfileImg, class: 'icon-profile-img' },
   { src: Read, class: 'icon-read' },
