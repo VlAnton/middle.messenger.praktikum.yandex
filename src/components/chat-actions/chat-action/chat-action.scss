@@ -7,6 +7,7 @@
   &:hover {
     background-color: $bg-color-hover;
   }
+
   & > p {
     margin: 0;
   }
@@ -21,14 +22,12 @@
     box-shadow: $dialog-box-shadow;
     padding: 12px;
     border-radius: 12px;
-
     display: flex;
     flex-direction: column;
     gap: 8px;
     right: 25vw;
     top: 15vh;
     z-index: 100;
-
     margin: auto;
     width: 335px;
   }

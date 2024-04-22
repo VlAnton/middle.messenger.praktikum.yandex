@@ -24,11 +24,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return object
 }
 
-type PlainObject<T = any> = {
-  [k in string]: T;
-};
-
-function isPlainObject(value: unknown): value is PlainObject {
+function isPlainObject(value: unknown): value is Indexed {
   return typeof value === 'object'
       && value !== null
       && value.constructor === Object
@@ -39,11 +35,11 @@ function isArray(value: unknown): value is [] {
   return Array.isArray(value);
 }
 
-function isArrayOrObject(value: unknown): value is [] | PlainObject {
+function isArrayOrObject(value: unknown): value is [] | Indexed {
   return isPlainObject(value) || isArray(value);
 }
 
-export function isEqual(lhs: PlainObject, rhs: PlainObject) {
+export function isEqual(lhs: Indexed, rhs: Indexed) {
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {
       return false;
   }
