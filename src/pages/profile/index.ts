@@ -1,11 +1,10 @@
 import './profile.scss';
 import Block from '../../tools/block';
-import { Link } from '../../components';
+import { Link, BackButton } from '../../components';
 import store from '../../store';
 import { AuthController } from '../../controllers/auth-controller';
 import connect from '../../tools/hoc';
 import { router } from '..';
-import { BackButton } from '../../components/back-button';
 
 class ProfilePage extends Block {
   constructor(props: Indexed) {

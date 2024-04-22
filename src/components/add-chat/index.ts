@@ -1,6 +1,6 @@
 import './add-chat.scss';
 import Block from '../../tools/block';
-import AddChatDialog from './add-chart-dialog';
+import AddChatDialog from './add-chat-dialog';
 
 export class AddChat extends Block {
   constructor(props: Indexed) {

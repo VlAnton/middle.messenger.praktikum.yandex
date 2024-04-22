@@ -1,6 +1,6 @@
 import './add-chat-dialog.scss';
 import Block from '../../../tools/block';
-import { Button, Input } from '../../../components';
+import { Button, Input } from '../..';
 import store from '../../../store';
 import { ChatsController } from '../../../controllers/chats-controller';
 import AddUsersDialogForm from '../add-users-form';

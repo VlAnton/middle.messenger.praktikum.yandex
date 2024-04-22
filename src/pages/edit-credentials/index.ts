@@ -1,10 +1,9 @@
 import './edit-credentials.scss';
 import Block from '../../tools/block';
-import { Input, Button } from '../../components';
+import { Input, Button, BackButton } from '../../components';
 import store from '../../store';
 import { UserController } from '../../controllers/user-controller';
 import { UserAPIData } from '../../api/user-api';
-import { BackButton } from '../../components/back-button';
 
 export default class EditCredentials extends Block {
   constructor(props: Indexed) {

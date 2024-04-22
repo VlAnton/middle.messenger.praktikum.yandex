@@ -1,14 +1,19 @@
 import './chats.scss';
-import { ChatInput, ChatMessage, Avatar, Link } from '../../components';
-import ChatItem from '../../components/chat-list-item';
+import {
+  ChatInput,
+  ChatMessage,
+  Avatar,
+  Link,
+  ChatItem,
+  AddChat,
+  ChatForm,
+  ChatActions
+} from '../../components';
 import Block from '../../tools/block';
 import store from '../../store';
 import { router } from '..';
 import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
-import { AddChat } from '../../components/add-chat';
-import { ChatForm } from '../../components/chat-form';
-import { ChatActions } from '../../components/chat-actions';
 
 class ChatsPage extends Block {
   constructor(props: Indexed) {
