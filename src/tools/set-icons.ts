@@ -1,8 +1,8 @@
-import Dots from '../assets/icons/dots.svg';
-import ProfileImg from '../assets/icons/profileImg.svg';
-import Read from '../assets/icons/read.svg';
-import SendFile from '../assets/icons/sendFIle.svg';
-import SendMessage from '../assets/icons/sendMessage.svg';
+import Dots from '../assets/icons/dots.svg?url';
+import ProfileImg from '../assets/icons/profileImg.svg?url';
+import Read from '../assets/icons/read.svg?url';
+import SendFile from '../assets/icons/sendFIle.svg?url';
+import SendMessage from '../assets/icons/sendMessage.svg?url';
 
 type Icon = {
   src: string;
