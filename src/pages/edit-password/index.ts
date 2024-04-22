@@ -1,13 +1,15 @@
 import './edit-password.scss';
 import Block from '../../tools/block';
-import { Input, Button } from '../../components';
+import { Input, Button, BackButton } from '../../components';
+import { UserController } from '../../controllers/user-controller';
+import { UserPasswordAPIData } from '../../types/api';
+import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 export default class EditPassword extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const fields = [
       new Input({
         title: 'Старый пароль',
-        value: '1231231',
         name: 'oldPassword',
         type: 'password',
         validationProps: {
@@ -54,6 +56,7 @@ export default class EditPassword extends Block {
     ];
     super({
       ...props,
+      url: iconUrl,
       events: {
         submit(e: Event) {
           e.preventDefault();
@@ -73,17 +76,20 @@ export default class EditPassword extends Block {
             }
           });
           if (!formHasErrors && !formHasEmptyFields) {
-            const res: Record<string, string> = {};
+            const res: Indexed = {};
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            console.log(res);
+            UserController.editPassword(res as UserPasswordAPIData);
           }
         },
       },
       submitButton: new Button({
         text: 'Сохранить',
         type: 'submit',
+      }),
+      backButton: new BackButton({
+        link: '/settings',
       }),
       lists: {
         fields,
@@ -94,12 +100,10 @@ export default class EditPassword extends Block {
   render() {
     return `
       <form class="edit-password-page">
-        <a class="edit-password-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
-        </a>
+        {{{ backButton }}}
         <div class="profile-page__header">
           <div class="profile-page__image">
-            <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
+            <img class="icon-profile-img" src="{{url}}" alt="profile-img">
           </div>
         </div>
         <div class="edit-password-page__fields">

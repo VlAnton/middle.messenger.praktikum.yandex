@@ -2,7 +2,7 @@ import './input-field.scss';
 import Block from '../../../tools/block';
 
 export class InputField extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       events: {

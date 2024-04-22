@@ -2,8 +2,15 @@ import './button.scss';
 import Block from '../../tools/block';
 
 export class Button extends Block {
-  constructor(props: Props) {
-    super(props);
+  constructor(props: Indexed) {
+    super({
+      ...props,
+      events: {
+        click() {
+          props.onClick && props.onClick();
+        },
+      },
+    });
   }
 
   render() {

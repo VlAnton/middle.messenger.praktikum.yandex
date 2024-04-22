@@ -5,13 +5,16 @@
   display: flex;
 
   &__chats {
+    overflow: auto;
     width: 25%;
     min-width: 310px;
+    max-height: 100vh;
     border-right: 1px solid $bg-color-divider;
     background-color: $bg-color-secondary;
   }
 
-  &__chat-body {
+  &__chat-body,
+  &__chat-messages {
     background-color: $bg-color;
     height: 100%;
     width: 100%;
@@ -24,6 +27,10 @@
     padding: 30px 20px;
   }
 
+  &__chat-messages {
+    flex-direction: column-reverse;
+  }
+
   &__header {
     padding: 21px 10px 14px;
     display: flex;
@@ -34,11 +41,9 @@
 
   &__profile-link-wrapper {
     display: flex;
-    gap: 8px;
-
-    img {
-      padding: 2px 0;
-    }
+    align-items: center;
+    gap: 40px;
+    width: 100%;
   }
 
   &__profile-link {

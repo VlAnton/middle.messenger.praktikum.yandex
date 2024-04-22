@@ -1,5 +1,4 @@
 import ChatsPage from './chats';
-import Block from '../tools/block';
 import Page404 from './404';
 import Page500 from './500';
 import LoginPage from './login';
@@ -7,23 +6,16 @@ import RegisterPage from './register';
 import ProfilePage from './profile';
 import EditCredentials from './edit-credentials';
 import EditPassword from './edit-password';
+import Router from '../tools/router';
 
-export type Pages = Record<string, Block>;
-
-export const pages: Pages = {
-  login: new LoginPage({}),
-  register: new RegisterPage({}),
-  '404': new Page404({}),
-  '500': new Page500({}),
-  chats: new ChatsPage({}),
-  profile: new ProfilePage({
-    email: 'pochta@yandex.ru',
-    login: 'ivanivanov',
-    name: 'Иван',
-    lastName: 'Иванов',
-    display_name: 'Иван',
-    phone: '+7 (909) 967 30 30',
-  }),
-  'edit-credentials': new EditCredentials({}),
-  'edit-password': new EditPassword({}),
-};
+export const router = new Router('app');
+router
+  .use('/', LoginPage)
+  .use('/sign-up', RegisterPage)
+  .use('/404', Page404)
+  .use('/500', Page500)
+  .use('/messenger', ChatsPage)
+  .use('/settings', ProfilePage)
+  .use('/change-profile', EditCredentials)
+  .use('/change-password', EditPassword)
+  .start();

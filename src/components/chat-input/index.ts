@@ -2,7 +2,7 @@ import './chat-input.scss';
 import Block from '../../tools/block';
 
 export class ChatInput extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       events: {

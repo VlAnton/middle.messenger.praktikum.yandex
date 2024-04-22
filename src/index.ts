@@ -1,25 +1,24 @@
 import './index.scss';
-import * as IconSetter from './tools/set-icons';
-import { pages } from './pages';
-import { navigate } from './tools/helpers';
+import { router } from './pages';
+import store from './store';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const url = window.location.pathname.replace('/', '');
-  if (pages[url]) {
-    navigate(url);
-  } else if (url === '') {
-    window.location.pathname = 'login';
+  const url = window.location.pathname;
+  if (!router.getRoute(url)) {
+    router.go('/404');
+  } else if (url === '/sign-up') {
+    router.go(url);
+  } else if (!store.getState().isAuthenticated) {
+    router.go('/');
   } else {
-    window.location.pathname = '404';
+    router.go(url);
   }
-
-  IconSetter.setIcons(IconSetter.icons);
 });
 
 document.addEventListener('click', (e: Event) => {
   const page = (e.target as HTMLBaseElement).getAttribute('page');
   if (page) {
-    window.location.pathname = page;
+    router.go(page);
 
     e.preventDefault();
     e.stopImmediatePropagation();

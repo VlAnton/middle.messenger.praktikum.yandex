@@ -1,14 +1,18 @@
 import './edit-credentials.scss';
 import Block from '../../tools/block';
-import { Input, Button } from '../../components';
+import { Input, Button, BackButton } from '../../components';
+import store from '../../store';
+import { UserController } from '../../controllers/user-controller';
+import { UserAPIData } from '../../types/api';
+import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 export default class EditCredentials extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const fields = [
       new Input({
         title: 'Почта',
         name: 'email',
-        value: 'pochta@yandex.ru',
+        value: store.getState().user.email,
         type: 'email',
         validationProps: {
           func(value: string) {
@@ -21,7 +25,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Логин',
-        value: 'ivanivanov',
+        value: store.getState().user.login,
         name: 'login',
         validationProps: {
           func(value: string) {
@@ -34,7 +38,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Имя',
-        value: 'Иван',
+        value: store.getState().user.first_name,
         name: 'first_name',
         validationProps: {
           func(value: string) {
@@ -47,7 +51,7 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Фамилия',
-        value: 'Иванов',
+        value: store.getState().user.second_name,
         name: 'second_name',
         validationProps: {
           func(value: string) {
@@ -60,12 +64,14 @@ export default class EditCredentials extends Block {
       }),
       new Input({
         title: 'Имя в чате',
-        value: 'Иван',
+        value: store.getState().user.display_name
+          ? store.getState().user.display_name
+          : '',
         name: 'display_name',
       }),
       new Input({
         title: 'Телефон',
-        value: '+7 (909) 967 30 30',
+        value: store.getState().user.phone,
         name: 'phone',
         type: 'tel',
         validationProps: {
@@ -80,6 +86,7 @@ export default class EditCredentials extends Block {
     ];
     super({
       ...props,
+      url: iconUrl,
       events: {
         submit(e: Event) {
           e.preventDefault();
@@ -102,13 +109,16 @@ export default class EditCredentials extends Block {
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            console.log(res);
+            UserController.editCredentials(res as UserAPIData);
           }
         },
       },
       submitButton: new Button({
         text: 'Сохранить',
         type: 'submit',
+      }),
+      backButton: new BackButton({
+        link: '/settings',
       }),
       lists: {
         fields,
@@ -119,13 +129,11 @@ export default class EditCredentials extends Block {
   render() {
     return `
       <form class="edit-page edit-page__form">
-        <a class="edit-page__back-block" href="profile">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
-        </a>
+        {{{ backButton }}}
 
         <div class="profile-page__header">
           <div class="profile-page__image">
-            <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
+            <img class="icon-profile-img" src="{{ url }}" alt="profile-img">
           </div>
         </div>
         <div class="edit-page__fields">
