@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { InputField } from './input-field';
 
 export class Input extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       inputField: new InputField({

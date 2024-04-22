@@ -4,7 +4,7 @@ import { Avatar } from '../avatar';
 import store from '../../store';
 
 export class UserItem extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const { avatar } = props;
     super({
       ...props,
@@ -14,21 +14,25 @@ export class UserItem extends Block {
       selectedChats: [],
       events: {
         click() {
-          const id = (this as unknown as Block).props.id
-          if (!this.props.isSelected) {
-            this.setProps({isSelected: true})
+          const self = this as unknown as Block
+          const id = self.props.id
+          if (!self.props.isSelected) {
+            self.setProps({isSelected: true})
             store.set('selectedUsers', [
               ...store.getState().selectedUsers, id
             ])
           } else {
-            this.setProps({isSelected: false})
+            self.setProps({isSelected: false})
             store.set('selectedUsers', 
-              store.getState().selectedUsers.filter(e => e !== id)
+              store.getState().selectedUsers.filter((e: number) => e !== id)
             )
           }
         }
       }
     });
+    if (store.getState().selectedUsers.includes(this.props.id)) {
+      this.setProps({ isSelected: true })
+    }
   }
 
   render() {

@@ -3,9 +3,10 @@ import Block from '../../tools/block';
 import { Input, Button } from '../../components';
 import { UserController } from '../../controllers/user-controller';
 import { BackButton } from '../../components/back-button';
+import { UserPasswordAPIData } from '../../api/user-api';
 
 export default class EditPassword extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const fields = [
       new Input({
         title: 'Старый пароль',
@@ -74,11 +75,11 @@ export default class EditPassword extends Block {
             }
           });
           if (!formHasErrors && !formHasEmptyFields) {
-            const res: Record<string, string> = {};
+            const res: Indexed = {};
             fields.forEach((el: Block) => {
               res[el.props.name] = el.props.value;
             });
-            UserController.editPassword(res)
+            UserController.editPassword(res as UserPasswordAPIData)
           }
         },
       },

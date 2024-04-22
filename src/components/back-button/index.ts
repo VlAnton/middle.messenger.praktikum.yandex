@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { router } from '../../pages';
 
 export class BackButton extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       events: {

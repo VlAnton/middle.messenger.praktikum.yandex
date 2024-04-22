@@ -7,37 +7,23 @@ import { router } from '..';
 import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { AddChat } from '../../components/add-chat';
+import { ChatForm } from '../../components/chat-form';
 
 class ChatsPage extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       lists: {
-        chatItems: store.getState().chats.map(e => new ChatItem(e)),
+        chatItems: store.getState().chats.map((e: Chat) => new ChatItem(e)),
         messages: [],
       },
       avatar: new Avatar({}),
-      chatInput: new ChatInput({
-        name: 'message',
-        type: 'text',
-        placeholder: 'Сообщение',
-        onBlur(value: string) {
-          if (!value || value.length < 1) {
-            console.error('Сообщение не должно быть пустым');
-          }
-        },
-      }),
+      chatForm: new ChatForm({}),
       searchInput: new ChatInput({
         className: 'chat-input__search',
         name: 'search',
         type: 'search',
         placeholder: 'Поиск',
-        onBlur(value: string) {
-          if (!value) {
-            return;
-          }
-          ChatsController.getChats()
-        }
       }),
       createChatButton: new AddChat({
         text: 'Создать чат',
@@ -49,11 +35,10 @@ class ChatsPage extends Block {
         }
       })
     });
-
+    
     ChatsController.getChats()
     if (store.getState().selectedChat) {
       this.setProps({isChatSelected: true})
-      // ChatsController.
     }
   }
 
@@ -83,14 +68,10 @@ class ChatsPage extends Block {
                   <img class="icon-dots" src="../../assets/icons/dots.svg" alt="dots">
                 </div>
               </div>
-              <div class="chat-page__chat-body">
+              <div class="chat-page__chat-messages">
                 {{{ messages }}}
               </div>
-              <form class="chat-page__chat-input">
-                <img class="icon-send-file" src="../../assets/icons/sendFIle.svg" alt="send-file">
-                {{{ chatInput }}}
-                <img class="icon-send-message" src="../../assets/icons/sendMessage.svg" alt="send-message">
-              </form>
+              {{{ chatForm }}}
             </div>
           {{else}}
             <p class="chat-page__chat-placeholder">
@@ -103,14 +84,32 @@ class ChatsPage extends Block {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
+type User = {
+  avatar: string | null
+  display_name: string | null
+  first_name: string
+  id: number
+  login: string
+  second_name: string
+}
+type Chat = {
+  avatar: string | null
+  created_by: number
+  id: number
+  last_message: Indexed
+  title: string
+  unread_count: number
+}
+
+const mapStateToProps = (state: Indexed) => {
+  const chat = state.chats.find((e: Chat) => e.id === state.selectedChat)
   return {
     lists: {
-      chatItems: state.chats.map(e => new ChatItem(e)),
-      messages: state.messages.map(e => new ChatMessage(e)),
+      chatItems: state.chats.map((e: Chat) => new ChatItem(e)),
+      messages: state.messages.map((e: User) => new ChatMessage(e)),
     },
-    isChatSelected: Boolean(state.selectedChat)
+    display_name: chat ? chat.title : '',
+    isChatSelected: Boolean(state.selectedChat),
   }
 }
 

@@ -1,6 +1,5 @@
 import EventBus from './event-bus';
 import Handlebars from 'handlebars';
-import { merge } from './helpers';
 
 type Lists = Record<string, Record<string, Block[]>>;
 
@@ -11,7 +10,7 @@ export default class Block {
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
   };
-  public props: Props;
+  public props: Indexed;
   protected children: Record<string, Block>;
   private lists: Lists;
   private eventBus: () => EventBus;
@@ -71,7 +70,7 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps: Props, newProps: Props) {
+  _componentDidUpdate(oldProps: Indexed, newProps: Indexed) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -79,13 +78,13 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps: Props, newProps: Props) {
+  componentDidUpdate(oldProps: Indexed, newProps: Indexed) {
     return JSON.stringify(oldProps) !== JSON.stringify(newProps);
   }
 
-  _getChildrenPropsAndProps(propsAndChildren: Props) {
+  _getChildrenPropsAndProps(propsAndChildren: Indexed) {
     const children: Record<string, Block> = {};
-    const props: Props = {};
+    const props: Indexed = {};
     const lists: Lists = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
@@ -111,12 +110,12 @@ export default class Block {
     });
   }
 
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: Indexed) => {
     if (!nextProps) {
       return;
     }
     if (nextProps.lists) {
-      this.lists = nextProps as Lists
+      this.lists = { lists: nextProps.lists } as Lists
       this._render();
     }
     
@@ -135,7 +134,7 @@ export default class Block {
 
     Object.values(this.lists).forEach((child) => {
       Object.entries(child).forEach(([k, items]) => {
-        items.forEach((item) => {
+        items && items.forEach((item) => {
           if (item instanceof Block) {
             propsAndStubs[k] = `<div data-id="__l_${item._id}"></div>`;
           }
@@ -191,15 +190,15 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: Props) {
+  _makePropsProxy(props: Indexed) {
     const self = this;
 
     return new Proxy(props, {
-      get(target: Props, prop: string) {
+      get(target: Indexed, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: Props, prop: string, value: unknown) {
+      set(target: Indexed, prop: string, value: unknown) {
         const oldTarget = { ...target };
         target[prop] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);

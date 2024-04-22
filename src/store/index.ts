@@ -18,9 +18,9 @@ const initialState = {
 
 class Store extends EventBus {
   private static __instance: Store
-  private state: Props = {};
+  private state: Indexed = {};
 
-  constructor(state: Props) {
+  constructor(state: Indexed) {
     super();
     if (Store.__instance) {
       return Store.__instance;

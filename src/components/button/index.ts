@@ -2,7 +2,7 @@ import './button.scss';
 import Block from '../../tools/block';
 
 export class Button extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       events: {

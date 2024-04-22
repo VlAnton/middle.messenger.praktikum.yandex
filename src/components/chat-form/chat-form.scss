@@ -1,0 +1,13 @@
+@import '../../assets/variables';
+
+.chat-form {
+  display: flex;
+  gap: 10px;
+
+  &__button {
+    padding: 0;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+  }
+}

@@ -22,4 +22,7 @@ export class ChatsApi {
   static addUsers(data: AddUsersAPI) {
     return new HTTP().put('https://ya-praktikum.tech/api/v2/chats/users', { data });
   }
+  static getChatToken(chatId: string) {
+    return new HTTP().post('https://ya-praktikum.tech/api/v2/chats/token/' + chatId);
+  }
 }

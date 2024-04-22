@@ -8,11 +8,11 @@ import { UserItem } from '../../user-item';
 import { ChatsController } from '../../../controllers/chats-controller';
 
 class AddUsersDialogForm extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       lists: {
-        users: store.getState().searchedUsers.map(e => new ChatItem({...e}))
+        users: store.getState().searchedUsers.map((e: User) => new UserItem({...e}))
       },
       userInput: new ChatInput({ 
         title: 'Название чата',
@@ -55,10 +55,19 @@ class AddUsersDialogForm extends Block {
   }
 }
 
-const mapStateToProps = (state) => {
+type User = {
+  avatar: string | null
+  display_name: string | null
+  first_name: string
+  id: number
+  login: string
+  second_name: string
+}
+
+const mapStateToProps = (state: Indexed) => {
   return {
     lists: {
-      users: state.searchedUsers.map(e => new UserItem({...e}))
+      users: state.searchedUsers.map((e: User) => new UserItem({...e}))
     }
   }
 }

@@ -1,16 +1,13 @@
 import './add-chat-dialog.scss';
 import Block from '../../../tools/block';
-import { Button, Input, Link } from '../../../components';
-import { router } from '../../../pages';
-import { AuthController } from '../../../controllers/auth-controller';
-import { AuthApiData, SignUpAPIData } from '../../../api/auth-api';
+import { Button, Input } from '../../../components';
 import store from '../../../store';
 import { ChatsController } from '../../../controllers/chats-controller';
 import AddUsersDialogForm from '../add-users-form';
 import connect from '../../../tools/hoc';
 
 class AddChatDialog extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       isUsersAvailiable: Boolean(store.getState().createdChatInForm),
@@ -36,12 +33,12 @@ class AddChatDialog extends Block {
 
   render() {
     return `
-      <form class="dialog dialog__form">
-        <h1 class="dialog__title">
+      <form class="add-chat-dialog">
+        <h1 class="add-chat-dialog__title">
           {{ title }}
         </h1>
         {{{ titleInput }}}
-        <div class="dialog__footer">
+        <div class="add-chat-dialog__footer">
           {{{ createButton }}}
         </div>
         {{#if isUsersAvailiable }}
@@ -52,7 +49,7 @@ class AddChatDialog extends Block {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Indexed) => {
   return {isUsersAvailiable: Boolean(state.createdChatInForm)}
 }
 

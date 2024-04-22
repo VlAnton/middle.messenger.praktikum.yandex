@@ -2,7 +2,7 @@ import './avatar.scss';
 import Block from '../../tools/block';
 
 export class Avatar extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
     });

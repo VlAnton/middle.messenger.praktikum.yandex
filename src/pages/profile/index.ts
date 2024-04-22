@@ -8,7 +8,7 @@ import { router } from '..';
 import { BackButton } from '../../components/back-button';
 
 class ProfilePage extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       ...store.getState().user,
@@ -42,8 +42,6 @@ class ProfilePage extends Block {
         negative: true,
         onClick: (e: Event) => {
           e.preventDefault()
-          e.stopImmediatePropagation()
-
           AuthController.signOut()
         }
       }),
@@ -111,6 +109,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state) => ({...state.user})
+const mapStateToProps = (state: Indexed) => ({...state.user})
 
 export default connect(mapStateToProps)(ProfilePage)

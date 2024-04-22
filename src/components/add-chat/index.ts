@@ -1,10 +1,9 @@
 import './add-chat.scss';
 import Block from '../../tools/block';
-import { Dialog } from '../dialog';
 import AddChatDialog from './add-chart-dialog';
 
 export class AddChat extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       modalOpened: false,

@@ -5,9 +5,9 @@ export default class Route {
   private _pathname: string;
   private _blockClass: typeof Block;
   private _block: Block | null;
-  private _props: Props;
+  private _props: Indexed;
 
-  constructor(pathname: string, view: typeof Block, props: Props) {
+  constructor(pathname: string, view: typeof Block, props: Indexed) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;

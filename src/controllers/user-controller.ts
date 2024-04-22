@@ -11,7 +11,7 @@ export class UserController {
     try {
       await UserAPI.editCredentials(data);
       const response = await this.getUser();
-      store.set('user', JSON.parse(response.responseText));
+      store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       router.go('/profile');
     } catch (error) {
       store.set('isAuthenticated', false);
@@ -32,7 +32,7 @@ export class UserController {
   static async searchUserByLogin(data: UserSearchAPIData) {
     try {
       const response = await UserAPI.search(data);
-      store.set('searchedUsers', JSON.parse(response.responseText))
+      store.set('searchedUsers', JSON.parse((response as XMLHttpRequest).responseText))
     } catch (error) {
       // store.set('isAuthenticated', false);
       // router.go('/');

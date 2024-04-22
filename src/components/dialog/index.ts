@@ -7,7 +7,7 @@ import { AuthApiData, SignUpAPIData } from '../../api/auth-api';
 import store from '../../store';
 
 export class Dialog extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const { fields, buttonProps, linkProps } = props;
     super({
       ...props,

@@ -7,7 +7,7 @@ import { UserAPIData } from '../../api/user-api';
 import { BackButton } from '../../components/back-button';
 
 export default class EditCredentials extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     const fields = [
       new Input({
         title: 'Почта',

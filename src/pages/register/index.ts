@@ -2,11 +2,10 @@ import './register.scss';
 
 import Block from '../../tools/block';
 import { Input, Dialog } from '../../components';
-import { SignUpController } from '../../controllers/sign-up-controller';
 import { router } from '..';
 
 export default class RegisterPage extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       dialog: new Dialog({

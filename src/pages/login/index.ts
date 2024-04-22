@@ -5,7 +5,7 @@ import { Input, Dialog } from '../../components';
 import { router } from '..';
 
 export default class LoginPage extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       dialog: new Dialog({

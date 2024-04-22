@@ -7,10 +7,6 @@ export function navigate(block: Block, query?: string) {
   }
 }
 
-type Indexed<T = unknown> = {
-  [key in string]: T;
-};
-
 export function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
   if ((object as Indexed).constructor !== Object) {
     return object;

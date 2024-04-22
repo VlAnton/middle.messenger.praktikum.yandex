@@ -3,10 +3,10 @@ import Block from '../../tools/block';
 import { Avatar } from '../avatar';
 import { ChatDeleteButton } from './chat-delete-button';
 import store from '../../store';
-import connect from '../../tools/hoc';
+import { ChatsController } from '../../controllers/chats-controller';
 
-class ChatItem extends Block {
-  constructor(props: Props) {
+export default class ChatItem extends Block {
+  constructor(props: Indexed) {
     const { avatar } = props;
     super({
       ...props,
@@ -23,11 +23,19 @@ class ChatItem extends Block {
           } else {
             self.setProps({ isSelected: true })
             store.set('selectedChat', self.props.id)
+            ChatsController.getChatToken()
           }
         }
       }
     });
-    if (this.props.selectedChat === this.props.id) {
+    const date = this.props.last_message?.time
+    if (date) {
+      const newDate = new Date(date)
+      this.setProps({
+        date: `${newDate.toLocaleDateString('ru-RU')} ${newDate.toLocaleTimeString('ru-RU', { weekday: 'short' })}`
+      })
+    }
+    if (store.getState().selectedChat === this.props.id) {
       this.setProps({ isSelected: true })
     }
   }
@@ -40,33 +48,23 @@ class ChatItem extends Block {
           {{{ avatar }}}
           <div class="chat-item__message-block">
             <div class="chat-item__name">{{ title }}</div>
-            {{#if last_message }}
-              <div class="chat-item__message">
-                <p class="chat-item__message-text">
-                  {{ last_message }}
-                </p>
-              </div>
-            {{/if}}
+            <div class="chat-item__message">
+              <p class="chat-item__message-text">
+                {{ last_message.content }}
+              </p>
+            </div>
           </div>
           <div class="chat-item__info-block">
-          <div class="chat-item__date">{{ date }}</div>
-          {{{cross}}}
-          {{#if unread_count}}
+            <div class="chat-item__date">{{ date }}</div>
+            {{#if unread_count}}
               <div class="chat-item__unread">
                 {{ unread_count }}
               </div>
             {{/if}}
+            </div>
           </div>
         </div>
       </div>
     `;
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    selectedChat: state.selectedChat
-  }
-}
-
-export default connect(mapStateToProps)(ChatItem)

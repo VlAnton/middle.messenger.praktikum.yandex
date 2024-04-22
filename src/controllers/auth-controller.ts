@@ -8,10 +8,10 @@ export class AuthController {
     try {
       await AuthApi.signIn(data);
       const response = await UserController.getUser();
-      if (response.status !== 200) {
+      if ((response as XMLHttpRequest).status !== 200) {
         throw Error('login or password is incorrect')
       }
-      store.set('user', JSON.parse(response.responseText));
+      store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       store.set('isAuthenticated', true);
       router.go('/chats');
     } catch {
@@ -20,20 +20,24 @@ export class AuthController {
     }
   }
 
-  static signUp(data: SignUpAPIData) {
-    AuthApi
-      .signUp(data)
-      .then(_ => {
-        store.set('isAuthenticated', true)
-      });
+  static async signUp(data: SignUpAPIData) {
+    try {
+      await AuthApi.signUp(data)
+      store.set('isAuthenticated', true);
+    } catch {
+      store.set('isAuthenticated', false);
+      store.set('user', {});
+    }
   }
 
-  static signOut() {
-    AuthApi
-      .sighOut()
-      .then(_ => {
-        store.set('isAuthenticated', false)
-        router.go('/')
-      })
+  static async signOut() {
+    try {
+      await AuthApi.sighOut()
+      store.set('isAuthenticated', false)
+      router.go('/')
+    } catch {
+      store.set('isAuthenticated', false);
+      store.set('user', {});
+    }
   }
 } 
