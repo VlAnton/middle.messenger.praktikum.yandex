@@ -9,7 +9,6 @@ class AvatarSetter extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
-      url,
       events: {
         mouseover () {
           (this as unknown as Block).setProps({ isHovered: true })
