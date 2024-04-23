@@ -18,7 +18,7 @@ class AvatarSetter extends Block {
         },
         change (e: Event) {
           const target = e.target as HTMLInputElement
-          if (!target && !target?.files[0]) {
+          if (!target?.files?.item(0)) {
             return;
           }
           const formData = new FormData();
