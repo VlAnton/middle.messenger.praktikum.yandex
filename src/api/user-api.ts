@@ -26,7 +26,7 @@ export class UserAPI {
   }
 
   static setImage(data: FormData) {
-    return new HTTP().post(`${BASE_URL}/user/profile/avatar`, {
+    return new HTTP().put(`${BASE_URL}/user/profile/avatar`, {
       data,
     });
   }

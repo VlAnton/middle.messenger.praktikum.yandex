@@ -1,10 +1,47 @@
 @import '../../assets/variables';
 
 .avatar-setter {
-  width: fit-content;
-  height: fit-content;
+  width: 130px;
+  height: 134px;
   cursor: pointer;
   padding: 45px;
   background-color: $gray-light-color;
   border-radius: 100%;
+  position: relative;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 130px;
+    height: 134px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray-light-color;
+    font: $font-regular;
+    background-color: rgba(29, 32, 35, 0.4);
+    & > p {
+      margin: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 130px;
+    height: 134px;
+    border-radius: 100%;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__input-label {
+    line-height: 134px;
+    cursor: pointer;
+  }
 }
