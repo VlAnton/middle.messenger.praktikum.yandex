@@ -3,6 +3,7 @@ import Block from '../../tools/block';
 import url from '../../assets/icons/profileImg.svg?url';
 import connect from '../../tools/hoc';
 import { UserController } from '../../controllers/user-controller';
+import { BASE_URL } from '../../constants';
 
 class AvatarSetter extends Block {
   constructor(props: Indexed) {
@@ -49,11 +50,16 @@ class AvatarSetter extends Block {
 }
 
 const mapStateToProps = (state: Indexed) => {
-  return {
-    url: state.user.avatar ?
+  console.log(state.user.avatar)
+  let newUrl = url
+  if (state.user.avatar) {
+    newUrl = state.user.avatar.startsWith('https') ?
       state.user.avatar :
-      url
-    };
+      `${BASE_URL}/resources/${state.user.avatar}`
+  }
+  return {
+    url: newUrl
+  };
 };
 
 export default connect(mapStateToProps)(AvatarSetter)

@@ -31,7 +31,6 @@ export class UserAPI {
   static setImage(data: FormData) {
     return new HTTP().put(`${BASE_URL}/user/profile/avatar`, {
       data,
-      headers: { 'content-type': 'multipart/form-data' }
     });
   }
 }
