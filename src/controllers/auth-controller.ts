@@ -9,7 +9,7 @@ export class AuthController {
     try {
       await AuthApi.signIn(data);
       const response = await UserController.getUser();
-      if (!(response as XMLHttpRequest).responseText) {
+      if (!(response as XMLHttpRequest)?.responseText) {
         return
       }
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
