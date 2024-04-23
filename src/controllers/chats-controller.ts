@@ -9,6 +9,7 @@ export class ChatsController {
     try {
       const response = await ChatsApi.getChats();
       store.set('chats', JSON.parse((response as XMLHttpRequest).responseText));
+      console.log(store.getState().chats)
     } catch {
       store.unsetState()
     }

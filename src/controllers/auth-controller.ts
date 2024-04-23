@@ -9,14 +9,15 @@ export class AuthController {
     try {
       await AuthApi.signIn(data);
       const response = await UserController.getUser();
-      if ((response as XMLHttpRequest).status !== 200) {
-        throw Error('login or password is incorrect');
+      if (!(response as XMLHttpRequest).responseText) {
+        return
       }
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       store.set('isAuthenticated', true);
       router.go('/messenger');
-    } catch {
+    } catch (e) {
       store.unsetState()
+      router.go('/');
     }
   }
 
@@ -49,7 +50,6 @@ export class AuthController {
       await AuthApi.sighOut();
       store.unsetState()
       router.go('/');
-      location.reload()
     } catch {
       store.unsetState()
     }

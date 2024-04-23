@@ -49,7 +49,6 @@ class AvatarSetter extends Block {
 }
 
 const mapStateToProps = (state: Indexed) => {
-  console.log(state.user.avatar)
   let newUrl = url
   if (state.user.avatar) {
     newUrl = state.user.avatar.startsWith('https') ?
