@@ -20,6 +20,21 @@ export class AuthController {
     }
   }
 
+  static async checkCurrentSession() {
+    try {
+      const response = await UserController.getUser();
+
+      if (response.status === 200) {
+        store.set('isAuth', true);
+        store.set('user', JSON.parse(response.responseText));
+        router.go('/messenger');
+      }
+    } catch (error) {
+      store.unsetState()
+      router.go('/');
+    }
+  }
+
   static async signUp(data: SignUpAPIData) {
     try {
       await AuthApi.signUp(data);

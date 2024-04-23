@@ -5,7 +5,14 @@ import { UserAPIData, UserPasswordAPIData, UserSearchAPIData } from '../types/ap
 
 export class UserController {
   static async getUser() {
-    return await UserAPI.getUser();
+    try {
+      const response = await UserAPI.getUser()
+      store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
+
+      return store.getState().user;
+    } catch {
+      store.unsetState()
+    }
   }
 
   static async editCredentials(data: UserAPIData) {
