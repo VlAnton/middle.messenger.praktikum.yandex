@@ -50,7 +50,6 @@ export class UserController {
 
   static async setAvatar(data: FormData) {
     try {
-      console.log(data.entries())
       const response = await UserAPI.setImage(data);
       const user = JSON.parse((response as XMLHttpRequest).responseText);
 
