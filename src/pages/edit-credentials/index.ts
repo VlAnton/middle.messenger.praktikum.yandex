@@ -90,6 +90,7 @@ export default class EditCredentials extends Block {
         submit(e: Event) {
           e.preventDefault();
           e.stopImmediatePropagation();
+          (e.target as HTMLInputElement).querySelectorAll('input').forEach(input => input.blur());
           const formHasErrors = fields.some(
             (el: Block) => el.props.error && el.props.error.length > 0,
           );

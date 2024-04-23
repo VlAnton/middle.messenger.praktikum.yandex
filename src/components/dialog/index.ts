@@ -19,6 +19,7 @@ export class Dialog extends Block {
         submit: (e: Event) => {
           e.preventDefault();
           e.stopImmediatePropagation();
+          (e.target as HTMLInputElement).querySelectorAll('input').forEach(input => input.blur());
           const formHasErrors =
             props.fields &&
             props.fields.some(

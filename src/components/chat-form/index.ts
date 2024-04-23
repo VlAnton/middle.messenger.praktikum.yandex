@@ -24,6 +24,7 @@ export class ChatForm extends Block {
       events: {
         submit(e: Event) {
           e.preventDefault();
+          (e.target as HTMLInputElement).querySelectorAll('input').forEach(input => input.blur());
           const value = (this as unknown as ChatForm).children.chatInput.props
             .value;
           if (value) {
