@@ -2,8 +2,8 @@ import './chat-form.scss';
 import { ChatInput } from '..';
 import Block from '../../tools/block';
 import { ChatsController } from '../../controllers/chats-controller';
-import sendFileUrl from '../../assets/icons/sendFIle.svg?url'
-import sendMessageUrl from '../../assets/icons/sendMessage.svg?url'
+import sendFileUrl from '../../assets/icons/sendFIle.svg?url';
+import sendMessageUrl from '../../assets/icons/sendMessage.svg?url';
 
 export class ChatForm extends Block {
   constructor(props: Indexed) {
@@ -24,7 +24,9 @@ export class ChatForm extends Block {
       events: {
         submit(e: Event) {
           e.preventDefault();
-          (e.target as HTMLInputElement).querySelectorAll('input').forEach(input => input.blur());
+          (e.target as HTMLInputElement)
+            .querySelectorAll('input')
+            .forEach((input) => input.blur());
           const value = (this as unknown as ChatForm).children.chatInput.props
             .value;
           if (value) {

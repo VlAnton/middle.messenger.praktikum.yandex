@@ -1,13 +1,13 @@
 import './chat-message.scss';
 import Block from '../../tools/block';
 import store from '../../store';
-import iconUrl from '../../assets/icons/read.svg?url'
+import iconUrl from '../../assets/icons/read.svg?url';
 
 export class ChatMessage extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
-      url: iconUrl
+      url: iconUrl,
     });
     this.setProps({ isYours: this.props.user_id === store.getState().user.id });
   }

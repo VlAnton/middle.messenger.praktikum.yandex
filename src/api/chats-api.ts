@@ -11,21 +11,21 @@ export class ChatsApi {
   static createChat(data: CreateChatsApi) {
     return new HTTP().post(`${BASE_URL}/chats`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 
   static deleteChat(data: DeleteChatsApi) {
     return new HTTP().delete(`${BASE_URL}/chats`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 
   static addUsers(data: UsersAPI) {
     return new HTTP().put(`${BASE_URL}/chats/users`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 
@@ -37,7 +37,7 @@ export class ChatsApi {
   static deleteUsers(data: UsersAPI) {
     return new HTTP().delete(`${BASE_URL}/chats/users`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 

@@ -19,10 +19,4 @@ import AvatarSetter from './avatar-setter';
 import ChatUsersForm from './chat-actions/chat-users-form';
 import ChatItem from './chat-list-item';
 
-export {
-  ChatItem,
-  AddChatDialog,
-  AddUsersForm,
-  ChatUsersForm,
-  AvatarSetter,
-};
+export { ChatItem, AddChatDialog, AddUsersForm, ChatUsersForm, AvatarSetter };

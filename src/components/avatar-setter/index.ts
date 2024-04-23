@@ -10,14 +10,14 @@ class AvatarSetter extends Block {
     super({
       ...props,
       events: {
-        mouseover () {
-          (this as unknown as Block).setProps({ isHovered: true })
+        mouseover() {
+          (this as unknown as Block).setProps({ isHovered: true });
         },
-        mouseleave () {
-          (this as unknown as Block).setProps({ isHovered: false })
+        mouseleave() {
+          (this as unknown as Block).setProps({ isHovered: false });
         },
-        change (e: Event) {
-          const target = e.target as HTMLInputElement
+        change(e: Event) {
+          const target = e.target as HTMLInputElement;
           if (!target?.files?.item(0)) {
             return;
           }
@@ -25,11 +25,11 @@ class AvatarSetter extends Block {
           formData.append('avatar', target.files[0]);
 
           UserController.setAvatar(formData);
-        }
-      }
+        },
+      },
     });
 
-    UserController.getUser()
+    UserController.getUser();
   }
 
   render() {
@@ -49,15 +49,15 @@ class AvatarSetter extends Block {
 }
 
 const mapStateToProps = (state: Indexed) => {
-  let newUrl = url
+  let newUrl = url;
   if (state.user.avatar) {
-    newUrl = state.user.avatar.startsWith('https') ?
-      state.user.avatar :
-      `${BASE_URL}/resources/${state.user.avatar}`
+    newUrl = state.user.avatar.startsWith('https')
+      ? state.user.avatar
+      : `${BASE_URL}/resources/${state.user.avatar}`;
   }
   return {
-    url: newUrl
+    url: newUrl,
   };
 };
 
-export default connect(mapStateToProps)(AvatarSetter)
+export default connect(mapStateToProps)(AvatarSetter);

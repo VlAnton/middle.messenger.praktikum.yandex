@@ -10,13 +10,13 @@ export class AuthController {
       await AuthApi.signIn(data);
       const response = await UserController.getUser();
       if (!(response as XMLHttpRequest)?.responseText) {
-        return
+        return;
       }
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       store.set('isAuthenticated', true);
       router.go('/messenger');
     } catch (e) {
-      store.unsetState()
+      store.unsetState();
       router.go('/');
     }
   }
@@ -31,7 +31,7 @@ export class AuthController {
         router.go('/messenger');
       }
     } catch (error) {
-      store.unsetState()
+      store.unsetState();
       router.go('/');
     }
   }
@@ -41,17 +41,17 @@ export class AuthController {
       await AuthApi.signUp(data);
       store.set('isAuthenticated', true);
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
   static async signOut() {
     try {
       await AuthApi.sighOut();
-      store.unsetState()
+      store.unsetState();
       router.go('/');
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 }

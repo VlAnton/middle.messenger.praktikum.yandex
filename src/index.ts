@@ -3,7 +3,7 @@ import './index.scss';
 import { router } from './pages';
 
 document.addEventListener('DOMContentLoaded', () => {
-  AuthController.checkCurrentSession()
+  AuthController.checkCurrentSession();
 });
 
 document.addEventListener('click', (e: Event) => {

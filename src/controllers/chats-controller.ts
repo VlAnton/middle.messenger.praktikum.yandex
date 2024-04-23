@@ -10,7 +10,7 @@ export class ChatsController {
       const response = await ChatsApi.getChats();
       store.set('chats', JSON.parse((response as XMLHttpRequest).responseText));
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
   static async createChat(data: CreateChatsApi) {
@@ -22,7 +22,7 @@ export class ChatsController {
       );
       await this.getChats();
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
   static async deleteChat(data: DeleteChatsApi) {
@@ -30,7 +30,7 @@ export class ChatsController {
       await ChatsApi.deleteChat(data);
       await this.getChats();
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
@@ -38,7 +38,7 @@ export class ChatsController {
     try {
       await ChatsApi.addUsers(data);
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
@@ -50,7 +50,7 @@ export class ChatsController {
         JSON.parse((response as XMLHttpRequest).responseText),
       );
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
@@ -58,7 +58,7 @@ export class ChatsController {
     try {
       await ChatsApi.deleteUsers(data);
       await ChatsController.getChatUsers();
-      (store.getState());
+      store.getState();
     } catch {}
   }
 
@@ -77,7 +77,7 @@ export class ChatsController {
 
       ChatsController.connectToChat();
     } catch (error) {
-      store.unsetState()
+      store.unsetState();
     }
   }
 

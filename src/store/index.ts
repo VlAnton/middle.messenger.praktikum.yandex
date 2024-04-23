@@ -41,7 +41,7 @@ class Store extends EventBus {
   }
 
   public unsetState() {
-    this.state = initialState
+    this.state = initialState;
   }
 }
 

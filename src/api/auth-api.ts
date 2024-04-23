@@ -6,14 +6,14 @@ export class AuthApi {
   static signIn(data: AuthApiData) {
     return new HTTP().post(`${BASE_URL}/auth/signin`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 
   static signUp(data: SignUpAPIData) {
     return new HTTP().post(`${BASE_URL}/auth/signup`, {
       data,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     });
   }
 
