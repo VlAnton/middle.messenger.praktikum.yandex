@@ -1,18 +1,17 @@
 import './profile.scss';
 import Block from '../../tools/block';
-import { Link, BackButton } from '../../components';
+import { Link, BackButton, AvatarSetter } from '../../components';
 import store from '../../store';
 import { AuthController } from '../../controllers/auth-controller';
 import connect from '../../tools/hoc';
 import { router } from '..';
-import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 class ProfilePage extends Block {
   constructor(props: Indexed) {
     super({
       ...props,
-      url: iconUrl,
       ...store.getState().user,
+      avatarSetter: new AvatarSetter({}),
       changeCredentials: new Link({
         text: 'Изменить данные',
         xl: true,
@@ -54,9 +53,7 @@ class ProfilePage extends Block {
       
         <div class="profile-page__info">
           <div class="profile-page__header">
-            <div class="profile-page__image">
-              <img class="icon-profile-img" src="{{url}}" alt="profile-img">
-            </div>
+            {{{ avatarSetter }}}
       
             <div class="profile-page__name">
               {{#if display_name }}{{ display_name }} {{else}} {{first_name}} {{ second_name}} {{/if}}

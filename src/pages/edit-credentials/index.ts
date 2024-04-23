@@ -1,10 +1,9 @@
 import './edit-credentials.scss';
 import Block from '../../tools/block';
-import { Input, Button, BackButton } from '../../components';
+import { Input, Button, BackButton, AvatarSetter } from '../../components';
 import store from '../../store';
 import { UserController } from '../../controllers/user-controller';
 import { UserAPIData } from '../../types/api';
-import iconUrl from '../../assets/icons/profileImg.svg?url';
 
 export default class EditCredentials extends Block {
   constructor(props: Indexed) {
@@ -86,7 +85,7 @@ export default class EditCredentials extends Block {
     ];
     super({
       ...props,
-      url: iconUrl,
+      avatarSetter: new AvatarSetter({}),
       events: {
         submit(e: Event) {
           e.preventDefault();
@@ -132,9 +131,7 @@ export default class EditCredentials extends Block {
         {{{ backButton }}}
 
         <div class="profile-page__header">
-          <div class="profile-page__image">
-            <img class="icon-profile-img" src="{{ url }}" alt="profile-img">
-          </div>
+          {{{ avatarSetter }}}
         </div>
         <div class="edit-page__fields">
           {{{ fields }}}

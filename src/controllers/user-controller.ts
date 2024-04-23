@@ -1,4 +1,5 @@
 import { UserAPI } from '../api/user-api';
+import { BASE_URL } from '../constants';
 import { router } from '../pages';
 import store from '../store';
 import { UserAPIData, UserPasswordAPIData, UserSearchAPIData } from '../types/api';
@@ -46,4 +47,19 @@ export class UserController {
       store.unsetState()
     }
   }
+
+  static async updateAvatar(data: FormData) {
+    try {
+      const response = await UserAPI.setImage(data);
+      const user = JSON.parse((response as XMLHttpRequest).responseText);
+
+      store.set(
+        'user.avatar',
+        `${BASE_URL}/resources/${user.avatar}`,
+      );
+    } catch (error) {
+      store.unsetState()
+      router.go('/');
+    }
+}
 }

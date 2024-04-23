@@ -1,0 +1,10 @@
+@import '../../assets/variables';
+
+.avatar-setter {
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  padding: 45px;
+  background-color: $gray-light-color;
+  border-radius: 100%;
+}
