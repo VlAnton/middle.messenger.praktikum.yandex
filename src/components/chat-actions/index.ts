@@ -3,7 +3,7 @@ import Block from '../../tools/block';
 import { ChatAction } from './chat-action';
 import { ChatsController } from '../../controllers/chats-controller';
 import store from '../../store';
-import iconUrl from '../../assets/icons/dots.svg?url'
+import iconUrl from '../../assets/icons/dots.svg?url';
 
 export class ChatActions extends Block {
   constructor(props: Indexed) {

@@ -29,21 +29,21 @@ export default class Route {
     return pathname === this._pathname;
   }
 
-  _render () {
+  _render() {
     const root = document.querySelector('#app');
     if (root) {
       root.innerHTML = '';
-      root.appendChild((this._block?.getContent() as Node));
+      root.appendChild(this._block?.getContent() as Node);
     }
   }
 
   render() {
     if (!this._block) {
       this._block = new this._blockClass({ ...this._props });
-      this._render()
+      this._render();
       return;
     }
-    this._render()
+    this._render();
     this._block.show();
   }
 }

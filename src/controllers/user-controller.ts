@@ -1,11 +1,23 @@
 import { UserAPI } from '../api/user-api';
+import { BASE_URL } from '../constants';
 import { router } from '../pages';
 import store from '../store';
-import { UserAPIData, UserPasswordAPIData, UserSearchAPIData } from '../types/api';
+import {
+  UserAPIData,
+  UserPasswordAPIData,
+  UserSearchAPIData,
+} from '../types/api';
 
 export class UserController {
   static async getUser() {
-    return await UserAPI.getUser();
+    try {
+      const response = await UserAPI.getUser();
+      store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
+
+      return store.getState().user;
+    } catch {
+      store.unsetState();
+    }
   }
 
   static async editCredentials(data: UserAPIData) {
@@ -15,7 +27,7 @@ export class UserController {
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       router.go('/settings');
     } catch (error) {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
@@ -24,7 +36,7 @@ export class UserController {
       await UserAPI.editPassword(data);
       router.go('/settings');
     } catch (error) {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
@@ -36,7 +48,19 @@ export class UserController {
         JSON.parse((response as XMLHttpRequest).responseText),
       );
     } catch (error) {
-      store.unsetState()
+      store.unsetState();
+    }
+  }
+
+  static async setAvatar(data: FormData) {
+    try {
+      const response = await UserAPI.setImage(data);
+      const user = JSON.parse((response as XMLHttpRequest).responseText);
+
+      store.set('user.avatar', `${BASE_URL}/resources/${user.avatar}`);
+    } catch (error) {
+      store.unsetState();
+      router.go('/');
     }
   }
 }

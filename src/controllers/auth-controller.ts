@@ -9,14 +9,30 @@ export class AuthController {
     try {
       await AuthApi.signIn(data);
       const response = await UserController.getUser();
-      if ((response as XMLHttpRequest).status !== 200) {
-        throw Error('login or password is incorrect');
+      if (!(response as XMLHttpRequest)?.responseText) {
+        return;
       }
       store.set('user', JSON.parse((response as XMLHttpRequest).responseText));
       store.set('isAuthenticated', true);
       router.go('/messenger');
-    } catch {
-      store.unsetState()
+    } catch (e) {
+      store.unsetState();
+      router.go('/');
+    }
+  }
+
+  static async checkCurrentSession() {
+    try {
+      const response = await UserController.getUser();
+
+      if (response.status === 200) {
+        store.set('isAuth', true);
+        store.set('user', JSON.parse(response.responseText));
+        router.go('/messenger');
+      }
+    } catch (error) {
+      store.unsetState();
+      router.go('/');
     }
   }
 
@@ -25,18 +41,17 @@ export class AuthController {
       await AuthApi.signUp(data);
       store.set('isAuthenticated', true);
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 
   static async signOut() {
     try {
       await AuthApi.sighOut();
-      store.unsetState()
+      store.unsetState();
       router.go('/');
-      location.reload()
     } catch {
-      store.unsetState()
+      store.unsetState();
     }
   }
 }

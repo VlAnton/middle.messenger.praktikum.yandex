@@ -1,7 +1,7 @@
 import './back-button.scss';
 import Block from '../../tools/block';
 import { router } from '../../pages';
-import iconUrl from '../../assets/icons/sendMessage.svg?url'
+import iconUrl from '../../assets/icons/sendMessage.svg?url';
 
 export class BackButton extends Block {
   constructor(props: Indexed) {

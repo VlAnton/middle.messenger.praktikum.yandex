@@ -15,12 +15,8 @@ export { UserItem } from './user-item';
 
 import AddChatDialog from './add-chat/add-chat-dialog';
 import AddUsersForm from './add-chat/add-users-form';
+import AvatarSetter from './avatar-setter';
 import ChatUsersForm from './chat-actions/chat-users-form';
 import ChatItem from './chat-list-item';
 
-export {
-  ChatItem,
-  AddChatDialog,
-  AddUsersForm,
-  ChatUsersForm,
-};
+export { ChatItem, AddChatDialog, AddUsersForm, ChatUsersForm, AvatarSetter };

@@ -1,20 +1,23 @@
+import { BASE_URL } from '../constants';
 import HTTP from '../tools/fetch';
 import { AuthApiData, SignUpAPIData } from '../types/api';
 
 export class AuthApi {
   static signIn(data: AuthApiData) {
-    return new HTTP().post('https://ya-praktikum.tech/api/v2/auth/signin', {
+    return new HTTP().post(`${BASE_URL}/auth/signin`, {
       data,
+      headers: { 'content-type': 'application/json' },
     });
   }
 
   static signUp(data: SignUpAPIData) {
-    return new HTTP().post('https://ya-praktikum.tech/api/v2/auth/signup', {
+    return new HTTP().post(`${BASE_URL}/auth/signup`, {
       data,
+      headers: { 'content-type': 'application/json' },
     });
   }
 
   static sighOut() {
-    return new HTTP().post('https://ya-praktikum.tech/api/v2/auth/logout');
+    return new HTTP().post(`${BASE_URL}/auth/logout`);
   }
 }

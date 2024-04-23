@@ -7,7 +7,7 @@ import {
   ChatItem,
   AddChat,
   ChatForm,
-  ChatActions
+  ChatActions,
 } from '../../components';
 import Block from '../../tools/block';
 import store from '../../store';
@@ -15,7 +15,6 @@ import { router } from '..';
 import connect from '../../tools/hoc';
 import { ChatsController } from '../../controllers/chats-controller';
 import { Chat, User } from '../../types/common';
-
 
 class ChatsPage extends Block {
   constructor(props: Indexed) {
