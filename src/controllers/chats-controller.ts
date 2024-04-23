@@ -49,7 +49,9 @@ export class ChatsController {
         'usersToDelete',
         JSON.parse((response as XMLHttpRequest).responseText),
       );
-    } catch {}
+    } catch {
+      store.unsetState()
+    }
   }
 
   static async deleteChatUsers(data: UsersAPI) {
