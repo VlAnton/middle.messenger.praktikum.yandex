@@ -2,9 +2,10 @@ import './register.scss';
 
 import Block from '../../tools/block';
 import { Input, Dialog } from '../../components';
+import { router } from '..';
 
 export default class RegisterPage extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       dialog: new Dialog({
@@ -105,11 +106,13 @@ export default class RegisterPage extends Block {
         ],
         buttonProps: {
           text: 'Зарегистрироваться',
-          page: 'chats',
         },
         linkProps: {
           text: 'Войти',
           href: 'login',
+          onClick() {
+            router.go('/');
+          },
         },
       }),
     });
@@ -117,7 +120,7 @@ export default class RegisterPage extends Block {
 
   override render() {
     return `
-      <div class="login-page">
+      <div class="register-page">
         {{{ dialog }}}
       </div>
     `;

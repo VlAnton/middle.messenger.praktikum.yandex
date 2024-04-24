@@ -33,14 +33,24 @@
 
 ## Ссылки на страницы в проекте
 
-- [Авторизация](https://anton-vlasov-messenger.netlify.app/login)
-- [Регистрация](https://anton-vlasov-messenger.netlify.app/register)
-- [Чат](https://anton-vlasov-messenger.netlify.app/chats)
-- [Профиль](https://anton-vlasov-messenger.netlify.app/profile)
-- [Изменение данных](https://anton-vlasov-messenger.netlify.app/edit-credentials)
-- [Изменение пароля](https://anton-vlasov-messenger.netlify.app/edit-password)
+- [Авторизация](https://anton-vlasov-messenger.netlify.app/)
+- [Регистрация](https://anton-vlasov-messenger.netlify.app/sign-up)
+- [Чат](https://anton-vlasov-messenger.netlify.app/messenger)
+- [Профиль](https://anton-vlasov-messenger.netlify.app/settings)
+- [Изменение данных](https://anton-vlasov-messenger.netlify.app/change-profile)
+- [Изменение пароля](https://anton-vlasov-messenger.netlify.app/change-password)
 - [Ошибка 404](https://anton-vlasov-messenger.netlify.app/404)
 - [Ошибка 500](https://anton-vlasov-messenger.netlify.app/500)
+
+## Как это работает
+
+Сначала открывается страница логин. Если у вас нет пользователя, то нажимаем на кнопку "Нет аккаунта?" и регистрируем.
+
+Далее мы попадаем в мессенджер. Чтобы создать чат, нажимаем кнопку "Создать чат", вводим название чата, появляется список пользователей и поле ввода, куда мы вводим логин необходимого пользователя. Выбираем пользователей, нажимаем кнопку "Добавить пользователей".
+
+Нажав на чат, мы сможем писать сообщения, отправлять их на кнопку со стрелочкой. В правом верхнем углу кнопка с действиями, где мы можем удалить пользотеля из чата, добавить пользователя в чат, либо удалить чат.
+
+Перейдя по ссылке "Профиль", мы попадаем в меню с информацией о пользователе. Тут мы можем выйти из аккаунта, изменить данные, либо сменить пароль.
 
 ## Разработчик
 

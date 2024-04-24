@@ -1,26 +1,47 @@
 import './profile.scss';
 import Block from '../../tools/block';
-import { Link } from '../../components';
+import { Link, BackButton, AvatarSetter } from '../../components';
+import store from '../../store';
+import { AuthController } from '../../controllers/auth-controller';
+import connect from '../../tools/hoc';
+import { router } from '..';
 
-export default class ProfilePage extends Block {
-  constructor(props: Props) {
+class ProfilePage extends Block {
+  constructor(props: Indexed) {
     super({
       ...props,
+      ...store.getState().user,
+      avatarSetter: new AvatarSetter({}),
       changeCredentials: new Link({
         text: 'Изменить данные',
-        href: 'edit-credentials',
         xl: true,
+        onClick: (e: Event) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          router.go('/change-profile');
+        },
       }),
       changePassword: new Link({
         text: 'Изменить пароль',
-        href: 'edit-password',
         xl: true,
+        onClick: (e: Event) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          router.go('/change-password');
+        },
+      }),
+      backButton: new BackButton({
+        link: '/messenger',
       }),
       exit: new Link({
         text: 'Выйти',
         href: 'login',
         xl: true,
         negative: true,
+        onClick: (e: Event) => {
+          e.preventDefault();
+          AuthController.signOut();
+        },
       }),
     });
   }
@@ -28,18 +49,14 @@ export default class ProfilePage extends Block {
   render() {
     return `
       <div class="profile-page">
-        <a class="profile-page__back-block" href="chats">
-          <img class="icon-send-message" src="../../assets/icons/sendMessage.svg">
-        </a>
+        {{{ backButton }}}
       
         <div class="profile-page__info">
           <div class="profile-page__header">
-            <div class="profile-page__image">
-              <img class="icon-profile-img" src="../../assets/icons/profileImg.svg" alt="profile-img">
-            </div>
+            {{{ avatarSetter }}}
       
             <div class="profile-page__name">
-              {{ display_name }}
+              {{#if display_name }}{{ display_name }} {{else}} {{first_name}} {{ second_name}} {{/if}}
             </div>
           </div>
       
@@ -56,12 +73,12 @@ export default class ProfilePage extends Block {
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
               <p class="profile-page__item__key">Имя</p>
-              <p class="profile-page__item__value">{{ name }}</p>
+              <p class="profile-page__item__value">{{ first_name }}</p>
             </div>
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
               <p class="profile-page__item__key">Фамилия</p>
-              <p class="profile-page__item__value">{{ lastName }}</p>
+              <p class="profile-page__item__value">{{ second_name }}</p>
             </div>
             <div class="profile-page__divider"></div>
             <div class="profile-page__item">
@@ -87,3 +104,7 @@ export default class ProfilePage extends Block {
     `;
   }
 }
+
+const mapStateToProps = (state: Indexed) => ({ ...state.user });
+
+export default connect(mapStateToProps)(ProfilePage);

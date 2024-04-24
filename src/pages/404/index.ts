@@ -3,7 +3,7 @@ import { ErrorBlock } from '../../components';
 import Block from '../../tools/block';
 
 export default class Page404 extends Block {
-  constructor(props: Props) {
+  constructor(props: Indexed) {
     super({
       ...props,
       error: new ErrorBlock({
