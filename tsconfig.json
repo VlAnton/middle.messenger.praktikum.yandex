@@ -21,5 +21,6 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
+  "files": ["./src/global.d.ts"],
   "include": ["src"]
 }

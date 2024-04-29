@@ -149,6 +149,7 @@ export default class Block {
     const fragment = this._createDocumentElement(
       'template',
     ) as HTMLTemplateElement;
+    console.log(this.render())
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
 
     Object.values(this.children).forEach((child) => {
