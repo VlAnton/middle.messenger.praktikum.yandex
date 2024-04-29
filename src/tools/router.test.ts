@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import routerClass from '../tools/router';
-import Block from '../tools/block';
+import routerClass from './router';
+import Block from './block';
 import { JSDOM } from 'jsdom';
 
 

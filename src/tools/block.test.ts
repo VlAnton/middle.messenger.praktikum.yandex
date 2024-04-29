@@ -1,4 +1,4 @@
-import Block from '../tools/block'
+import Block from './block'
 import { expect } from 'chai'
 import { describe, it } from 'mocha'
 
