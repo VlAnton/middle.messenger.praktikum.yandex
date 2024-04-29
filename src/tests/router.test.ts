@@ -45,9 +45,9 @@ describe('Test Router', () => {
   it('second page rendered after redirect', () => {
     router
       .use('/', Page1)
-      .use('/2', Page2)
+      .use('/page2', Page2)
       .start();
-    router.go('/2');
+    router.go('/page2');
     expect(document.querySelector('#page-2')?.innerHTML).to.equal('Page 2');
   });
 });
