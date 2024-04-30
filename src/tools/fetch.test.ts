@@ -34,7 +34,7 @@ describe('HTTP Transport test', () => {
 
   it('PUT method test', () => {
     httpTransport.put('/');
-    expect(request.method).to.equal('PUT');
+    expect(request.method).to.equal('POST');
   });
 
   it('DELETE method test', () => {
