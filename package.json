@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "start": "tsc --noEmit && vite build && node server.cjs",
     "lint": "npx eslint .",
+    "pre-commit": "npm run format && npm run lint && npm run stylelint && tsc --noEmit",
     "format": "npx prettier . --write",
     "stylelint": "npx stylelint '**/*.scss'",
     "test": "./node_modules/.bin/mocha"
@@ -44,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all format lint stylelint && tsc --noEmit"
+      "pre-commit": "npm run pre-commit"
     }
   }
 }
