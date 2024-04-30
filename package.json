@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "start": "tsc --noEmit && vite build && node server.cjs",
     "lint": "npx eslint .",
-    "pre-commit": "npm run lint",
+    "pre-commit": "npm run lint && npm run stylelint && tsc --noEmit",
     "format": "npx prettier . --write",
     "stylelint": "npx stylelint '**/*.scss'",
     "test": "./node_modules/.bin/mocha"
@@ -26,7 +26,7 @@
     "chai": "^5.1.0",
     "eslint": "^8.57.0",
     "handlebars": "^4.7.8",
-    "husky": "^9.0.11",
+    "husky": "^8.0.0",
     "jsdom": "^24.0.0",
     "mocha": "^10.4.0",
     "prettier": "3.2.5",
