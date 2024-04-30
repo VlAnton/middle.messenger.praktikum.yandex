@@ -9,6 +9,7 @@
 - `npm run start` — сборка стабильной версии
 - `npm run lint` — прогон через eslint
 - `npm run stylelint` — прогон через stylelint
+- `npm run test` — прогон тестов
 
 После запуска доступно на http://localhost:3000/
 
